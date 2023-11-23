@@ -1,22 +1,27 @@
-body{
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    text-align: justify,;
-    background-color: #b4daeb; 
-    margin: 100px;
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  text-align: justify;
+  background-color:aliceblue;
+  margin: 100px;
+  background-image: url('src/nocompiuter.jpg');
+  background-repeat: no-repeat;
+  background-position: 330px 50px;
+  background-size: 300px 270px;
+}
+h1 {
+  text-align: center;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 
 }
-h1{
-    text-align: center;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+h2 {
+  text-align: center;
 }
-h2{
-    text-align: center;
+.center {
+  text-align: center;
 }
-.center{
-    text-align: center;
-}
-.margin{
-    margin-left: 90px;
-    margin-top: 5px;
-    margin-bottom: 5px;
+.margin {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  
 }
