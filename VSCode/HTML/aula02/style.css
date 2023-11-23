@@ -1,4 +1,22 @@
 body{
-    font-family: sans-serif;
-    text-align: justify; 
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: justify,;
+    background-color: #b4daeb; 
+    margin: 100px;
+
+}
+h1{
+    text-align: center;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+h2{
+    text-align: center;
+}
+.center{
+    text-align: center;
+}
+.margin{
+    margin-left: 90px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
