@@ -1,0 +1,14 @@
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-image: url("src/lmaoo.gif");
+    background-repeat: no-repeat;
+    background-position: 1100px 20px;
+
+}
+h1{
+    text-align: center;
+
+}
+img{
+    text-align: center;
+}

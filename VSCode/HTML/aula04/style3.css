@@ -1,0 +1,14 @@
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    background-image: url("src/spong.gif");
+    background-repeat: no-repeat;
+    background-position: 1100px 20px;
+
+}
+.img1{
+    margin: 25px;
+}
+footer{
+    background-color: blanchedalmond;
+}
