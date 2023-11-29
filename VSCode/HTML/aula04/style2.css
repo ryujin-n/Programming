@@ -35,7 +35,7 @@ background-size: 1800% 1800%;
     100%{background-position:0% 82%}
 }
 iframe{
-    margin-left: 690px;
+    margin-left: 500px;
 }
 div{
     text-align: center
@@ -58,7 +58,7 @@ h2{
 }
 .wa{
     scale: 10%;
-    position:absolute; top:1935px; right:580px;
+    position:absolute; top:2245px; right:420px;
 }
 .huh{
     scale: 200%;
