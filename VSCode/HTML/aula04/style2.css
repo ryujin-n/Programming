@@ -1,14 +1,76 @@
 body{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-image: url("src/lmaoo.gif");
-    background-repeat: no-repeat;
-    background-position: 1100px 20px;
-
+    background-color: black;
+    color: whitesmoke;
 }
 h1{
     text-align: center;
+    background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
+background-size: 1800% 1800%;
+
+-webkit-animation: rainbow 18s ease infinite;
+-z-animation: rainbow 18s ease infinite;
+-o-animation: rainbow 18s ease infinite;
+  animation: rainbow 18s ease infinite;
 
 }
-img{
+@-webkit-keyframes rainbow {
+    0%{background-position:0% 82%}
+    50%{background-position:100% 19%}
+    100%{background-position:0% 82%}
+}
+@-moz-keyframes rainbow {
+    0%{background-position:0% 82%}
+    50%{background-position:100% 19%}
+    100%{background-position:0% 82%}
+}
+@-o-keyframes rainbow {
+    0%{background-position:0% 82%}
+    50%{background-position:100% 19%}
+    100%{background-position:0% 82%}
+}
+@keyframes rainbow { 
+    0%{background-position:0% 82%}
+    50%{background-position:100% 19%}
+    100%{background-position:0% 82%}
+}
+iframe{
+    margin-left: 690px;
+}
+div{
+    text-align: center
+}
+ul{
+    display: inline-block;
+    text-align: left;
+    list-style-position: inside;
+}
+ol{
+    display: inline-block;
+    text-align: left;
+    list-style-position: inside;
+}
+h2{
     text-align: center;
+}
+.hihi{
+    list-style-type: none;
+}
+.wa{
+    scale: 10%;
+    position:absolute; top:1935px; right:580px;
+}
+.huh{
+    scale: 200%;
+    position:absolute; bottom: 880px; right:742px;
+}
+.test:hover{
+    transition: transform .2s;
+    transform: scale(1.1);
+}
+.tes2{
+    transition: transform .2s;
+}
+.img1{
+    margin: 15px;
 }
