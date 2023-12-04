@@ -69,7 +69,7 @@ iframe{
 }
 
 #logo{
-    background-color: rgb(96, 137, 87);
+    /* background-color: rgb(96, 137, 87); */
     background-image: url(src/Animal_Crossing_Leaf.svg\ \(Custom\).png);
     background-repeat: no-repeat;
     background-position: 37px 15px;
