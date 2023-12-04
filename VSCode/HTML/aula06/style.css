@@ -2,8 +2,15 @@
     font-family: Arial, Helvetica, sans-serif;
     margin: 0px;
     padding: 0px;
+    
 }
-
+body{
+    background-color: rgb(238, 213, 156);
+    background-image: url(src/1183017.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    
+}
 #total{
     margin: auto;
     width: 1300px;
@@ -11,35 +18,46 @@
 
 #head{
     height: 130px;
-    background-color: rgb(6, 6, 33);
+    background-color: rgb(133, 188, 120);
     padding-top: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 
 }
 
 #banner{
-    height: 400px;
-    background-color: rgb(9, 9, 57);
+    height: 300px;
+    background-color:rgb(177, 133, 96);
+    background-image: url(src/animal-crossing-new-horizons-banner.jpg);
+    background-repeat: no-repeat;
+    
+
 }
 #cont{
     height: 600px;
     padding-top: 10px;
-    background-color: rgb(6, 6, 33);
+    background-color: rgb(154, 103, 60);
 }
 #map{
-    height: 300px;
-    background-color: rgb(9, 9, 57);
+    background-image: url(src/3p7bI9D.jpg);
+    height: 600px;
+    background-color:rgb(177, 133, 96);
+    clip-path: inset(0);
+    
 }
 #foot{
     height: 190px;
-    background-color: rgb(6, 6, 33);
+    background-color: rgb(154, 103, 60);
     padding-top: 10px;
     padding-left: 10px;
+    
 
 }
 .tab{
     height: 580px;
     width: 420px;
-    background-color: rgb(18, 18, 109);
+    background-color: rgb(212, 169, 127);
+    border-radius: 2%;
 }
 .margin{
     margin-left: 10px;
@@ -51,25 +69,42 @@ iframe{
 }
 
 #logo{
-    background-color: rgb(18, 18, 109);
+    background-color: rgb(96, 137, 87);
+    background-image: url(src/Animal_Crossing_Leaf.svg\ \(Custom\).png);
+    background-repeat: no-repeat;
+    background-position: 37px 15px;
+    background-size: 50%;
     height: 120px;
     width: 150px;
+    border-radius: 20px;
 }
 #menu{
-    background-color: rgb(18, 18, 109);
+    background-color: rgb(96, 137, 87);
     height: 120px;
     width: 1120px;
     float: left;
     margin-left: 10px;
+    border-radius: 15px;
+
 }
-/* #address{
-    background-color: rgb(18, 18, 109);
+#address{
+    background-color: rgb(212, 169, 127);
     height: 180px;
     width: 1090px;
-} */
-#socials{
-    background-color: rgb(18, 18, 109);
-    height: 100px;
-    width: 100px;
+    border-radius: 15px;
+
+}
+#social{
+    background-color: rgb(212, 169, 127);
+    height: 180px;
+    width: 170px;
+    border-radius: 5%;
+}
+.img1{
+  position: fixed;
+  object-fit: cover;
+}
+.margemE{
+    margin-left: 10px;
     float: left;
 }
