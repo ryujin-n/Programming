@@ -17,7 +17,7 @@ body{
 }
 
 #head{
-    height: 130px;
+    height: 119px;
     background-color: rgb(133, 188, 120);
     padding-top: 10px;
     border-top-left-radius: 10px;
@@ -39,10 +39,9 @@ body{
     background-color: rgb(154, 103, 60);
 }
 #map{
-    background-image: url(src/3p7bI9D.jpg);
-    height: 600px;
+    background-image: url(src/Vector.png);
+    height: 560px;
     background-color:rgb(177, 133, 96);
-    clip-path: inset(0);
     
 }
 #foot{
@@ -50,8 +49,6 @@ body{
     background-color: rgb(154, 103, 60);
     padding-top: 10px;
     padding-left: 10px;
-    
-
 }
 .tab{
     height: 580px;
@@ -68,22 +65,14 @@ iframe{
     filter: invert(90%) hue-rotate(180deg)
 }
 
-#logo{
-    /* background-color: rgb(96, 137, 87); */
-    background-image: url(src/Animal_Crossing_Leaf.svg\ \(Custom\).png);
-    background-repeat: no-repeat;
-    background-position: 37px 15px;
-    background-size: 50%;
-    height: 120px;
-    width: 150px;
-    border-radius: 20px;
-}
+
 #menu{
-    background-color: rgb(96, 137, 87);
-    height: 120px;
-    width: 1120px;
+    margin-top: 24px;
+    background-color: rgb(189, 240, 179);
+    height: 60px;
+    width: 633px;
     float: left;
-    margin-left: 10px;
+    margin-left: 343px;
     border-radius: 15px;
 
 }
@@ -95,7 +84,7 @@ iframe{
 
 }
 #social{
-    background-color: rgb(212, 169, 127);
+    /* background-color: rgb(212, 169, 127); */
     height: 180px;
     width: 170px;
     border-radius: 5%;
@@ -108,3 +97,28 @@ iframe{
     margin-left: 10px;
     float: left;
 }
+@font-face {
+    font-family: KGRedHands;
+    src: url(src/KGRedHands.ttf) format("truetype")
+}
+p{
+    font-family:KGRedHands;
+    color: rgb(178, 96, 58);
+    font-size: 22px;
+}
+.men{
+    padding: 16px;
+    margin-left: 210px;
+}
+.c{
+    margin:20px ;
+    margin-top: 23px;
+}
+.test:hover{
+    transition: transform .2s;
+    transform: scale(1.01);
+}
+.tes2{
+    transition: transform .2s;
+}
+

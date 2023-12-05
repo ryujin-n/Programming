@@ -1,8 +1,18 @@
 *{
     font-family: Arial, Helvetica, sans-serif;
+    margin: 0px;
+    padding: 0px;
 }
-body{
+#body{
     background-image: url(src/img1.jpg);
     background-repeat: no-repeat;
     background-size: 110%;
+}
+#tot{
+    width: 1583;
+    margin: auto;
+}
+#header{
+    height: 390px;
+    background-color: antiquewhite;
 }
