@@ -1,13 +1,14 @@
 *{
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: KGRedHands;
     margin: 0px;
     padding: 0px;
     
 }
 body{
     background-color: rgb(238, 213, 156);
-    background-image: url(src/1183017.png);
-    background-repeat: no-repeat;
+    background-image: url(src/sda.png);
+    animation: ani 150s linear infinite ;
+    background-repeat: repeat-x;
     background-attachment: fixed;
     
 }
@@ -17,8 +18,11 @@ body{
 }
 
 #head{
-    height: 119px;
+    height: 189px;
     background-color: rgb(133, 188, 120);
+    background-image: url(src/wp7185848.png);
+    animation: ani 150s linear infinite ;
+    background-size: auto;
     padding-top: 10px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -61,20 +65,22 @@ body{
     float: left;
 }
 
-iframe{
-    filter: invert(90%) hue-rotate(180deg)
-}
 
-
-#menu{
+#img{
+    position: relative;
     margin-top: 24px;
-    background-color: rgb(189, 240, 179);
-    height: 60px;
-    width: 633px;
     float: left;
     margin-left: 343px;
-    border-radius: 15px;
 
+}
+#menu{
+    position: absolute;
+    width: 828px;
+    height: 80px;
+    background-color:bisque;
+    border-radius: 25px;
+    margin-left: 240px;
+    margin-top: 74px;
 }
 #address{
     background-color: rgb(212, 169, 127);
@@ -84,7 +90,6 @@ iframe{
 
 }
 #social{
-    /* background-color: rgb(212, 169, 127); */
     height: 180px;
     width: 170px;
     border-radius: 5%;
@@ -94,7 +99,7 @@ iframe{
   object-fit: cover;
 }
 .margemE{
-    margin-left: 10px;
+    margin-left: 580px;
     float: left;
 }
 @font-face {
@@ -104,7 +109,7 @@ iframe{
 p{
     font-family:KGRedHands;
     color: rgb(178, 96, 58);
-    font-size: 22px;
+    font-size: 30px;
 }
 .men{
     padding: 16px;
@@ -118,7 +123,21 @@ p{
     transition: transform .2s;
     transform: scale(1.01);
 }
+.testw:hover{
+    transition: transform .2s;
+    transform: scale(1.06);
+}
 .tes2{
     transition: transform .2s;
 }
-
+@keyframes ani{
+	0%{background-position: 0 0;}
+	100%{background-position: 100vw 0;}
+}
+#gal{
+    float: left;
+    height: 40px;
+    width: 120px; 
+    margin-left: 650px; 
+    margin-top: -38px;
+}
