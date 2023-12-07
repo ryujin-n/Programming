@@ -1,0 +1,148 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+body{
+    background-color: #333138
+}
+#header{
+    background-color: #333138;
+    height: 113px;
+}
+#logo{
+    background-color: #D3D3D3;
+    height: 100px;
+    width: 200px;
+    margin: 5px;
+    margin-left: 30px;
+    float: left;
+}
+#menu{
+    background-color: #D3D3D3;
+    height: 50px;
+    width: 900px;
+    float: left;
+    margin-top: 29px;
+    margin-left: 200px;
+    border-radius: 15px;
+}
+
+#cont{
+    background-color: #EFEFEF;
+    height: 872px;
+}
+#tabs{
+    width: 1223px;
+    height: 689px;
+    position: relative;
+    left: 12%;
+    top: 60px;
+}
+#tab1{
+    background-color: #D3D3D3;
+    width: 609px;
+    height: 342px;
+    position: absolute;
+}
+#tab2{
+    background-color: #D3D3D3;
+    width: 609px;
+    height: 342px;
+    position: absolute;
+    left: 50.2%;
+}
+#tab3{
+    background-color: #D3D3D3;
+    width: 609px;
+    height: 342px;
+    position: absolute;
+    top: 50.3%;
+}
+#tab4{
+    background-color: #D3D3D3;
+    width: 609px;
+    height: 342px;
+    position: absolute;
+    top: 50.3%;
+    left: 50.2%;
+}
+#ban{
+    background-color: #EFEFEF;
+    height: 387px;
+    margin-top: 120px;
+    margin-bottom: 22px;
+    position: relative;
+}
+#item1{
+    background-color: #D3D3D3;
+    width: 281px;
+    height: 267px;
+    position: absolute;
+    left: 366px;
+    top: 60px;
+    border-radius: 25px;
+}
+#item2{
+    background-color: #D3D3D3;
+    width: 281px;
+    height: 267px;
+    position: absolute;
+    left: 696px;
+    top: 60px;
+    border-radius: 25px;
+
+}
+#item3{
+    background-color: #D3D3D3;
+    width: 281px;
+    height: 267px;
+    position: absolute;
+    left: 1026px;
+    top: 60px;
+    border-radius: 25px;
+
+}
+#pic1{
+    background-color: #D3D3D3;
+    width: 282px;
+    height: 236px;
+    margin-left: 368px;
+    margin-bottom: 49px;
+    border-radius: 25px;
+
+}
+#pic2{
+    background-color: #D3D3D3;
+    width: 282px;
+    height: 236px;
+    margin-left: 698px;
+    margin-bottom: 32px;
+    border-radius: 25px;
+
+}
+#bann{
+    background-color: #EFEFEF;
+    height: 610px;
+    position: relative;
+}
+#sq{
+    background-color: #D3D3D3;
+    width: 593px;
+    height: 480px;
+    position: absolute;
+    top: 65px;
+    left: 127px;
+    border-radius: 25px;
+
+}
+#af{
+    height: 675px;
+}
+#fa{
+    background-color: #EFEFEF;
+    height: 610px;
+}
+#foot{
+    height: 556px;
+}
