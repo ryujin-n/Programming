@@ -1,0 +1,29 @@
+.size{
+    height: 100px;
+}
+.size2{
+    height: 600px;
+}
+.size3{
+    height: 300px;
+}
+.size3{
+    height: 200px;
+}
+.roundd{
+    border-radius: 7px;
+}
+.roundb{
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+}
+
+.ctitle{
+    background-color:salmon;
+}
+.color1{
+background-color: crimson;
+}
+.color2{
+background-color: tomato;
+}
