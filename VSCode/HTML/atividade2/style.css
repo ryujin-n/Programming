@@ -52,6 +52,7 @@ body{
 
 nav{
     font-family:Alata;
+    font-size: 16px;
 }
 .nav-link{
     position: relative;
@@ -118,8 +119,27 @@ nav{
 }
 
 
+.main-title{
+  margin-left: 1%;
+  font-family: BVTPro SemiBold;
+  font-size: 55px;
+  text-align: center;
+  position: relative;
+}
 
+.main-title::after{
+  content: "";
+  border-top: 8px solid #FF914D;
+  border-radius: 10px;
+  width: 22%;
+  position: absolute;
+  top: 105%;
+  left: 38.9%;
+}
 
+.about-list{
+  list-style: none;
+}
 .gtco-testimonials {
     position: relative;
     margin-top: 30px;
