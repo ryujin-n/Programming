@@ -78,7 +78,7 @@ nav > a{
     transition: transform .3s;
 }
 .nav-link:hover::after{
-    transform: scaleX(1);
+    transform: scaleX(0.4);
 }
 .logos{
     position: relative;
@@ -166,31 +166,36 @@ nav > a{
   color: #FF914D;
   margin-right: 15px;
 }
-.gtco-testimonials {
+#carouselll .gtco-testimonials {
     position: relative;
     margin-top: 30px;
     }
   
-    .owl-stage-outer {
-      padding: 20px 0;
+    #carouselll  .owl-stage-outer {
+      height: 600px;
+      padding: 20px;
     }
    
   
-    .card {
+    #carouselll  .card {
+      margin-top: 5rem;
+      height: 400px;
+      width: 700px;
       background: #FFF8EF;
-      box-shadow: 0 8px 30px -7px #c9dff0;
-      border: 0;
+      box-shadow: 0 8px 20px -7px #173660;
       overflow: hidden;
-  
     }
   
-    .active {
+    #carouselll  .active {
       opacity: 0.5;
-      transition: all 0.3s;
+      transition: all 0.9s;
+      transform: scale(0.9);
     }
   
-    .center {
+    #carouselll .center {
       opacity: 1;
+      transform: scale(1.1);
+      transition: all 0.9;
       }
 
       
@@ -200,7 +205,7 @@ nav > a{
     }
   }
   
-  .owl-carousel {
+  #carouselll  .owl-carousel {
     .owl-nav button {
       &.owl-next, &.owl-prev {
         outline: 0;
@@ -381,4 +386,157 @@ footer i:hover {
   color: #FF914D;
   text-decoration: none;
 
+}
+
+#testims .testimonial{ 
+  margin: 0 10px; 
+}
+#testims .testimonial .testimonial-content{
+    margin: 20px 0 50px 0;
+    position: relative;
+}
+#testims .testimonial .testimonial-content:after{
+    content: "";
+    width: 20px;
+    height: 20px;
+    border-top: 20px solid #173660;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    margin: 0 auto;
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    right: 0;
+}
+#testims .testimonial .description{
+    padding: 60px;
+    font-family: BVTPRO SemiBold;
+    text-align: center;
+    background: #173660;
+    min-height: 200px;
+    border-radius: 15px;
+    font-size: 18px;
+    color: #FF914D;
+    position: relative;
+}
+#testims .testimonial .description:before,
+#testims .testimonial .description:after{
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    border-radius: 8px;
+    text-align: center;
+    background: #173660;
+    position: absolute;
+}
+#testims .testimonial .description:before{
+    content: "\f10d";
+    top: -18px;
+    left: 25px;
+}
+#testims .testimonial .description:after{
+    content: "\f10e";
+    bottom: -18px;
+    right: 25px;
+}
+#testims .testimonial .testimonial-profile{
+    display: table;
+    padding: 15px;
+    border: 1px solid #173660;
+    border-radius: 20px;
+    margin: 0 auto;
+    position: relative;
+}
+#testims .testimonial .pic{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 1px solid #173660;
+    float: left;
+    overflow: hidden;
+}
+#testims .testimonial .title{
+    display: inline-block;
+    margin: 0 0 0 30px;
+    font-size: 19px;
+    font-weight: bold;
+    color: #173660;
+    position: relative;
+    top: 22px;
+}
+#testims .testimonial .title:before{
+    content: "";
+    width: 1px;
+    height: 70px;
+    background: #173660;
+    position: absolute;
+    top: -8px;
+    left: -15px;
+}
+#testims .testimonial .post{
+    display: block;
+    font-size: 14px;
+    font-weight: normal;
+    color: #FF914D;
+    margin-top: 10px;
+}
+#testims .owl-theme .owl-controls{
+    margin-top: 30px;
+}
+#testims .owl-theme .owl-controls .owl-page span{
+    background: transparent;
+    border: 1px solid #173660;
+    opacity: 1;
+}
+#testims .owl-theme .owl-controls .owl-page.active span{
+    background: #173660;
+    border: 1px solid #173660;
+}
+@media only screen and (max-width: 479px){
+  #testims .testimonial .description{
+        padding: 20px;
+        font-size: 16px;
+    }
+    .testimonial .testimonial-profile{ padding: 10px; }
+    .testimonial .title{ font-size: 16px; }
+    .testimonial .post{ font-size: 13px; }
+}
+
+#contact{
+  text-align: center;
+}
+
+.contact-box{
+  padding-bottom: 50px;
+  margin-bottom: 50px;
+}
+
+.contact-box i{
+  font-size: 30px;
+  color: #232323;
+  text-align: center;
+  border: 1px solid #232323;
+  width: 75px;
+  height: 75px;
+  line-height: 75px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+.contact-box p {
+  font-family: BVTPro SemiBold;
+  font-size: 16px;
+}
+
+.contact-title{
+  font-family: BVTPro Semibold;
+  font-weight: bold;
+  color: #FF914D;
+}
+
+.contact-box i:hover{
+  background-color: #173660;
+  color: #FF914D;
 }
