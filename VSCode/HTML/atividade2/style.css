@@ -179,8 +179,8 @@ nav > a{
   
     #carouselll  .card {
       margin-top: 5rem;
-      height: 400px;
-      width: 700px;
+      /* height: 400px;
+      width: 700px; */
       background: #FFF8EF;
       box-shadow: 0 8px 20px -7px #173660;
       overflow: hidden;
