@@ -172,13 +172,11 @@ nav > a{
     }
   
     #carouselll  .owl-stage-outer {
-      height: 600px;
       padding: 20px;
     }
    
   
     #carouselll  .card {
-      margin-top: 5rem;
       /* height: 400px;
       width: 700px; */
       background: #FFF8EF;
