@@ -54,6 +54,12 @@ nav{
     font-family:Alata;
     font-size: 16px;
 }
+
+nav > a{
+  color: #173660;
+
+}
+
 .nav-link{
     position: relative;
     padding: 0;
@@ -125,6 +131,8 @@ nav{
   font-size: 55px;
   text-align: center;
   position: relative;
+
+ 
 }
 
 .main-title::after{
@@ -137,8 +145,21 @@ nav{
   left: 38.9%;
 }
 
-.about-list{
+#p{
+  font-family: Overpass SemiBold;
+  font-size: 21px;
+}
+#about-list li{
   list-style: none;
+  padding-left: 0;
+  line-height: 30px;
+  font-family: Overpass Medium ;
+  font-size: 17px;
+}
+
+#about-list i{
+  color: #FF914D;
+  margin-right: 15px;
 }
 .gtco-testimonials {
     position: relative;
@@ -180,4 +201,33 @@ nav{
         outline: 0;
       }
     }
+  }
+
+  .service-box{
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .service-box i, .service-box h4{
+    transition: .5s;
+  }
+  
+  .service-box i{
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #444;
+  }
+  
+  .service-box h4{
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-family: BVTPro Semibold;
+  }
+
+  .service-box p{
+    font-family: BVTPro ExtraLight;
+    font-size: 15px;
+  }
+  .service-box:hover > i, .service-box:hover > h4{
+    color: #FF914D;
   }
