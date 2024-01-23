@@ -249,7 +249,7 @@ nav > a{
     text-align: center;
     height:500px;
     border:none;
-    box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 0px 10px #444;
   }
   .profile-card .background-block {
       float: left;
