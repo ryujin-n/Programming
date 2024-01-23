@@ -131,8 +131,13 @@ nav > a{
   font-size: 55px;
   text-align: center;
   position: relative;
-
  
+}
+.title{
+  margin-left: 1%;
+  font-family: BVTPro SemiBold;
+  font-size: 55px;
+  text-align:right;
 }
 
 .main-title::after{
@@ -225,9 +230,155 @@ nav > a{
   }
 
   .service-box p{
-    font-family: BVTPro ExtraLight;
+    font-family: BVTPro Light;
     font-size: 15px;
   }
   .service-box:hover > i, .service-box:hover > h4{
     color: #FF914D;
   }
+
+  .profile-card {
+    font-family: 'Open Sans', Arial, sans-serif;
+    position: relative;
+    float: left;
+    overflow: hidden;
+    width: 100%;
+    text-align: center;
+    height:500px;
+    border:none;
+    box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.5);
+  }
+  .profile-card .background-block {
+      float: left;
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+  }
+  .profile-card .background-block .background {
+    width:100%;
+    vertical-align: top;
+    opacity: 0.9;
+    -webkit-filter: blur(0.5px);
+    filter: blur(0.5px);
+     -webkit-transform: scale(1.8);
+    transform: scale(2.8);
+  }
+  .profile-card .card-content {
+    width: 100%;
+    padding: 15px 25px;
+    color:#232323;
+    float:left;
+    background:#fab990;
+    top: 290px;
+    height:50%;
+    border-radius:0 0 5px 5px;
+    position: relative;
+    z-index: 9999;
+  }
+  .profile-card .card-content::before {
+      content: '';
+      background: #fab990;
+      width: 120%;
+      height: 100%;
+      left: 11px;
+      bottom: 51px;
+      position: absolute;
+      z-index: -1;
+      transform: rotate(-13deg);
+  }
+  .profile-card .profile {
+    border-radius: 50%;
+    height: 220px;
+    width: 220px;
+    position: absolute;
+    bottom: 40%;
+    left: 50%;
+    opacity: 1;
+    box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.5);
+    border: 2px solid rgba(255, 255, 255, 1);
+    -webkit-transform: translate(-50%, 0%);
+    transform: translate(-50%, 0%);
+    z-index:99999;
+  }
+  .profile-card h3 {
+    font-family: BVTPro SemiBold;
+    margin-top: 15px;
+    font-weight: 600;
+    font-size:25px;
+  }
+  .profile-card h3 small {
+    font-family:BVTPro light ;
+    display: block;
+    font-size: 15px;
+    margin-top:5px;
+  }
+  .profile-card i {
+    display: inline-block;
+      font-size: 16px;
+      color: #232323;
+      text-align: center;
+      border: 1px solid #232323;
+      width: 30px;
+      height: 30px;
+      line-height: 30px;
+      border-radius: 50%;
+      margin:0 5px;
+  }
+  .profile-card .icon-block{
+      float:left;
+      width:100%;
+      margin-top:15px;
+  }
+  .profile-card .icon-block a{
+      text-decoration:none;
+  }
+  .profile-card i:hover {
+    background-color:#173660;
+    color:#FF914D;
+    text-decoration:none;
+  }
+
+  .card-bg{
+    background-color:#f1e8e894;
+  }
+  
+  .pop{
+    transition: transform .2s;
+  }
+  
+  .pop:hover{
+    transition: transform .2s;
+    transform: scale(1.02);
+}
+
+.button-quote{
+  width: 284px;
+  height: 70px;
+  border-radius: 44px;
+  background: #FF914D;
+  border: none;
+}
+.button-quote-outline{
+  width: 234px;
+  height: 70px;
+  border-radius: 44px;
+  border: 3px solid #FF914D;
+  background-color: #FFF8EF;
+}
+
+#quote p{
+  color: #173660;
+  margin: 5px;
+  text-align: center;
+  font-family: Viga;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+footer i:hover {
+  color: #FF914D;
+  text-decoration: none;
+
+}
