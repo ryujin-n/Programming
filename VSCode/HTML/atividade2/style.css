@@ -249,7 +249,7 @@ nav > a{
     text-align: center;
     height:500px;
     border:none;
-    box-shadow: 0px 0px 10px #444;
+    box-shadow: 0px 8px 20px -4px #444;
   }
   .profile-card .background-block {
       float: left;
@@ -537,4 +537,105 @@ footer i:hover {
 .contact-box i:hover{
   background-color: #173660;
   color: #FF914D;
+}
+#merchan .title{
+  font-size: 54px;
+}
+#merchan p{
+  font-size: 20px
+}
+
+.aa{
+  margin-left: 23.5rem;
+}
+
+.hihiha{
+  width: 236px; 
+  margin-right: 30px;
+}
+/* responsividade  tablet */
+
+@media (max-width:878px) {
+  .containers{
+    padding: 20px 0;
+  }
+
+  #logosx img{
+    margin-right: 5.9rem;
+  }
+
+  #about-area p{
+
+    margin-left: 6rem;
+    width: 548px;
+    font-family: Overpass;
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+
+  }
+
+  #about-area ul{
+    margin-left: 4.1rem;
+    margin-top: 3rem;
+    justify-content: center;
+    align-items: flex-start;
+    
+  }
+  #sla{
+    margin-top: 3rem;
+  }
+
+  #about-area .col-12{
+    height: 209px;
+    
+  }
+
+  #about-area img{
+    margin: 0 0 0 10px;
+  }
+
+  #personel .profile-card{
+    width: 50%;
+    margin-left: 10.8rem;
+  }
+
+  #row1 .profile-card{
+    margin-top: 1.5rem;
+
+  }
+
+  .main-title{
+    font-size: 45px;
+  }
+  .title{
+    font-size: 45px;
+  }
+
+  #merchan .title{
+    font-size: 45px;
+  }
+  #merchan p{
+    font-size: 19px
+  }
+
+  #quote .button-quote{
+    margin-left: -19rem;
+  }
+  #contact .main-title{
+    margin-top: 3rem;
+  }
+
+ #hm .col-md-10{
+  height: 576px;
+ }
+
+ #services h4{
+  font-size: 16.3px;
+ }
+
+ #services p{
+  font-size: 11px;
+ }
 }
