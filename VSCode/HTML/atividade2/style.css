@@ -566,6 +566,10 @@ footer i:hover {
   width: 236px; 
   margin-right: 30px;
 }
+
+.hoh{
+  margin-left: 4rem;
+}
 /* responsividade  tablet */
 
 @media (max-width:768px) {
