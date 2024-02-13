@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Vendas</title>
     <link rel="stylesheet" href="css/bootstrap.css">
 </head>
 <body>
@@ -17,18 +17,20 @@
                 </div>
                 <div class="col-sm 6">
                     <p>
-                        <label for="txtProd">Produto</label>
-                    </p>
-                    <p>
-                        <input type="text" name="txtProd" id="txtProd" class="form-control" required>
+                         <select name="prod" class="form-select" id="txtProd" required>
+                            <option value=""> -- Produto-- </option>
+                            <option value="a">A</option>
+                            <option value="b">B</option>
+                            <option value="c">C</option>
+                            <option value="d">D</option>
+                            <option value="e">E</option>
+                            <option value="f">F</option>
+                        </select>
                     </p>
                 </div>
                 <div class="col-sm 6">
                     <p>
-                        <label for="txtQtde">Quantidade</label>
-                    </p>
-                    <p>
-                        <input type="number" name="txtQtde" id="txtQtde" class="form-control" required min=0>
+                        <input type="number" name="txtQtde" id="txtQtde" class="form-control" placeholder="Quantidade" required min=0>
                     </p>
                 </div>
             </div>
@@ -36,21 +38,18 @@
             <div class="row">
                 <div class="col-sm 6">
                     <p>
-                        <label for="txtVal">Valor Unitário</label>
-                    </p>
-                    <p>
-                        <input type="text" name="txtVal" id="txtVal" class="form-control" required>
+                        <input type="number" name="txtVal" id="txtVal" class="form-control" placeholder="Valor Unitário" step="0.01" required>
                     </p>
 
-                    <button class="btn btn-success" id="btoOK" name="btoOK" formaction="op2.php">Realizar Venda</button>
+                    <button class="btn btn-success mt-3 mb-3" id="btoOK" name="btoOK" formaction="atv2.php">Realizar Venda</button>
+                    <a href="atv2.php" class="btn btn-danger">Apagar</a>
+
                     
                 </div>
                 <div class="col-sm 6">
+                   
                     <p>
-                        Forma de Pagamento
-                    </p>
-                    <p>
-                        <select name="pgto" class="form-select" id="txtPgto" name="txtPgto">
+                        <select name="pgto" class="form-select" id="txtPgto" required>
                             <option value=""> -- Forma de Pagamento-- </option>
                             <option value="dn">Dinheiro</option>
                             <option value="px">Pix</option>
@@ -63,18 +62,31 @@
                 </div>
                 
             </div>
-            
-            <div style=" margin-top: 1rem; background-color:lightslategray; height:100px; border-radius:10px; font-family: Arial, Helvetica, sans-serif; color: white; text-align: center;" class="p-3">
+                <hr>
+            <div class="row">
+                <div class="col-sm-6 mx-auto">
+                    <?php include_once("op2.php");?>
                     <p>
-                        Valor: <?php  ?>
+                        <br>
+                        <label for="">Total:</label> 
                     </p>
-
                     <p>
-                        Valor Real: <?php  ?>
+                        <input type="text" name="txtTot" id="txtTot" class="form-control " value="<?php echo "R$". number_format($diff, 2) ?>" readonly>
                     </p>
                 </div>
+                <div class="col-sm-6 mx-auto">
+                    <p>
+                        <br>
+                        <label for="">Total Real:</label> 
+                    </p>
+                    <p>
 
+                        <input type="text" name="txtTotR" id="txtTotR" class="form-control" value="<?php echo "R$".number_format($total, 2) ?>" readonly>
+                    </p>
+                </div>
             </div>
+            
+            
 
         </form>
     </div>
