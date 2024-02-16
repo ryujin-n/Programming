@@ -16,7 +16,7 @@
    if ($_POST) {
 
         if (empty($_POST["id"]) || empty($_POST["nome"]) || empty($_POST["data"]) || empty($_POST["cep"]) || empty($_POST["rua"]) || empty($_POST["num"]) || empty($_POST["bai"]) || empty($_POST["cid"]) || empty($_POST["est"]) || empty($_POST["obs"]) || empty($_POST["sts"])) {
-            $error_message = "Por favor, preencha todos os campos obrigatórios.";
+            $erro = "Por favor, preencha todos os campos obrigatórios.";
             
             $id = $_POST["id"];
             $name = $_POST["nome"];

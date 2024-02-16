@@ -33,9 +33,9 @@ Não apagar os dados caso o valor não seja preenchido -->
 
     
     <div class="container">
-        <?php if (!empty($error_message)): ?>
+        <?php if (!empty($erro)): ?>
                     <div class="alert alert-danger error-message" role="alert">
-                        <?php echo $error_message; ?>
+                        <?php echo $erro; ?>
                     </div>
                 <?php endif; ?>
         <form action="" method="post" class="form-control">
