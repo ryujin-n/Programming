@@ -40,6 +40,14 @@
                     <tfoot>
                         <tr>
                             <th>Total</th>
+                            
+                            <td><b><?="| ".$tots[0]." |"?></b></td>
+                            <td><b><?="| ".$tots[1]." |"?></b></td>
+                            <td><b><?="| ".$tots[2]." |"?></b></td>
+                            <td><b><?="| ".$tots[3]." |"?></b></td>
+                            <td><b><i><?="| ".$tots[4]." |"?></i></b></td>
+                           
+
                         </tr>
                     </tfoot>
                 </table>
