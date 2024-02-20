@@ -38,7 +38,9 @@
                     </tbody>
 
                     <tfoot>
-                        <th>Total</th>    
+                        <tr>
+                            <th>Total</th>
+                        </tr>
                     </tfoot>
                 </table>
 

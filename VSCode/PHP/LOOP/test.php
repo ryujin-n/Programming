@@ -1,24 +1,38 @@
 <?php
 	if ($_POST) {
-		$n= $_POST['rw'];
 
-		// for($tr=1;$tr<=$n;$tr++){
+		$tots = array(0,0,0,0,0);
 
-		// 	echo "<tr>";
+		for($tr=1;$tr<=$_POST['rw'];$tr++){
+
+
+			// soma horizontal
+
+			$totals = array(
+				rand(5,1000),
+				rand(5,1000),
+				rand(5,1000),
+				rand(5,1000)
+			);
+
 			
-		// 	echo "<td>"."nome".$tr."</td>";
-		// 	echo "<td>".rand(5,1000).$tr."</td>";
-		// 	echo "<td>".rand(5,1000).$tr."</td>";
-		// 	echo "<td>".rand(5,1000).$tr."</td>";
-		// 	echo "<td>".rand(5,1000).$tr."</td>";
-			
-		// soma vertical
 
-		// 	echo"";
+			echo
+			'
+			<tr>
+				<td>Nome-'.$tr.'</td>
+				<td>'.$totals[0].'</td>
+				<td>'.$totals[1].'</td>
+				<td>'.$totals[2].'</td>
+				<td>'.$totals[3].'</td>
+				<td>'.$totL.'</td>
+			</tr>
+			';
 
-		// 	}
+			echo"";
+
 			
-		// 	echo "</tr>";
+		}
 
 
 		
