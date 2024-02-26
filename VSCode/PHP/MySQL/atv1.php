@@ -22,7 +22,7 @@
                 <div class="col-sm-12">
                     <b style="text-align:center;">
                         <hr>
-                        <h2>Formulário</h2>
+                        <h2>Usuário</h2>
                         <hr>
                         <br>
                     </b>

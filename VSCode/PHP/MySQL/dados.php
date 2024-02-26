@@ -32,7 +32,7 @@
                 ));  
             
                 if ($sql -> rowCount() > 0) {
-                    echo '<script>alert("Usuário Excluído com Sucesso")</script>';
+                    echo '<script>alert("Usuário Cadastrado com Sucesso")</script>';
                 }
             } catch (PDOException $th) {
                 echo $th;

@@ -10,7 +10,7 @@
 
 <body>
 
-    <?php include_once("dados2.php");?>
+    <?php include_once("dados3.php");?>
 
     
     <div class="container">
@@ -18,7 +18,7 @@
              <div class="row">
                 <div class="col-sm-12">
                     <hr>
-                    <b style="text-align:center;"><h2>Funcionário</h2></b>
+                    <b style="text-align:center;"><h2>Fornecedor</h2></b>
                     <hr>
                     <br>
                 </div>
@@ -29,7 +29,7 @@
                     </p>
                 </div>
                 <div class="col-sm-3">
-                    <button class="btn btn-secondary " name="pesq" formaction="atv2.php">
+                    <button class="btn btn-secondary " name="pesq" formaction="atv3.php">
                         &#x1F50D;
                     </button>
                 </div>
@@ -45,7 +45,7 @@
                             &nbsp;
                         </p>
                         <p>
-                            <input type="text" class="form-control" id="nome" name="nome" value="<?= $nome;?>" placeholder="Nome Completo" >
+                            <input type="text" class="form-control" id="nome" name="nome" value="<?= $nome;?>" placeholder="Nome" >
                         </p>
                     </div>
                 </div>
@@ -65,7 +65,7 @@
                             &nbsp;
                         </p>
                         <p>
-                            <input type="text" class="form-control " name="cpf" value="<?= $cpf;?>"placeholder="CPF"  >
+                            <input type="text" class="form-control " name="cnpj" value="<?= $cnpj;?>"placeholder="CNPJ"  >
                         </p>
                        
                     </div>
@@ -100,11 +100,6 @@
                     <div class="col-sm-3">
                         <p>
                             <input type="text" class="form-control" name="logr" value="<?= $logr;?>" placeholder="Rua" >
-                        </p>
-                    </div>
-                    <div class="col-sm-3">
-                        <p>
-                            <input type="text" class="form-control" id="comp" name="comp" value="<?= $comp;?>"placeholder="Complemento" >
                         </p>
                     </div>
                     <div class="col-sm-3">
@@ -164,7 +159,14 @@
                     </div>
                 </div>
 
-
+                <div class="row">
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" name="cont" value="<?= $cont;?>" placeholder="Contato" >
+                        <br>
+                    </div>
+                    
+                </div>
+                
                 <div class="row">
                     <div class="col-sm-12">
                         <p>
@@ -177,10 +179,10 @@
 
                 <div class="row">
                     <div class="col-sm-12 text-end">
-                        <button class="btn btn-primary" name="cad" formaction="atv2.php">Cadastrar</button>
-                        <button class="btn btn-success" name="alt"formaction="atv2.php">Alterar</button>
-                        <a class="btn btn-dark" href="atv2.php">Limpar</a>
-                        <button class="btn btn-danger" name="del" formaction="atv2.php">Excluir</button>
+                        <button class="btn btn-primary" name="cad" formaction="atv3.php">Cadastrar</button>
+                        <button class="btn btn-success" name="alt"formaction="atv3.php">Alterar</button>
+                        <a class="btn btn-dark" href="atv3.php">Limpar</a>
+                        <button class="btn btn-danger" name="del" formaction="atv3.php">Excluir</button>
                         <hr>
                     </div>
                 </div>
