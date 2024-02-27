@@ -29,6 +29,7 @@ $sts="";
             
                 if ($sql -> rowCount() > 0) {
                     echo '<script>alert("Ordem Cadastrada com Sucesso")</script>';
+                    header("Location:atv6.php?IDUsuario=".$conn->lastInsertId());
                 }
             } catch (PDOException $th) {
                 echo $th;

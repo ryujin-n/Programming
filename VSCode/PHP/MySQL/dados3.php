@@ -60,6 +60,7 @@ if ($_POST) {
         
             if ($sql -> rowCount() > 0) {
                 echo '<script>alert("Usuário Cadastrado com Sucesso")</script>';
+                header("Location:atv3.php?IDUsuario=".$conn->lastInsertId());
             }
         } catch (PDOException $th) {
             echo $th;

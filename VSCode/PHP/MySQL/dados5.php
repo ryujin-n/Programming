@@ -26,6 +26,7 @@
             
                 if ($sql -> rowCount() > 0) {
                     echo '<script>alert("Armazém Cadastrado com Sucesso")</script>';
+                    header("Location:atv5.php?IDUsuario=".$conn->lastInsertId());
                 }
             } catch (PDOException $th) {
                 echo $th;

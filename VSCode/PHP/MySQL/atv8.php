@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movimentação</title>
+    <title>ItemEstoque</title>
     <link rel="stylesheet" href="css/bootstrap.css">
 </head>
 
 <body>
 
-    <?php include_once("dados7.php");?>
+    <?php include_once("dados8.php");?>
 
     
     <div class="container">
@@ -18,7 +18,7 @@
              <div class="row">
                 <div class="col-sm-12">
                     <hr>
-                    <b style="text-align:center;"><h2>Movimentação</h2></b>
+                    <b style="text-align:center;"><h2>Estoque</h2></b>
                     <hr>
                     <br>
                 </div>
@@ -31,7 +31,7 @@
                     </p>
                 </div>
                 <div class="col-sm-3">
-                    <button class="btn btn-secondary " name="pesq" formaction="atv7.php">
+                    <button class="btn btn-secondary " name="pesq" formaction="atv8.php">
                         &#x1F50D;
                     </button>
                 </div>
@@ -64,15 +64,15 @@
 
                     <div class="col-sm-3">
                         <p>
-                            <select name="idf" id="idf" class="form-select">
-                                <option value=""> -- Funcionário --</option>
+                            <select name="idl" id="idl" class="form-select">
+                                <option value=""> -- Armazém --</option>
                                 <?php
                                     include_once('conn.php');
-                                    $sql = $conn->query('select ID_Funcionario, nome_Funcionario from funcionario');
+                                    $sql = $conn->query('select id_LocalEstoque, nome_LocalEstoque from localestoque');
 
                                     try {
                                         foreach ($sql as $linha) {
-                                            echo "<option value='{$linha[0]}'" . (($idp == $linha[0]) ? " selected" : "") . ">{$linha[1]}</option>";
+                                            echo "<option value='{$linha[0]}'" . (($idl == $linha[0]) ? " selected" : "") . ">{$linha[1]}</option>";
                                         }
                                     } catch (PDOException $erro) {
                                         echo $erro->getMessage();
@@ -81,31 +81,17 @@
                             </select>
                         </p>
                     </div>
+                    
                     <div class="col-sm-3">
-                        <select name="tpo" id="tpo" class="form-select">
-                            <option value=""> -- Tipo -- </option>
-                            <option value="en"<?=($tpo=="en" )? "selected" : "" ?>>Entrada</option>
-                            <option value="sai"<?=($tpo=="sai" )? "selected" : "" ?>>Saída</option>
-                        </select>
+                    
+                        <p>
+                            <select name="sts" id="sts" class="form-select w-50">
+                                <option value=""> -- Status -- </option>
+                                <option value="ATIVO" <?= ($sts == "ATIVO") ? "selected" : "" ?>>ATIVO</option>
+                                <option value="INATIVO" <?= ($sts == "INATIVO") ? "selected" : "" ?>>INATIVO</option>
+                            </select>
+                        </p>
                     </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-3">
-                            <input type="number" name="qtde" id="qtde" class="form-control" value="<?= $qtde; ?>" placeholder="Qtde">
-                
-                </div>
-                
-                <div class="col-sm-3">
-                
-                    <p>
-                        <select name="sts" id="sts" class="form-select w-50">
-                            <option value=""> -- Status -- </option>
-                            <option value="ATIVO" <?= ($sts == "ATIVO") ? "selected" : "" ?>>ATIVO</option>
-                            <option value="INATIVO" <?= ($sts == "INATIVO") ? "selected" : "" ?>>INATIVO</option>
-                        </select>
-                    </p>
-                </div>
             </div>
                 
             <div class="row">
@@ -120,10 +106,10 @@
 
             <div class="row">
                 <div class="col-sm-12 text-end">
-                    <button class="btn btn-primary" name="cad" formaction=" atv7.php">Cadastrar</button>
-                    <button class="btn btn-success" name="alt"formaction=" atv7.php">Alterar</button>
-                    <a class="btn btn-dark" href=" atv7.php">Limpar</a>
-                    <button class="btn btn-danger" name="del" formaction=" atv7.php">Excluir</button>
+                    <button class="btn btn-primary" name="cad" formaction=" atv8.php">Cadastrar</button>
+                    <button class="btn btn-success" name="alt"formaction=" atv8.php">Alterar</button>
+                    <a class="btn btn-dark" href=" atv8.php">Limpar</a>
+                    <button class="btn btn-danger" name="del" formaction=" atv8.php">Excluir</button>
                     <hr>
                 </div>
             </div>

@@ -33,6 +33,7 @@
             
                 if ($sql -> rowCount() > 0) {
                     echo '<script>alert("Usuário Cadastrado com Sucesso")</script>';
+                    header("Location:atv1.php?IDUsuario=".$conn->lastInsertId());
                 }
             } catch (PDOException $th) {
                 echo $th;
@@ -40,30 +41,47 @@
            
            } 
            //pesquisa
-           elseif (isset($_POST['pesq'])) {
-            try {
-                $sql = $conn-> query('SELECT * FROM usuario where id_usuario='.$_POST['id'] );
-                if ($sql->rowCount() > 0) {
-                    foreach ($sql as $line) {
-
-                        $ID=$line[0];
-                        $Nome=$line[1];
-                        $Login=$line[2];
-                        $Senha= $line[3];
-                        $Data=$line[4];
-                        $Data = substr($Data, 0, 10);
-                        $Obs=$line[5];
-                        $Status=$line[6];
-                    }
-                }
-                else {
-                     echo '<script>alert("Usuário não encontrado")</script>';
-                }
-            }
-             catch (PDOException $th)
-            {
-                echo $th;
-            }
+           elseif(isset($_POST['pesq']) or isset($_GET['IDUsuario']))
+           {
+           
+               $idUsuario="";
+           
+               if(isset($_POST['pesq']))
+               {
+                   $idUsuario=$_POST['id'];
+               }
+               elseif(isset($_GET['IDUsuario']))
+               {
+                   $idUsuario=$_GET['IDUsuario'];
+               }
+           
+               try
+               {
+                   $sql = $conn->query('select * from usuario where id_usuario='.$idUsuario);
+           
+                   if($sql->rowCount()>0)
+                   {
+                       foreach($sql as $linha)
+                       {
+                           $ID=$linha[0];
+                           $Nome=$linha[1];
+                           $Login=$linha[2];
+                           $Senha= $linha[3];
+                           $Data=$linha[4];
+                           $Data = substr($Data, 0, 10);
+                           $Obs=$linha[5];
+                           $Status=$linha[6];
+                       }
+                   }else{
+                       echo '<script>alert("Usuário não encontrado")</script>';
+                       $mensagem = "Usuário não encontado";
+                   }
+                   
+               }
+               catch(PDOException $erro)
+               {
+                   echo $erro->getMessage();
+               }   
            }
            //alterar
            elseif (isset($_POST["alt"])) {

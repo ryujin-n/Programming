@@ -33,6 +33,7 @@ $sts="";
             
                 if ($sql -> rowCount() > 0) {
                     echo '<script>alert("Produto Cadastrado com Sucesso")</script>';
+                    header("Location:atv4.php?IDUsuario=".$conn->lastInsertId());
                 }
             } catch (PDOException $th) {
                 echo $th;
