@@ -12,12 +12,14 @@
 </head>
 <body>
 
+    <?php include_once("auth.php"); ?>
+
     <div class="container">
         <div class="row">
             <?php include_once("header&footer/header.php"); ?>
         </div>
     </div>
-    <div class="container mb-3">
+    <div class="container mb-3 p-5">
         <div class="row">
             <div class="col-sm-2">
                 <?php include_once("menu.php");?>
@@ -44,7 +46,7 @@
 
                         include_once("atv4.php"); 
                     }
-                    elseif ($tela=='armazem') {
+                    elseif ($tela=='localest') {
 
                         include_once("atv5.php"); 
                     }
@@ -56,7 +58,7 @@
 
                         include_once("atv7.php"); 
                     }
-                    elseif ($tela=='estoque') {
+                    elseif ($tela=='itemest') {
 
                         include_once("atv8.php"); 
                     }

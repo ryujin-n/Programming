@@ -1,4 +1,4 @@
-<div class="col-sm-12 p-5">
+<div class="col-sm-12 mb-5">
     <footer class="text-center text-lg-start bg-body-tertiary text-muted">
         <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
             <div class="me-5 d-none d-lg-block">

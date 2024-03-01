@@ -31,7 +31,7 @@
                     </p>
                 </div>
                 <div class="col-sm-3">
-                    <button class="btn btn-secondary " name="pesq" formaction="atv6.php">
+                    <button class="btn btn-secondary " name="pesq" formaction="initial.php?tela=os">
                         &#x1F50D;
                     </button>
                 </div>
@@ -91,10 +91,10 @@
     
                 <div class="row">
                     <div class="col-sm-12 text-end">
-                        <button class="btn btn-primary" name="cad" formaction=" atv6.php">Cadastrar</button>
-                        <button class="btn btn-success" name="alt"formaction=" atv6.php">Alterar</button>
-                        <a class="btn btn-dark" href=" atv6.php">Limpar</a>
-                        <button class="btn btn-danger" name="del" formaction=" atv6.php">Excluir</button>
+                        <button class="btn btn-primary" name="cad" formaction=" initial.php?tela=os">Cadastrar</button>
+                        <button class="btn btn-success" name="alt"formaction=" initial.php?tela=os">Alterar</button>
+                        <a class="btn btn-dark" href=" initial.php?tela=os">Limpar</a>
+                        <button class="btn btn-danger" name="del" formaction=" initial.php?tela=os">Excluir</button>
                         <hr>
                     </div>
                 </div>

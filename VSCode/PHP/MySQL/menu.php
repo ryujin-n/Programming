@@ -23,7 +23,7 @@
         Fornecedor
     </div>
 </a>
-<a href="initial.php?tela=armazem">
+<a href="initial.php?tela=localest">
     <div class="itemMenu text-center">
         Armazém
     </div>
@@ -33,7 +33,7 @@
         OS
     </div>
 </a>
-<a href="initial.php?tela=estoque">
+<a href="initial.php?tela=itemest">
     <div class="itemMenu text-center">
         Estoque
     </div>

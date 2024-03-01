@@ -1,4 +1,4 @@
-    <div class="col-sm-12 p-5">
+    <div class="col-sm-12 mt-5">
         <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary">
             <div class="container">
                 <button data-mdb-collapse-init class="navbar-toggler" type="button" data-mdb-target="#navbarButtonsExample"
@@ -12,10 +12,16 @@
                             <h5>Cadastro Legal do milos</h5>
                         </li>
                     </ul>
-                    
-                    <div class="d-flex align-items-center">
+                    <div class="p-3">
+                    <p>ID: <?=$idUsuarioSessao?><br>
+                        Nome: <?=$nomeUsuarioSessao?><br>
+                        Login: <?=$loginUsuarioSessao?><br></p>
+                        <a href="logoff.php" class="btn btn-danger">Sair</a>
                         <a data-mdb-ripple-init class="btn btn-dark px-3" href="https://github.com/mdbootstrap/mdb-ui-kit"
                         role="button"><i class="fab fa-github"></i></a>
+                    </div>
+                    <div class="d-flex align-items-center">
+                      
                     </div>
                 </div>
             </div>
