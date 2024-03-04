@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+    <div class="container">
+        <form action="" class="form-control w-50 mx-auto" onsubmit="return false;">
+            <div class="row">
+                <div class="col-sm-12">
+                    <b class="text-center"><h2>Média</h2></b>
+                    <hr>
+                    <br>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6">
+                   <p>
+                       <input type="number" id="n1" placeholder="N1"class="form-control">
+                   </p>
+                </div>
+                <div class="col-sm-6">
+                   <p>
+                       <input type="number" id="n2" placeholder="N2"class="form-control">
+                   </p>
+                </div>
+               
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <p>
+                        <input type="number" id="n3" placeholder="N3" class="form-control">
+                    </p>
+                </div>
+
+                <div class="col-sm-6">
+                    <p>
+                        <input type="number" id="n4" placeholder="N4"class="form-control">
+                    </p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12 text-end">
+                    <hr>
+                    <p>
+                        <button class="btn btn-success" onclick="media()">OK</button>
+                        <button class="btn btn-danger" onclick="media()">CE</button>
+                    </p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="nota" placeholder="Sua Nota" readonly>
+                </div>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="sts"placeholder="Status" readonly> 
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script src="js/bootstrap.js"></script>
+
+    <script>
+    
+            let n1 =document.getElementById("n1")
+            let n2 =document.getElementById("n2")
+            let n3 =document.getElementById("n3")
+            let n4 =document.getElementById("n4")
+            let res = 0
+
+            function media() {
+                if (isNaN(n1) || isNaN(n2) || isNaN(n3) || isNaN(n4)) {
+                    alert("Preencha todos os campos com valores numéricos");
+                    return;
+                 } 
+                res = (parseFloat(n1.value) + parseFloat(n2.value) + parseFloat(n3.value) + parseFloat(n4.value))/4
+                document.getElementById("nota").value = res
+
+                    if (res <= 5) {
+                        document.getElementById("sts").value = "Reprovado"
+                        document.getElementById("sts").style.color = '#d00'
+                    }
+                    else if(res >= 7){
+                        document.getElementById("sts").value = "Aprovado"
+                        document.getElementById("sts").style.color = '#0b6623'
+                    }
+                    else{
+                        document.getElementById("sts").value = "Exame"
+                        document.getElementById("sts").style.color = '#f90'
+                    }
+                    
+            }
+            
+    </script>
+</body>
+</html>

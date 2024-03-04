@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+    <div class="container">
+        <form action="" class="form-control w-50 mx-auto" onsubmit="return false;">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h2>Calculadora</h2>
+                    <hr>
+                </div>
+                <div class="col-sm-6">
+                    <input type="number" class="form-control" id="n1" placeholder="N1">
+                </div>
+                <div class="col-sm-6">
+                    <input type="number" class="form-control" id="n2" placeholder="N2">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12 text-end">
+                    <br>
+                    <button onclick="soma()" class="btn btn-success">+</button>
+                    <button onclick="sub()" class="btn btn-success">-</button>
+                    <button onclick="mult()" class="btn btn-success">*</button>
+                    <button onclick="div()" class="btn btn-success">/</button>
+                    <button onclick="limpar()" class="btn btn-danger">CE</button>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <hr>
+                    <p id="res">0</p>
+                    <hr>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script src="js/bootstrap.js"></script>
+
+    <script>
+
+        let n1 = document.getElementById("n1")
+        let n2 = document.getElementById("n2")
+        let res = 0;
+
+        if (typeof n1.length === 0 || n2.length === 0 || n3.length === 0 || n4.length === 0) {
+            alert("Preencha os campos")
+        }
+        else{
+
+            function soma() {
+    
+                res = parseFloat(n1.value) + parseFloat(n2.value) ;
+                document.getElementById("res").innerHTML = res;
+    
+            }
+            function sub() {
+                res = parseFloat(n1.value) - parseFloat(n2.value) ;
+                document.getElementById("res").innerHTML = res;
+            }
+            function mult() {
+                res = parseFloat(n1.value) * parseFloat(n2.value) ;
+                document.getElementById("res").innerHTML = res;
+            }
+            function div() {
+                res = parseFloat(n1.value) / parseFloat(n2.value) ;
+                document.getElementById("res").innerHTML = res;
+            }
+            function limpar() {
+                document.getElementById("n1").value = "";
+                document.getElementById("n2").value = "";
+                res = 0;
+            }
+        }
+        
+    </script>
+</body>
+</html>
