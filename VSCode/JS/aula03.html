@@ -77,27 +77,32 @@
             let n4 =document.getElementById("n4")
             let res = 0
 
-            function media() {
-                if (isNaN(n1) || isNaN(n2) || isNaN(n3) || isNaN(n4)) {
+            function media() 
+            {
+                if (isNaN(n1) || isNaN(n2) || isNaN(n3) || isNaN(n4)) 
+                {
                     alert("Preencha todos os campos com valores numéricos");
                     return;
                  } 
+
                 res = (parseFloat(n1.value) + parseFloat(n2.value) + parseFloat(n3.value) + parseFloat(n4.value))/4
                 document.getElementById("nota").value = res
 
-                    if (res <= 5) {
+                    if (res <= 5) 
+                    {
                         document.getElementById("sts").value = "Reprovado"
                         document.getElementById("sts").style.color = '#d00'
                     }
-                    else if(res >= 7){
+                    else if(res >= 7)
+                    {
                         document.getElementById("sts").value = "Aprovado"
                         document.getElementById("sts").style.color = '#0b6623'
                     }
-                    else{
+                    else
+                    {
                         document.getElementById("sts").value = "Exame"
                         document.getElementById("sts").style.color = '#f90'
-                    }
-                    
+                    }                    
             }
             
     </script>
