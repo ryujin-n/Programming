@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+    <div class="container">
+        <form onsubmit="return false;" method="post" id="form" class="form-control">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <h2>Teste com PHP e JS</h2>
+                    <br>
+                    <br>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <p>
+                        <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome">
+                    </p>
+                    <p>
+                        <button onclick="enviar()" class="btn btn-success" id="ok" name="ok">Enviar</button>
+                    </p>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script src="js/bootstrap.js"></script>
+
+    <script>
+        let form = document.getElementById("form")
+        let nome = document.getElementById("nome")
+
+        function enviar() {
+            console.log("yey")
+            if (nome.value == "") {
+                alert("Erro")
+                nome.focus()
+                return;
+            }
+            form.action="test.php"
+            form.submit()
+        }
+    </script>
+</body>
+</html>
