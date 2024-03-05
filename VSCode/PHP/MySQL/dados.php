@@ -52,12 +52,12 @@
            
            } 
            //pesquisa
-           elseif(isset($_POST['pesq']) or isset($_GET['IDUsuario']))
+           elseif($_POST['acao'] == 'pesq' or isset($_GET['IDUsuario']))
            {
            
                $idUsuario="";
            
-               if(isset($_POST['pesq']))
+               if($_POST['acao'] == 'pesq')
                {
                    $idUsuario=$_POST['id'];
                }

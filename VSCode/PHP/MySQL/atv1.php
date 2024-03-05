@@ -6,18 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/bootstrap.css">
-    <script src="js/bootstrap.js"></script>
-
+    
     <title>Usuário</title>
 </head>
 
 <body>
-
+    
     <?php
         include_once('dados.php')    
-    ?>
+        ?>
     <div class="container">
-        <form action="" method="post" class="form-control p-3" enctype="multipart/form-data">
+        <form action="" method="post" onsubmit="return false;" class="form-control p-3" enctype="multipart/form-data" id="form">
             <div class="row">
                 <div class="col-sm-12">
                     <b style="text-align:center;">
@@ -28,7 +27,7 @@
                     </b>
                 </div>
             </div>
-
+            
             <div class="row">
                 <div class="col-sm-3">
                     <p>
@@ -36,7 +35,7 @@
                     </p>
                 </div>
                 <div class="col-sm-3">
-                    <button class="btn btn-secondary " name="pesq" formaction="initial.php?tela=usuario">
+                    <button class="btn btn-secondary " name="pesq" onclick="enviar('pes')">
                         &#x1F50D;
                     </button>
                 </div>
@@ -45,24 +44,24 @@
                     <input type="date" name="data" id="data" class="form-control" value="<?=$Data?>">
                 </div>
             </div>
-
+            
             <div class="row">
-            <div class="col-sm-8">
-                        <p>
-                            &nbsp;
-                        </p>
-                        <p>
-                            <input type="text" class="form-control" id="nome" name="nome" value="<?= $Nome;?>" placeholder="Nome Completo" >
-                        </p>
-                    </div>
-                    <div class="col-sm-4">
-                        <p>
-                            &nbsp;
-                        </p>
-                        <p>
-                            <input type="file" name="img" id="img" class="form-control" value="<?=$img?>">
-                        </p>
-                    </div>
+                <div class="col-sm-8">
+                    <p>
+                        &nbsp;
+                    </p>
+                    <p>
+                        <input type="text" class="form-control" id="nome" name="nome" value="<?= $Nome;?>" placeholder="Nome Completo" >
+                    </p>
+                </div>
+                <div class="col-sm-4">
+                    <p>
+                        &nbsp;
+                    </p>
+                    <p>
+                        <input type="file" name="img" id="img" class="form-control" value="<?=$img?>">
+                    </p>
+                </div>
             </div>
             <div class="row">
                 <div class="col-sm-4">
@@ -87,29 +86,110 @@
             </div>
             <div class="row">
                 <div class="row">
-                        <div class="col-sm-7">
-                            <p>
-                                <label for="obs">Observação</label>
-                            </p>
-                            <textarea name="obs" id="obs" rows="10" class="form-control"><?= $Obs; ?></textarea>
+                    <div class="col-sm-7">
+                        <p>
+                            <label for="obs">Observação</label>
+                        </p>
+                        <textarea name="obs" id="obs" rows="10" class="form-control"><?= $Obs; ?></textarea>
                         <br>
                     </div>
                     <div class="col-sm-5">
-                        <img src="src/<?= $idUsuario ?>/<?= $img ?>" alt="" class="w-100">
+                        <img src="src/<?= $idUsuario ?>/<?= $img ?>" alt="" id="pic" class="w-100">
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-12 text-end">
-                    <button class="btn btn-primary" name="cad" formaction="initial.php?tela=usuario">Cadastrar</button>
-                    <button class="btn btn-success" name="alt"formaction="initial.php?tela=usuario">Alterar</button>
-                    <a class="btn btn-dark" href="initial.php?tela=usuario">Limpar</a>
-                    <button class="btn btn-danger" name="del" formaction="initial.php?tela=usuario">Excluir</button>
+                    <button class="btn btn-primary" name="cad" onclick="enviar('cad')" >Cadastrar</button>
+                    <button class="btn btn-success" name="alt" onclick="enviar('alt')">Alterar</button>
+                    <button class="btn btn-dark"onclick="limpar()">Limpar</button>
+                    <button class="btn btn-danger" name="del" onclick="enviar('del')">Excluir</button>
+                    <input type="text" name="acao" id="acao" style="display: none;">
                     <hr>
                 </div>
             </div>
         </div>
     </form>
+    
+    <script src="js/bootstrap.js"></script>
+
+    <script>
+        const form = document.getElementById("form")
+        const id =document.getElementById("id")
+        const date = document.getElementById("data")
+        const user = document.getElementById("user")
+        const pass = document.getElementById("senha")
+        const name = document.getElementById("nome")
+        const sts = document.getElementById("sts")
+        const img = document.getElementById("img")
+        const obs = document.getElementById("obs")
+        const acao = document.getElementById("acao")
+        const pic = document.getElementById("pic")
+        const caminho = "initial.php?tela=usuario"
+
+
+        function enviar(type)
+        {
+            if (type == 'pes') {
+
+                if (id.value==""){
+                    alert("O ID deve ser Preenchido")
+                    id.focus()
+                    return;
+                }
+                acao.value = 'pesq'
+                form.action = caminho
+                form.submit()
+            }
+            else if(type == 'cad'){
+                
+                if (name.value==""){
+                    alert("O Nome deve ser Preenchido")
+                    name.focus()
+                    return;
+                }
+                else if (user.value == ""){
+                    alert("O Usuário deve ser Preenchido")
+                    user.focus()
+                    return;
+                }
+                else if (pass.value == ""){
+                    alert("A Senha deve ser Preenchido")
+                    pass.focus()
+                    return;
+                }
+                else if (img.value == ""){
+                    alert("A imagem deve ser Preenchido")
+                    img.focus()
+                    return;
+                }
+                else if (sts.value == ""){
+                    alert("O Status deve ser Preenchido")
+                    sts.focus()
+                    return;
+                }
+            }
+            else if(type == 'alt'){
+
+            }
+            else if(type == 'del'){
+
+            }
+        }
+        function limpar()
+        {
+            id.value=""
+            date.value=""
+            user.value-""
+            pass.value=""
+            name.value=""
+            sts.value=""
+            img.value=""
+            obs.value=""
+            pic.innerHTML='src=""'
+        }
+
+    </script>
 </body>
 
 </html>
