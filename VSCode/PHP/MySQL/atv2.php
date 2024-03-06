@@ -14,7 +14,7 @@
 
     
     <div class="container">
-        <form action="" method="post" class="form-control p-3">
+     <form action="" method="post" onsubmit="return false;" class="form-control p-3" enctype="multipart/form-data" id="form">
              <div class="row">
                 <div class="col-sm-12">
                     <hr>
@@ -29,7 +29,7 @@
                     </p>
                 </div>
                 <div class="col-sm-3">
-                    <button class="btn btn-secondary " name="pesq" formaction="initial.php?tela=func">
+                    <button class="btn btn-secondary " name="pesq" onclick="enviar('pes')">
                         &#x1F50D;
                     </button>
                 </div>
@@ -65,7 +65,7 @@
                         </p>
 
                         <p>
-                            <input type="date" class="form-control" name="nasc" value="<?= $nasc;?>" >
+                            <input type="date" class="form-control" name="nasc" id="nasc" value="<?= $nasc;?>" >
                         </p>
                     </div>
                     <div class="col-sm-3">
@@ -73,7 +73,7 @@
                             &nbsp;
                         </p>
                         <p>
-                            <input type="text" class="form-control " name="cpf" value="<?= $cpf;?>"placeholder="CPF"  >
+                            <input type="text" class="form-control " name="cpf" id="cpf" value="<?= $cpf;?>"placeholder="CPF"  >
                         </p>
                        
                     </div>
@@ -82,7 +82,7 @@
                             &nbsp;
                         </p>
                         <p>
-                            <input type="text" class="form-control " name="tel" value="<?= $tel;?>"placeholder="Telefone"  >
+                            <input type="text" class="form-control " name="tel" id="tel" value="<?= $tel;?>"placeholder="Telefone"  >
                         </p>
                        
                     </div>
@@ -107,7 +107,7 @@
                     </div>
                     <div class="col-sm-3">
                         <p>
-                            <input type="text" class="form-control" name="logr" value="<?= $logr;?>" placeholder="Rua" >
+                            <input type="text" class="form-control" name="logr" id="logr" value="<?= $logr;?>" placeholder="Rua" >
                         </p>
                     </div>
                     <div class="col-sm-3">
@@ -117,7 +117,7 @@
                     </div>
                     <div class="col-sm-3">
                         <p>
-                            <input type="number" class="form-control w-25" name="num" value="<?= $num;?>"placeholder="Nº"  >
+                            <input type="number" class="form-control w-25" name="num" id="num" value="<?= $num;?>"placeholder="Nº"  >
                         </p>
                        
                     </div>
@@ -128,17 +128,17 @@
                    
                     <div class="col-sm-3">
                         <p>
-                            <input type="text" class="form-control" name="bai" value="<?= $bai;?>" placeholder="Bairro" >
+                            <input type="text" class="form-control" name="bai" id="bai" value="<?= $bai;?>" placeholder="Bairro" >
                         </p>
                     </div>
                     <div class="col-sm-3">
                         <p>
-                            <input type="text" class="form-control" name="cid" value="<?= $cid;?>" placeholder="Cidade" >
+                            <input type="text" class="form-control" name="cid" id="cid" value="<?= $cid;?>" placeholder="Cidade" >
                         </p>
                     </div>
                     <div class="col-sm-3">
                         <p>
-                        <select name="est" class="form-control" >
+                        <select name="est" class="form-control" id="est" >
                             <option value=""> -- Escolha um Estado --</option>
                             <option value="ac" <?= ($uf == "ac")? "selected" : "" ?>>Acre</option>
                             <option value="al" <?= ($uf == "al")? "selected" : "" ?>>Alagoas</option>
@@ -188,10 +188,11 @@
 
                 <div class="row">
                     <div class="col-sm-12 text-end">
-                        <button class="btn btn-primary" name="cad" formaction="initial.php?tela=func">Cadastrar</button>
-                        <button class="btn btn-success" name="alt"formaction="initial.php?tela=func">Alterar</button>
-                        <a class="btn btn-dark" href="initial.php?tela=func">Limpar</a>
-                        <button class="btn btn-danger" name="del" formaction="initial.php?tela=func">Excluir</button>
+                        <button class="btn btn-primary" name="cad" onclick="enviar('cad')" >Cadastrar</button>
+                        <button class="btn btn-success" name="alt" onclick="enviar('alter')">Alterar</button>
+                        <button class="btn btn-dark"onclick="limpar()">Limpar</button>
+                        <button class="btn btn-danger" name="del" onclick="enviar('del')">Excluir</button>
+                        <input type="text" name="action" id="action" style="">
                         <hr>
                     </div>
                 </div>
@@ -205,6 +206,128 @@
 
 
     <script src="js/bootstrap.js"></script>
+
+    <script>
+
+        const form = document.getElementById("form")
+        const id =document.getElementById("id")
+        const date = document.getElementById("data")
+        const name = document.getElementById("nome")
+        const nasc = document.getElementById("nasc")
+        const cpf = document.getElementById("cpf")
+        const tel = document.getElementById("tel")
+        const sts = document.getElementById("sts")
+        const cep = document.getElementById("cep")
+        const logr = document.getElementById("logr")
+        const comp = document.getElementById("comp")
+        const num = document.getElementById("num")
+        const bai = document.getElementById("bai")
+        const cid = document.getElementById("cid")
+        const est = document.getElementById("est")
+        const obs = document.getElementById("obs")
+        const img = document.getElementById("img")
+        const action = document.getElementById("action")
+        const pic = document.getElementById("pic")
+        const caminho = "initial.php?tela=func"
+
+
+        function enviar(type)
+        {
+            if (type == 'pes') {
+
+                if (id.value==""){
+                    alert("O ID deve ser Preenchido")
+                    id.focus()
+                    return;
+                }
+                action.value = 'pesq'
+                form.action = caminho
+                form.submit()
+            }
+            else if(type == 'cad'){
+                
+                if (name.value==""){
+                    alert("O Nome deve ser Preenchido")
+                    name.focus()
+                    return;
+                }
+                else if (nasc.value == ""){
+                   
+                }
+                else if (nasc.value == ""){
+                   
+                }
+                
+                else if (img.value == ""){
+                    alert("A imagem deve ser Preenchido")
+                    img.focus()
+                    return;
+                }
+                else if (sts.value == ""){
+                    alert("O Status deve ser Preenchido")
+                    sts.focus()
+                    return;
+                }
+                action.value='cadas'
+                form.action = caminho
+                form.submit()
+            }
+            else if(type == 'alter'){
+                if (name.value==""){
+                    alert("O Nome deve ser Preenchido")
+                    name.focus()
+                    return;
+                }
+                else if (user.value == ""){
+                    alert("O Usuário deve ser Preenchido")
+                    user.focus()
+                    return;
+                }
+                else if (pass.value == ""){
+                    alert("A Senha deve ser Preenchido")
+                    pass.focus()
+                    return;
+                }
+            
+                else if (sts.value == ""){
+                    alert("O Status deve ser Preenchido")
+                    sts.focus()
+                    return;
+                }
+
+                action.value='alter'
+                form.action = caminho
+                form.submit()
+            }
+            else if(type == 'del'){
+                
+                action.value='del'
+
+                if(id.value=="")
+                {
+                    alert ("Valor do ID deve ser preenchido")
+                    id.focus()
+                    return;
+                }
+
+                form.action=caminho
+                form.submit()
+
+            }
+        }
+        function limpar() {
+            id.value = ""
+            date.value = ""
+            user.value = ""
+            pass.value = ""
+            name.value = ""
+            sts.value = ""
+            img.value = ""
+            obs.value = ""
+            pic.src = "" 
+        }
+
+    </script>
 </body>
 
 </html>

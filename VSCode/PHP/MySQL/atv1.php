@@ -66,7 +66,7 @@
             <div class="row">
                 <div class="col-sm-4">
                     <p>
-                        <input type="text" name="user" id="user" class="form-control" placeholder="Usuário" value="<?=$Login?>">
+                        <input type="text" name="user" id="userr" class="form-control" placeholder="Usuário" value="<?=$Login?>">
                     </p>
                 </div>
                 <div class="col-sm-4">
@@ -101,10 +101,10 @@
             <div class="row">
                 <div class="col-sm-12 text-end">
                     <button class="btn btn-primary" name="cad" onclick="enviar('cad')" >Cadastrar</button>
-                    <button class="btn btn-success" name="alt" onclick="enviar('alt')">Alterar</button>
+                    <button class="btn btn-success" name="alt" onclick="enviar('alter')">Alterar</button>
                     <button class="btn btn-dark"onclick="limpar()">Limpar</button>
                     <button class="btn btn-danger" name="del" onclick="enviar('del')">Excluir</button>
-                    <input type="text" name="acao" id="acao" style="display: none;">
+                    <input type="text" name="action" id="action" style="">
                     <hr>
                 </div>
             </div>
@@ -114,16 +114,17 @@
     <script src="js/bootstrap.js"></script>
 
     <script>
+
         const form = document.getElementById("form")
         const id =document.getElementById("id")
         const date = document.getElementById("data")
-        const user = document.getElementById("user")
+        const user = document.getElementById("userr")
         const pass = document.getElementById("senha")
         const name = document.getElementById("nome")
         const sts = document.getElementById("sts")
         const img = document.getElementById("img")
         const obs = document.getElementById("obs")
-        const acao = document.getElementById("acao")
+        const action = document.getElementById("action")
         const pic = document.getElementById("pic")
         const caminho = "initial.php?tela=usuario"
 
@@ -137,7 +138,7 @@
                     id.focus()
                     return;
                 }
-                acao.value = 'pesq'
+                action.value = 'pesq'
                 form.action = caminho
                 form.submit()
             }
@@ -168,25 +169,64 @@
                     sts.focus()
                     return;
                 }
+                action.value='cadas'
+                form.action = caminho
+                form.submit()
             }
-            else if(type == 'alt'){
+            else if(type == 'alter'){
+                if (name.value==""){
+                    alert("O Nome deve ser Preenchido")
+                    name.focus()
+                    return;
+                }
+                else if (user.value == ""){
+                    alert("O Usuário deve ser Preenchido")
+                    user.focus()
+                    return;
+                }
+                else if (pass.value == ""){
+                    alert("A Senha deve ser Preenchido")
+                    pass.focus()
+                    return;
+                }
+               
+                else if (sts.value == ""){
+                    alert("O Status deve ser Preenchido")
+                    sts.focus()
+                    return;
+                }
 
+                action.value='alter'
+                form.action = caminho
+                form.submit()
             }
             else if(type == 'del'){
+                
+                action.value='del'
+
+                if(id.value=="")
+                {
+                    alert ("Valor do ID deve ser preenchido")
+                    id.focus()
+                    return;
+                }
+                //alert(type)
+
+                form.action=caminho
+                form.submit()
 
             }
         }
-        function limpar()
-        {
-            id.value=""
-            date.value=""
-            user.value-""
-            pass.value=""
-            name.value=""
-            sts.value=""
-            img.value=""
-            obs.value=""
-            pic.innerHTML='src=""'
+        function limpar() {
+            id.value = ""
+            date.value = ""
+            user.value = ""
+            pass.value = ""
+            name.value = ""
+            sts.value = ""
+            img.value = ""
+            obs.value = ""
+            pic.src = "" 
         }
 
     </script>

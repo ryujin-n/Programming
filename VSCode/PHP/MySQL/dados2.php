@@ -16,11 +16,12 @@
     $obs="";
     $sts="";
 
-    if ($_POST) {
+    if ($_POST and $_GET) {
         include_once("conn.php");
         //cadastro
 
-        if (isset($_POST["cad"])) {
+        print_r($_POST);
+        if ($_POST['action'] == 'cadas') {
             try {
         
                 $sql = $conn -> prepare('
@@ -58,7 +59,7 @@
             
                 if ($sql -> rowCount() > 0) {
                     echo '<script>alert("Usuário Cadastrado com Sucesso")</script>';
-                    header("Location:atv2.php?IDUsuario=".$conn->lastInsertId());
+                    header("Location:initial.php?tela=func&IDUsuario=" . $conn->lastInsertId());
                 }
             } catch (PDOException $th) {
                 echo $th;
@@ -66,7 +67,19 @@
            
            } 
             //pesquisa
-            elseif (isset($_POST['pesq'])) {
+            elseif ((isset($_POST['action']) and $_POST['action']=='pesq' ) or isset($_GET['IDUsuario'])) {
+
+                $idUsuario = "";
+                if (isset($_POST['action'])) {
+                    if ($_POST['action'] == 'pesq') {
+                        $idUsuario = $_POST['id'];
+                    } else {
+                        return;
+                    }
+                } elseif (isset($_GET['IDUsuario'])) {
+                    $idUsuario = $_GET['IDUsuario'];
+                }
+
                 try {
                     $sql = $conn-> query('SELECT * FROM funcionario where ID_Funcionario='.$_POST['id'] );
                     if ($sql->rowCount() > 0) {
