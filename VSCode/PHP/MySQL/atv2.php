@@ -53,7 +53,8 @@
                             &nbsp;
                         </p>
                         <p>
-                            <input type="file" name="img" id="img" class="form-control" value="<?=$img?>">
+                            <input type="file" name="img" id="img" class="form-control">
+                            <span name="img2" id="img2"style="display:none;"><?= $img; ?></span>
                         </p>
                     </div>
                 </div>
@@ -82,7 +83,7 @@
                             &nbsp;
                         </p>
                         <p>
-                            <input type="text" class="form-control " name="tel" id="tel" value="<?= $tel;?>"placeholder="Telefone"  >
+                            <input type="tel" class="form-control " name="tel" id="tel" value="<?= $tel;?>"placeholder="Telefone"  >
                         </p>
                        
                     </div>
@@ -182,7 +183,7 @@
                         <br>
                     </div>
                     <div class="col-sm-5">
-                        <img src="imagens/<?=$idUsuario?>/<?=$img?>" alt="" class="w-100">
+                        <img src="src2/<?=$idUsuario?>/<?=$img?>" id="pic" alt="" class="w-100">
                     </div>
                 </div>
 
@@ -193,6 +194,7 @@
                         <button class="btn btn-dark"onclick="limpar()">Limpar</button>
                         <button class="btn btn-danger" name="del" onclick="enviar('del')">Excluir</button>
                         <input type="text" name="action" id="action" style="">
+                        <p><?=$msg?></p>
                         <hr>
                     </div>
                 </div>
@@ -252,15 +254,18 @@
                     return;
                 }
                 else if (nasc.value == ""){
-                   
+                    alert("A Data de Nascimento deve ser Preenchida")
+                    nasc.focus()
+                    return;
                 }
-                else if (nasc.value == ""){
-                   
+                else if (cpf.value == ""){
+                    alert("O CPF deve ser Preenchido")
+                    cpf.focus()
+                    return;
                 }
-                
-                else if (img.value == ""){
-                    alert("A imagem deve ser Preenchido")
-                    img.focus()
+                else if (tel.value == ""){
+                    alert("O Telefone deve ser Preenchido")
+                    tel.focus()
                     return;
                 }
                 else if (sts.value == ""){
@@ -268,6 +273,54 @@
                     sts.focus()
                     return;
                 }
+                else if (cep.value == ""){
+                    alert("O Cep deve ser Preenchido")
+                    cep.focus()
+                    return;
+                }
+                else if (logr.value == ""){
+                    alert("O Logradouro deve ser Preenchido")
+                    logr.focus()
+                    return;
+                }
+                else if (comp.value == ""){
+                    alert("O Complemento deve ser Preenchido")
+                    comp.focus()
+                    return;
+                }
+                else if (num.value == ""){
+                    alert("O Número deve ser Preenchido")
+                    num.focus()
+                    return;
+                }
+                else if (bai.value == ""){
+                    alert("O Bairro deve ser Preenchido")
+                    bai.focus()
+                    return;
+                }
+                else if (cid.value == ""){
+                    alert("A Cidade deve ser Preenchida")
+                    cid.focus()
+                    return;
+                }
+                else if (est.value == ""){
+                    alert("O UF deve ser Preenchido")
+                    est.focus()
+                    return;
+                }
+                
+                else if (obs.value == ""){
+                    alert("A Observação deve ser Preenchida")
+                    obs.focus()
+                    return;
+                }
+                
+                else if (img.value == ""){
+                    alert("A imagem deve ser Preenchida")
+                    img.focus()
+                    return;
+                }
+                
                 action.value='cadas'
                 form.action = caminho
                 form.submit()
@@ -278,23 +331,68 @@
                     name.focus()
                     return;
                 }
-                else if (user.value == ""){
-                    alert("O Usuário deve ser Preenchido")
-                    user.focus()
+                else if (nasc.value == ""){
+                    alert("A Data de Nascimento deve ser Preenchida")
+                    nasc.focus()
                     return;
                 }
-                else if (pass.value == ""){
-                    alert("A Senha deve ser Preenchido")
-                    pass.focus()
+                else if (cpf.value == ""){
+                    alert("O CPF deve ser Preenchido")
+                    cpf.focus()
                     return;
                 }
-            
+                else if (tel.value == ""){
+                    alert("O Telefone deve ser Preenchido")
+                    tel.focus()
+                    return;
+                }
                 else if (sts.value == ""){
                     alert("O Status deve ser Preenchido")
                     sts.focus()
                     return;
                 }
-
+                else if (cep.value == ""){
+                    alert("O Cep deve ser Preenchido")
+                    cep.focus()
+                    return;
+                }
+                else if (logr.value == ""){
+                    alert("O Logradouro deve ser Preenchido")
+                    logr.focus()
+                    return;
+                }
+                else if (comp.value == ""){
+                    alert("O Complemento deve ser Preenchido")
+                    comp.focus()
+                    return;
+                }
+                else if (num.value == ""){
+                    alert("O Número deve ser Preenchido")
+                    num.focus()
+                    return;
+                }
+                else if (bai.value == ""){
+                    alert("O Bairro deve ser Preenchido")
+                    bai.focus()
+                    return;
+                }
+                else if (cid.value == ""){
+                    alert("A Cidade deve ser Preenchida")
+                    cid.focus()
+                    return;
+                }
+                else if (est.value == ""){
+                    alert("O UF deve ser Preenchido")
+                    est.focus()
+                    return;
+                }
+                
+                else if (obs.value == ""){
+                    alert("A Observação deve ser Preenchida")
+                    obs.focus()
+                    return;
+                }
+               
                 action.value='alter'
                 form.action = caminho
                 form.submit()
@@ -318,15 +416,32 @@
         function limpar() {
             id.value = ""
             date.value = ""
-            user.value = ""
-            pass.value = ""
             name.value = ""
+            nasc.value = ""
+            cpf.value = ""
+            tel.value = ""
             sts.value = ""
-            img.value = ""
+            cep.value = ""
+            logr.value = ""
+            comp.value = ""
+            num.value = ""
+            bai.value = ""
+            cid.value = ""
+            est.value = ""
             obs.value = ""
+            img.value = ""
             pic.src = "" 
         }
 
+    </script>
+
+    <script>
+            const urlParams = new URLSearchParams(window.location.search);
+            const userId = urlParams.get('IDUsuario');
+            
+            if (userId) {
+                alert("Usuário cadastrado com sucesso");
+            }
     </script>
 </body>
 

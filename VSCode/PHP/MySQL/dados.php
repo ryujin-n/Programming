@@ -6,33 +6,40 @@ $Login = "";
 $Senha = "";
 $Data = "";
 $Obs = "";
-$img = "";
 $Status = "";
 
 
-if ($_POST and $_GET) {
+if(!isset($_POST['action']) && !isset($_GET['IDUsuario']))
+{
+    return;
+}
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" || $_SERVER["REQUEST_METHOD"] == "GET") {
+
     include_once('conn.php');
-    $arquivo = $_FILES['img'];
+    if (isset($_FILES['img'])) {
+        $arquivo = $_FILES['img'];
+    }
+
     //cadastro
-    if ($_POST['action'] == 'cadas') {
+    if (isset($_POST['action']) and $_POST['action']=='cadas') {
         try {
 
-            $sql = $conn->prepare('
-                        insert into usuario
-                            (nome_usuario,login_usuario,senha_usuario,obs_usuario,img_usuario)
-                        values
-                            (:nome_usuario,:login_usuario,:senha_usuario,:obs_usuario,:img_usuario)
-                    ');
 
-            $sql->execute(
-                array(
-                    ':nome_usuario' => $_POST['nome'],
-                    ':login_usuario' => $_POST['user'],
-                    ':senha_usuario' => $_POST['senha'],
-                    ':obs_usuario' => $_POST['obs'],
-                    ':img_usuario' => $arquivo['name']
-                )
-            );
+            $sql = $conn->prepare('
+            insert into usuario
+                (nome_usuario,login_usuario,senha_usuario,obs_usuario,img_usuario)
+                values(:nome_usuario,:login_usuario,:senha_usuario,:obs_usuario,:img_usuario)
+            ');
+    
+            $sql->execute(array(
+                ':nome_usuario'=>$_POST['nome'],
+                ':login_usuario'=>$_POST['user'],
+                ':senha_usuario'=>$_POST['senha'],
+                ':obs_usuario'=>$_POST['obs'],
+                ':img_usuario'=>$arquivo['name']
+            ));
 
             if ($sql->rowCount() > 0) {
                 echo '<script>alert("Usuário Cadastrado com Sucesso")</script>';
@@ -46,7 +53,8 @@ if ($_POST and $_GET) {
                 $foto = $pasta . $arquivo['name'];
 
                 move_uploaded_file($arquivo['tmp_name'], $foto);
-                header("Location:initial.php?tela=usuario&IDUsuario=" . $conn->lastInsertId());
+                ob_clean();
+                header("Location:initial.php?tela=usuario&IDUsuario=".$conn->lastInsertId());
 
             }
         } catch (PDOException $th) {
@@ -68,7 +76,7 @@ if ($_POST and $_GET) {
         }
 
         try {
-            $sql = $conn->query('select * from usuario where id_usuario=' . $idUsuario);
+            $sql = $conn->query('select * from usuario where id_usuario='.$idUsuario);
 
             if ($sql->rowCount() > 0) {
                 foreach ($sql as $linha) {
@@ -95,31 +103,54 @@ if ($_POST and $_GET) {
     elseif ($_POST['action'] == 'alter') {
         try {
 
-            $arquivo = $_FILES['img'];
+            if($_FILES['img']['name']!="")
+            {
 
-            $sql = $conn->prepare('
+                    $arquivo = $_FILES['img'];
+                    $sql = $conn -> prepare('
+                        UPDATE usuario SET
+                            nome_usuario=:nome_usuario,
+                            login_usuario=:login_usuario,
+                            senha_usuario=:senha_usuario,
+                            obs_usuario=:obs_usuario,
+                            img_usuario=:img_usuario, 
+                            status_usuario=:status_usuario
+                        WHERE id_usuario=:id_usuario
+                    ');
+
+                $sql->execute(
+                    array(
+                        ':id_usuario' => $_POST['id'],
+                        ':nome_usuario' => $_POST['nome'],
+                        ':login_usuario' => $_POST['user'],
+                        ':senha_usuario' => $_POST['senha'],
+                        ':obs_usuario' => $_POST['obs'],
+                        ':img_usuario' => $arquivo['name'],
+                        ':status_usuario' => $_POST['sts']
+                    )
+                );
+            } else {
+                    $sql = $conn->prepare('
                     UPDATE usuario SET
                         nome_usuario=:nome_usuario,
                         login_usuario=:login_usuario,
                         senha_usuario=:senha_usuario,
                         obs_usuario=:obs_usuario,
-                        img_usuario=:img_usuario, 
                         status_usuario=:status_usuario
                     WHERE id_usuario=:id_usuario
                 ');
 
-            $sql->execute(
-                array(
-                    ':id_usuario' => $_POST['id'],
-                    ':nome_usuario' => $_POST['nome'],
-                    ':login_usuario' => $_POST['user'],
-                    ':senha_usuario' => $_POST['senha'],
-                    ':obs_usuario' => $_POST['obs'],
-                    ':img_usuario' => $arquivo['name'],
-                    ':status_usuario' => $_POST['sts']
-                )
-            );
-
+                $sql->execute(
+                    array(
+                        ':id_usuario' => $_POST['id'],
+                        ':nome_usuario' => $_POST['nome'],
+                        ':login_usuario' => $_POST['user'],
+                        ':senha_usuario' => $_POST['senha'],
+                        ':obs_usuario' => $_POST['obs'],
+                        ':status_usuario' => $_POST['sts']
+                    )
+                );
+            }
             if ($sql->rowCount() > 0) {
                 echo '<script>alert("Usuário Alterado com Sucesso")</script>';
 

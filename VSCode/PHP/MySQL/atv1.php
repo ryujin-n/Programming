@@ -13,7 +13,7 @@
 <body>
     
     <?php
-        include_once('dados.php')    
+        include_once('dados.php');   
         ?>
     <div class="container">
         <form action="" method="post" onsubmit="return false;" class="form-control p-3" enctype="multipart/form-data" id="form">
@@ -59,7 +59,8 @@
                         &nbsp;
                     </p>
                     <p>
-                        <input type="file" name="img" id="img" class="form-control" value="<?=$img?>">
+                        <input type="file" name="img" id="img" class="form-control">
+                        <span name="img2" id="img2"style="display:none;"><?= $img; ?></span>
                     </p>
                 </div>
             </div>
@@ -94,7 +95,7 @@
                         <br>
                     </div>
                     <div class="col-sm-5">
-                        <img src="src/<?= $idUsuario ?>/<?= $img ?>" alt="" id="pic" class="w-100">
+                        <img src="src/<?= $idUsuario ?>/<?= $img ?>" alt="" id="pic" class="w-100" >
                     </div>
                 </div>
             </div>
@@ -229,6 +230,15 @@
             pic.src = "" 
         }
 
+    </script>
+
+    <script>
+            const urlParams = new URLSearchParams(window.location.search);
+            const userId = urlParams.get('IDUsuario');
+            
+            if (userId) {
+                alert("Usuário cadastrado com sucesso");
+            }
     </script>
 </body>
 
