@@ -6,7 +6,7 @@ body{
 }
 
 .banner{
-    height: 80vh;
+    height: 93vh;
     width: 100%;
     background: linear-gradient(180.00deg, rgb(67, 59, 162),rgb(99, 92, 177) 63%,rgb(122, 116, 186) 100%);
     position: relative;
@@ -15,11 +15,95 @@ body{
 .seta-bg img{
     width: 100%;
     position: absolute;
-    bottom: 1vh;
+    bottom: 12vh;
     z-index: 1;
 }
 .op img{
-    margin-left: 1vh;
-    filter: drop-shadow(5px 5px 5px #222); 
-    z-index: 0;
+    margin-left: 96.8vh;
+    margin-top: 13.8vh;
+    filter: drop-shadow(55px 0px 0px rgba(0, 0, 0, 0.25));
+    z-index: 2;
+}
+.navbar{
+    width: 100%;
+    height: auto;
+    position: relative;
+    z-index: 2;
+}
+.logo img{
+    width: auto;
+    height: 19vh;
+    position: absolute;
+    left: 55px;
+    top: 45px;
+}
+.menus{
+    position: absolute;
+    width: 475px;
+    height: 36pt;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 35;
+    padding: 0px;
+    top: 10vh;
+    right: 12vh;
+    
+}
+.menus a{
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 0px 35px;
+    color: rgb(255, 255, 255);
+    font-family: "Jersey 25", system-ui;
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 36px;
+    letter-spacing: 0%;
+    text-align: left;
+    text-decoration: none;
+    text-shadow: 4px 3px 0px rgba(0,0,0,0.6), -1px -1px 0 #000, 1px -1px 0 #000,
+    -1px 1px 0 #000, 1px 1px 0 #000;
+    filter: drop-shadow(5px 2px 0px #000000);
+
+}
+.text{
+    position: absolute;
+    width: 681px;
+    height: 171px;
+    left: 10vh;
+    top: 38vh;
+    font-family: Bebas Neue;
+    color: #FFFFFF;
+    font-size: 54pt;
+    font-weight: 400;
+    line-height: 74px;
+    text-align: left;
+}
+.text b{
+    color:#5126b6;
+}
+.sla{
+    background-color: white;
+    position: absolute;
+    width: 416px;
+    height: 73px;
+    left: 17.4vh;
+    top: 53.2vh;
+    border-radius: 16px;
+}
+
+.b1{
+    position: absolute;
+    bottom: 5vh;
+    left: 78vh;
+    height: 24vh;
+}
+.b2{
+    position: absolute;
+    top: 60vh;
+    left: 90vh;
+    height: 11vh;
 }
