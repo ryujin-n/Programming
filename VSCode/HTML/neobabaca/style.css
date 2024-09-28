@@ -94,16 +94,18 @@ body{
     top: 53.2vh;
     border-radius: 16px;
 }
-
+.bats{
+    background-color: #FFFFFF;
+}
 .b1{
     position: absolute;
     bottom: 5vh;
-    left: 78vh;
+    left: 81vh;
     height: 24vh;
 }
 .b2{
     position: absolute;
-    top: 60vh;
-    left: 90vh;
+    top: 59vh;
+    left: 93vh;
     height: 11vh;
 }
