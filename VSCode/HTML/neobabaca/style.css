@@ -1,0 +1,25 @@
+@import url(fonts.css);
+
+body{
+    background-color: #00ADFB;
+    margin: 0;
+}
+
+.banner{
+    height: 80vh;
+    width: 100%;
+    background: linear-gradient(180.00deg, rgb(67, 59, 162),rgb(99, 92, 177) 63%,rgb(122, 116, 186) 100%);
+    position: relative;
+    overflow: hidden;
+}
+.seta-bg img{
+    width: 100%;
+    position: absolute;
+    bottom: 1vh;
+    z-index: 1;
+}
+.op img{
+    margin-left: 1vh;
+    filter: drop-shadow(5px 5px 5px #222); 
+    z-index: 0;
+}
