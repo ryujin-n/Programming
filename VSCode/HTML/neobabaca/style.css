@@ -5,8 +5,9 @@ body{
     margin: 0;
 }
 
+
 .banner{
-    height: 93vh;
+    height: 100vh;
     width: 100%;
     background: linear-gradient(180.00deg, rgb(67, 59, 162),rgb(99, 92, 177) 63%,rgb(122, 116, 186) 100%);
     position: relative;
@@ -15,12 +16,12 @@ body{
 .seta-bg img{
     width: 100%;
     position: absolute;
-    bottom: 12vh;
+    bottom: 20vh;
     z-index: 1;
 }
 .op img{
-    margin-left: 96.8vh;
-    margin-top: 13.8vh;
+    margin-left: 47.1vw;
+    margin-top: 20.8vh;
     filter: drop-shadow(55px 0px 0px rgba(0, 0, 0, 0.25));
     z-index: 2;
 }
@@ -105,7 +106,57 @@ body{
 }
 .b2{
     position: absolute;
-    top: 59vh;
-    left: 93vh;
+    top: 65vh;
+    left: 45vw;
     height: 11vh;
+}
+
+.talents{
+    position: relative;
+    top: 61vh;
+}
+
+.carrd{
+    position: absolute;
+    width: auto;
+    height: 548px;  
+}
+
+.toshi{
+    position: absolute;
+    width: 308px;
+    height: 548px;
+    left: 30%;
+    transform: translateX(-50%);
+    background-image:url(src/toshi_site\ 1.png);
+    background-size:contain;  
+    /* box-shadow: 13px 21px 0px 0px rgb(141, 2, 2); */
+    border-radius: 24px;
+}
+.dante{
+    position: absolute;
+    width: 308px;
+    height: 548px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-image:url(src/download\ 1.png);
+    background-size:contain;  
+    /* box-shadow: 13px 21px 0px 0px rgb(80, 0, 108); */
+    border-radius: 24px;
+}
+.eeiris{
+    position: absolute;
+    width: 308px;
+    height: 548px;
+    left: 70%;
+    transform: translateX(-50%);
+    background-image:url(src/eeiris_site\ 1.png);
+    background-size:contain;  
+    /* box-shadow: 13px 21px 0px 0px rgb(0, 65, 164); */
+    border-radius: 24px;
+}
+
+
+.toshi:hover{
+    
 }

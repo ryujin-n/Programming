@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Jersey+25&family=Nabla&family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     
     <title>Neobaka</title>
 </head>
@@ -53,11 +54,91 @@
         <div class="bats">
             <img class="b1" src="src/bat 1.png" alt="">
             <img class="b2"src="src/bat 2.png" alt="">
-        </div>
-
-            
+        </div>      
     </div>
 
+    <div style="position: absolute;
+            width: 429px;
+            height: 116px;
+            top: 112vh;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            border-radius: 16px;
+            box-shadow: 7px 11px 0px 0px rgb(1, 97, 142);"
+        >
+
+        <span style="color: rgb(0, 0, 0);
+        font-family: Karmatic Arcade;
+        font-size: 38pt;
+        font-weight: 400;
+        line-height: 55px;
+        margin-top: 3.5vh;
+        display: flex;
+        justify-content: center;
+        ">
+        Talentos
+        </span>
+
+    </div>
+
+    <div class="talents">
+        <div class="gen1">
+            <div class="toshi">
+                <div class="carrd"></div>
+            </div>
+            
+            <div class="dante">
+                <div class="carrd"></div>
+            </div>
+
+            <div class="eeiris">
+                <div class="carrd"></div>
+            </div>
+        </div>
+
+        <div class="gen2">
+            
+        </div>
+
+        <div class="gen3">
+
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="script.js" async></script>
+
+    
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+          slidesPerView: 3,
+          centeredSlides: false,
+          slidesPerGroupSkip: 1,
+          grabCursor: true,
+          keyboard: {
+            enabled: true,
+          },
+          breakpoints: {
+            769: {
+              slidesPerView: 3,
+              slidesPerGroup: 3,
+            },
+          },
+          scrollbar: {
+            el: ".swiper-scrollbar",
+          },
+          navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          },
+          pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+          },
+        });
+      </script>
+    
 </body>
 </html>
