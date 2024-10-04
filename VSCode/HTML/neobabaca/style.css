@@ -1,4 +1,3 @@
-@import url(fonts.css);
 
 body{
     background-color: #00ADFB;
@@ -116,47 +115,205 @@ body{
     top: 61vh;
 }
 
-.carrd{
+#card{
     position: absolute;
-    width: auto;
-    height: 548px;  
-}
-
-.toshi{
-    position: absolute;
-    width: 308px;
-    height: 548px;
-    left: 30%;
+    width: 365px;
+    height: 648px;
+    left: 28%;
     transform: translateX(-50%);
-    background-image:url(src/toshi_site\ 1.png);
     background-size:contain;  
-    /* box-shadow: 13px 21px 0px 0px rgb(141, 2, 2); */
-    border-radius: 24px;
-}
-.dante{
-    position: absolute;
-    width: 308px;
-    height: 548px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-image:url(src/download\ 1.png);
-    background-size:contain;  
-    /* box-shadow: 13px 21px 0px 0px rgb(80, 0, 108); */
-    border-radius: 24px;
-}
-.eeiris{
-    position: absolute;
-    width: 308px;
-    height: 548px;
-    left: 70%;
-    transform: translateX(-50%);
-    background-image:url(src/eeiris_site\ 1.png);
-    background-size:contain;  
-    /* box-shadow: 13px 21px 0px 0px rgb(0, 65, 164); */
-    border-radius: 24px;
-}
-
-
-.toshi:hover{
+    perspective: 1000px;
+    backface-visibility: hidden;
     
 }
+#card2{
+    position: absolute;
+    width: 365px;
+    height: 648px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-size:contain;  
+    perspective: 1000px;
+    backface-visibility: hidden;
+
+}
+#card3{
+    position: absolute;
+    width: 365px;
+    height: 648px;
+    left: 72%;
+    transform: translateX(-50%);
+    background-size:contain;  
+    perspective: 1000px;
+    backface-visibility: hidden;
+
+}
+
+.ops{
+    width: 365px;
+    height: 648px; 
+    border-radius: 24px;
+}
+
+#card,#card2,#card3{
+    border-radius: 24px;
+}
+
+#card:hover{
+    transition: box-shadow 0.4s ease, transform 0.4s ease;
+    box-shadow: 13px 21px 0px 0px rgb(141, 2, 2);
+    transform: translate(-53%, -7px);
+}
+
+#card:not(:hover){
+    transition: box-shadow 0.4s ease, transform 0.4s ease;
+    box-shadow: 0px 0px 0px 0px ;
+    transform: translate(-50%, 0px);
+}
+
+
+#card2:hover{
+    transition: box-shadow 0.4s ease, transform 0.4s ease;
+    box-shadow: 13px 21px 0px 0px rgb(80, 0, 108);
+    transform: translate(-53%, -7px);
+}
+
+#card2:not(:hover){
+    transition: box-shadow 0.4s ease, transform 0.4s ease;
+    box-shadow: 0px 0px 0px 0px;
+    transform: translate(-50%, 0px);
+}
+
+
+#card3:hover{
+    transition: box-shadow 0.4s ease, transform 0.4s ease;
+    box-shadow: 13px 21px 0px 0px rgb(0, 65, 164);
+    transform: translate(-53%, -7px);
+}
+
+#card3:not(:hover){
+    transition: box-shadow 0.4s ease, transform 0.4s ease;
+    box-shadow: 0px 0px 0px 0px ;
+    transform: translate(-50%, 0px);
+}
+
+
+
+
+
+
+.flip {
+    transform: rotateY(180deg);
+}
+
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.4s ease-in-out;
+}
+
+.flip-card-back {
+    background-color: white;
+    transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 24px;
+}
+.not-hover {
+    box-shadow: 0px 0px 0px 0px !important;
+    transform: translate(-50%, 0px) !important;
+}
+
+.hover {
+    transition: box-shadow 0.4s ease;
+    box-shadow: 13px 21px 0px 0px rgb(0, 0, 0);
+}
+
+.logo2-c{
+    height: 110px;
+    width: auto;
+    position: absolute;
+    left: 13vw;
+    top: 61vh;
+}
+
+.tosh-b{
+    width: 100%;
+    height: 21.8vh;
+    background-image: url(src/image.png);
+    background-size: cover;
+    border-radius: 24px 24px 0px 0px;
+}
+.dant-b{
+    width: 100%;
+    height: 21.8vh;
+    background-image: url(src/Group\ 16.png);
+    background-size: cover;
+    border-radius: 24px 24px 0px 0px;
+}
+.eeir-b{
+    width: 100%;
+    height: 21.8vh;
+    background-image: url(src/Group\ 17.png);
+    background-size: cover;
+    border-radius: 24px 24px 0px 0px;
+}
+
+.nomt{
+    width: auto;
+    height: 5vh;
+    position: relative;
+    left: 1vw;
+    top: 2.5vh;
+}
+
+.social-item img{
+    display: flex; 
+    align-items: center;
+    margin-right: 5px;
+    width: auto;
+    height: 3.6vh;
+}
+
+.social-item {
+    display: flex; 
+    align-items: center; 
+    margin-right: 15px; 
+    position: relative;
+}
+
+.socials span{
+    font-family: Fipps;
+    font-size: 10.9pt;
+}
+
+#ttk{
+   left: 1vw; 
+   top: 1vh;
+}
+#ig{
+    left: 1vw; 
+    top: 2vh;
+}
+#yt{
+    left: 1vw; 
+    top: 3vh;
+}
+#tt{
+    left: 9.5vw;
+    bottom: 9.8vh;
+}
+#twt{
+    left: 9.5vw;
+    bottom: 8.8vh;
+}
+
+
