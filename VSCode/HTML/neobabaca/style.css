@@ -2,7 +2,6 @@
 body{
     background-color: #00ADFB;
     margin: 0;
-    overflow-x: hidden;
 }
 
 
@@ -841,4 +840,72 @@ body{
     display: inline-block;
     animation: 70s slide infinite linear;
 }
+
+.footer{
+    height: 26px;
+    background-color: #000;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.footer span{
+    color: rgb(255, 255, 255);
+    font-family: Pixelify Sans;
+    font-size: 12pt;
+    float: left;
+    
+}
+.footer a{
+    color: #ffffff;
+}
+.footer a:hover{
+    color: #FFA336;
+}
+
+.fomru{
+    position:relative;
+}
+
+.contss{
+    position: relative;
+    width: 992px;
+    height: 470px;
+    margin:auto;
+    bottom: 30vh;
+    border-radius: 27px;
+    box-shadow: 17px 25px 0px 0px rgb(0, 0, 0);
+    background: rgb(255, 255, 255);
+    z-index: 1;
+}
+
+#log1 {
+    opacity: 0.45;
+    height: 50vh;
+    position: relative;
+    left: 6vw;
+    top: 6vh;
+}
+
+#log2{
+    opacity: 0.45;
+    height: 50vh;
+    position: relative;
+    left: 48vw;
+    bottom: 60vh;
+    z-index: 0;
+}
+
+.flog{
+    width: 252px;
+    height: auto;
+    position: absolute;
+    bottom: 117vh;
+    left: 18vw;
+    z-index: 2;
+}
+
+
 
