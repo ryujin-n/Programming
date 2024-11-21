@@ -2,7 +2,7 @@
 body{
     background-color: #00ADFB;
     margin: 0;
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
     user-select: none;
 }
 
@@ -64,12 +64,12 @@ body{
     font-size: 36px;
     font-weight: 400;
     line-height: 36px;
-    letter-spacing: 0%;
     text-align: left;
     text-decoration: none;
-    text-shadow: 4px 3px 0px rgba(0,0,0,0.6), -1px -1px 0 #000, 1px -1px 0 #000,
-    -1px 1px 0 #000, 1px 1px 0 #000;
     filter: drop-shadow(5px 2px 0px #000000);
+    -webkit-text-stroke-width: 6px;
+    -webkit-text-stroke-color: black;
+    paint-order: stroke fill;
 
 }
 .text{
@@ -546,18 +546,16 @@ body{
 .hds- {
     display: flex;
     align-items: center;
-    width: 47vw;
-    padding: 15px 30px; 
+    width: 41vw;
+    padding: 15px 30px;
     background-color: white;
     border-radius: 46px;
     box-shadow: 7px 11px 0px 0px rgb(1, 97, 142);
     color: rgb(0, 0, 0);
     font-family: Pixelify Sans;
-    font-weight: 500;
-    line-height: 29px;
     word-break: break-word;
-    font-size: 19pt;
-    overflow: hidden; 
+    font-size: 16pt;
+    overflow: hidden;
 }
 .controlsss{
     width: 100%;
@@ -655,10 +653,13 @@ body{
     flex-direction: row;
     justify-content: space-around;
     font-family: Karmatic Arcade;
-    font-size: 13pt;
+    font-size: 12pt;
 }
 
-.bx1{
+
+
+
+.bx1 {
     width: max-content;
     padding: 10px 200px 10px 160px;
     height: 634px;
@@ -666,8 +667,24 @@ body{
     box-shadow: 20px 20px 0px 0px rgb(0, 0, 0);
     background: rgb(255, 255, 255);
     position: relative;
-    margin-top: 22vh;
-    left: -1.1vw;
+    margin-top: 31vh;
+    top: 21vh;
+    right: 1.1vw;
+    z-index: 2;
+}
+
+.bx2{
+    width: max-content;
+    padding: 30px 100px 0px 100px;
+    height: 454px;
+    border-radius: 36px 0px 0px 62px;
+    box-shadow: -18px 20px 0px 0px rgb(0, 0, 0);
+    background: rgb(255, 255, 255);
+    position: relative;
+    margin-top: 46.4vh;
+    top: 23vh;
+    left: 41.3vw;
+   
     z-index: 2;
 }
 .bx3 {
@@ -682,31 +699,20 @@ body{
     left: -1.1vw;
     z-index: 2;
 }
-.bx2{
-    width: max-content;
-    padding: 30px 357px 0px 210px;
-    height:454px;
-    border-radius: 36px 0px 0px 62px;
-    box-shadow: -18px 20px 0px 0px rgb(0, 0, 0);
-    background: rgb(255, 255, 255);
-    position: relative;
-    margin-top: 57vh;
-    left: 34vw;
-    z-index: 2;
-}
 
-.bx1 h1{
-    width: 365px;
-    height: 148px;
-    font-family: Karmatic Arcade;
-    font-size:54pt;
-    margin-bottom: 80px;
-}
 
-.bx1 p{
-    width: 862px;
+
+
+
+.bx1 p {
+    width: 732px;
     font-family: Pixelify Sans;
     font-size: 26pt;
+}
+.bx2 p {
+    width: 909px;
+    font-family: Pixelify Sans;
+    font-size: 21pt;
 }
 .bx3 p {
     width: 819px;
@@ -715,18 +721,13 @@ body{
 }
 
 
-.bx2 p {
-    width: 909px;
-    font-family: Pixelify Sans;
-    font-size: 21pt;
-}
 
-.bx1log{
+.bx1log {
     width: 302px;
     height: auto;
     position: absolute;
     top: 60vh;
-    left: 110vh;
+    left: 93vh;
 }
 .bx2log{
     width: 302px;
@@ -744,6 +745,16 @@ body{
 }
 
 
+
+
+.bx1 h1{
+    width: 365px;
+    height: 148px;
+    font-family: Karmatic Arcade;
+    font-size:54pt;
+    margin-bottom: 80px;
+}
+
 .bx2 h1{
     width: 365px;
     font-family: Karmatic Arcade;
@@ -754,13 +765,13 @@ body{
 }
 
 
-.bx1img{
-    width: 1592px;
+.bx1img {
+    width: 1322px;
     height: auto;
     position: absolute;
-    top: 0vh;
-    left: 27vw;
-    opacity: 0.5;
+    top: -10vh;
+    left: 30.2vw;
+    opacity: 1;
     z-index: 1;
 }
 .bx2img{
@@ -773,13 +784,9 @@ body{
     z-index: 1;
 }
 
-.quem-somos{
-    position: relative;
-}
-.vtubers{
-    position: relative;
-}
-.conteudo{
+
+
+.quem-somos ,.vtubers,.conteudo {
     position: relative;
 }
 
@@ -793,7 +800,6 @@ body{
 .partners{
     position: relative;
     width: 100%;
-    /* background-color: white; */
     top: 2vh;
     mask-image: linear-gradient(to right, transparent 1%, #000, transparent);
     animation: autoScroll 20s linear infinite;
@@ -912,7 +918,7 @@ body{
     width: 252px;
     height: auto;
     position: absolute;
-    bottom: 102vh;
+    bottom: 93vh;
     left: 18vw;
     z-index: 2;
 }
