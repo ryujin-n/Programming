@@ -1,0 +1,69 @@
+======== Conceitos Fundamentais ========
+
+
+    |>Sequência;
+    |> Condicionais;
+    |> Repetições;
+    |> Variáveis;
+
+
+
+-----------------------------------------------------
+
+|> Sequência
+
+        Problemática: Beber água
+
+            Passo 1 => PEGAR Copo
+            Passo 2 => IR até o Bebedouro
+            Passo 3 => ENCHER Copo d'água
+            Passo 4 => BEBER
+
+------------------------------------------------------
+
+------------------------------------------------------
+
+|>Condicionais
+
+        Se o resto for 2
+            => Número é par
+        Se não
+            => Número é ímpar
+
+
+------------------------------------------------------
+
+------------------------------------------------------
+
+|> Repetições
+
+        Enquanto há DOCES no POTE
+            PEGAR doces
+
+
+------------------------------------------------------
+
+------------------------------------------------------
+
+|> Variáveis
+
+        -> INT      |
+        -> DOUBLE   |-> Números
+        -> FLOAT    |
+
+        -> STRING   |-> Caracteres
+        -> CHAR     |
+
+        -> BOOLEAN  |-> Lógica (verdadeiro ou falso)
+
+
+------------------------------------------------------
+
+
+
+
+
+
+
+
+
