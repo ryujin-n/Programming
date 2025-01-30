@@ -1,0 +1,352 @@
+body{
+    overflow: hidden;
+    font-family: 'JMH Typewriter dry', sans-serif;
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    flex-direction: column;
+  }
+
+.fundo{
+    position: fixed;
+    height: 120vh;
+    width: 100vw;
+    filter: none;
+}
+
+.dialogue-box {
+    font-family: 'JMH Typewriter dry', sans-serif;
+    background-image: url(src/FUNDO\ DA\ CAIXA.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    font-size: 15pt;
+    line-height: 2rem;
+    padding: 20px;
+    width: 100%;
+    max-width: 840px;
+    background-color: #333;
+    border-radius: 20px;
+    border: solid 1.4px #6d5f4c;
+    display: none;
+    box-shadow: #585858db 0px 0px 20px 0px;
+}
+
+
+.arabesco {
+    position: absolute;
+    width: 60px;
+    height: auto;
+}
+
+.top-left {
+    top: -0.7rem;
+    left: -0.6rem;
+}
+
+.top-right {
+   top:-0.7rem;
+    right: -0.6rem;
+}
+
+.bottom-left {
+    bottom: -0.7rem;
+    left: -0.6rem;
+}
+
+.bottom-right {
+    bottom: -0.7rem;
+    right: -0.6rem;
+} 
+
+#dialogueText{
+    margin-left: 30px;
+    margin-top: 15px;
+    color: #d3d3d3;
+}
+
+.character-name {
+    font-family: 'Washington Text Alternates', sans-serif;
+    font-size: 20pt;
+    color: #ece098;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+.start-btn{
+    font-family: 'JMH Typewriter dry', sans-serif;
+    margin-top: 20px;
+    padding: 1rem 2rem;
+    font-size: 15pt;
+    background-color: #6d5f4c;
+    border: none;
+    color: #000;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s;
+    z-index: 1;
+}
+
+.next-btn {
+    position: absolute;
+    font-family: 'JMH Typewriter dry', sans-serif;
+    margin-top: 15rem;
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #6d5f4c;
+    border: none;
+    color: #000;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.start-btn:hover, .next-btn:hover {
+    background-color: #e6b800;
+}
+
+.next-btn {
+    display: none;  
+}
+
+.tarot {
+    display: none;              
+    justify-content: center;     
+    align-items: center;         
+    gap: 2rem;                   
+    position: relative;          
+    height: 55rem;
+    width: 100rem;
+    bottom: 6rem;
+
+}
+
+#card, #card2, #card3 {
+    height: 45rem;
+    width: 23rem;
+    animation: slide 1s ease forwards;
+    perspective: 1000px;
+    border-radius: 15px;
+   
+}
+#card img:hover, #card2 img:hover, #card3 img:hover {
+    transition: filter 0.4s ease;
+    filter: drop-shadow(0px 0px 6px wheat);
+   
+}
+#card img:not(:hover), #card2 img:not(:hover), #card3 img:not(:hover) {
+    transition: filter 0.4s ease;
+    filter: drop-shadow(0px 0px 0px wheat);
+   
+}
+
+.slide {
+    animation: slide 1s ease forwards; 
+}
+
+@keyframes slide {
+    0% {
+        transform: translateY(10rem); 
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0); 
+        opacity: 1; 
+    }
+}
+
+#card, #card2, #card3 {
+    transition: opacity 1s ease, transform 0.6s ease; 
+
+}
+
+#card {
+    animation: slide 1s ease ;
+}
+
+#card2 {
+    animation: slide 1s ease ;
+    animation-delay: 0.1s; 
+}
+
+#card3 {
+    animation: slide 1s ease ;
+    animation-delay: 0.2s; 
+}
+
+#card:hover,#card2:hover, #card3:hover {
+    transform: translateY(-1rem); 
+    
+}
+
+.flip-card {
+    position: relative;
+    width: 23rem;
+    height: 45rem;
+    border-radius: 10px;
+    perspective: 1000px; 
+    
+}
+
+.flip-card-inner {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); 
+    transition: transform 0.8s ease;
+    border-radius: 30px;
+}
+
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; 
+    border-radius: 24px;
+}
+
+.flip-card-back {
+    background-color: white;
+    transform: rotateY(180deg); 
+}
+
+.flip-card-inner.rotated {
+    transform: rotateY(180deg); 
+}
+
+.flip-card-front img, .flip-card-back img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+}
+
+.oops {
+    width: 100%;
+    height: 100%; 
+    outline: none;
+}
+
+
+@keyframes revertslide {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(10rem); 
+        opacity: 0;
+    }
+}
+
+#card.hide, #card2.hide, #card3.hide {
+    animation: revertslide 1s ease forwards; 
+}
+
+#card.hide {
+    animation-delay: 0s;
+}
+
+#card2.hide {
+    animation-delay: 0.1s;
+}
+
+#card3.hide {
+    animation-delay: 0.2s;
+}
+
+.fit{
+    display: none;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+}
+
+.nome{
+    position: relative;
+    top:5rem;
+    font-family: 'JMH Typewriter dry', sans-serif;
+    background-image: url(src/FUNDO\ DA\ CAIXA.svg);
+    border-radius: 10px;
+    outline: none;
+    color: white;
+    padding: 15px 21px;
+    border: solid 1.5px #6d5f4c;
+    box-shadow: #585858db 0px 0px 20px 0px;
+    font-size: 15pt;
+    display: none;
+  }
+
+  .send{
+    color: white;
+    position: relative;
+    font-family: 'JMH Typewriter dry', sans-serif;
+    font-size: 20pt;
+    outline: none;
+    background-color: #927753;
+    border-radius: 5px;
+    padding:  1px 13px ;
+    display: none;
+    top: 1.99rem;
+    left: 11.8rem;
+  }
+
+  @keyframes revertslide_ {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(2rem); 
+        opacity: 0;
+    }
+  }
+
+  #nome.hide, #send.hide {
+      animation: revertslide 1s ease forwards; 
+  }
+  #nextButton.hide{
+      animation: revertslide_ 1s ease forwards; 
+  }
+
+  #nextButton{
+      animation: slide_ 1s ease forwards; 
+  }
+
+  #nome.hide {
+      animation-delay: 0s;
+  }
+  #send.hide {
+      animation-delay: 0.1s;
+  }
+
+
+
+
+  @keyframes slide_ {
+    0% {
+        transform: translateY(2rem);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0); 
+        opacity: 1;
+    }
+  }
+
+  #nome, #send {
+      animation: slide 1s ease forwards; 
+  }
+
+  #nome {
+      animation-delay: 0s;
+  }
+  #send {
+      animation-delay: 0.1s;
+  }
+

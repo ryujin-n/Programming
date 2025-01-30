@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://fonts.cdnfonts.com/css/jmh-typewriter-dry" rel="stylesheet">
+
+</head>
+<body>
+  <style>
+    body{
+      background-color: rgb(49, 51, 61);
+    }
+
+    .nome{
+
+      font-family: 'JMH Typewriter dry', sans-serif;
+      background-image: url(src/FUNDO\ DA\ CAIXA.svg);
+      border-radius: 10px;
+      outline: none;
+      color: white;
+      padding: 15px 21px;
+      border: solid 1.5px #6d5f4c;
+      box-shadow: #585858db 0px 0px 20px 0px;
+      font-size: 15pt;
+    }
+
+    .send{
+      position: relative;
+      font-family: 'JMH Typewriter dry', sans-serif;
+      font-size: 20pt;
+      outline: none;
+      background-color: #927753;
+      border-radius: 5px;
+      padding:  1px 13px ;
+      top: 0.19rem;
+    
+    }
+
+
+
+    @keyframes revertslide_ {
+      0% {
+          transform: translateY(0);
+          opacity: 1;
+      }
+      100% {
+          transform: translateY(2rem); 
+          opacity: 0;
+      }
+    }
+
+    #nome.hide, #send.hide {
+        animation: revertslide 1s ease forwards; 
+    }
+
+    #nome.hide {
+        animation-delay: 0s;
+    }
+    #send.hide {
+        animation-delay: 0.1s;
+    }
+
+
+    @keyframes slide_ {
+      0% {
+          transform: translateY(2rem);
+          opacity: 0;
+      }
+      100% {
+          transform: translateY(0); 
+          opacity: 1;
+      }
+    }
+
+    #nome, #send {
+        animation: slide 1s ease forwards; 
+    }
+
+    #nome {
+        animation-delay: 0s;
+    }
+    #send {
+        animation-delay: 0.1s;
+    }
+
+  </style>
+
+  <input type="text" id="nome" class="nome">
+  <button onclick="send()" class="send" id="send"> > </button>
+
+  <script>
+    function hideform() {
+      nome.classList.add("hide");
+      send.classList.add("hide");
+
+      setTimeout(() => {
+          nome.style.display = "none";
+          send.style.display = "none";
+      }, 1000); 
+    }
+
+    function showform() {
+      nome.style.display = "block";
+      send.style.display = "block";
+    }
+  </script>
+</body>
+</html>
