@@ -13,98 +13,83 @@
       background-color: rgb(49, 51, 61);
     }
 
-    .nome{
-
-      font-family: 'JMH Typewriter dry', sans-serif;
-      background-image: url(src/FUNDO\ DA\ CAIXA.svg);
-      border-radius: 10px;
-      outline: none;
-      color: white;
-      padding: 15px 21px;
-      border: solid 1.5px #6d5f4c;
-      box-shadow: #585858db 0px 0px 20px 0px;
-      font-size: 15pt;
-    }
-
-    .send{
-      position: relative;
-      font-family: 'JMH Typewriter dry', sans-serif;
-      font-size: 20pt;
-      outline: none;
-      background-color: #927753;
-      border-radius: 5px;
-      padding:  1px 13px ;
-      top: 0.19rem;
+      #card{
+      height: 45rem;
+      width: 23rem;
+      perspective: 1000px;
+      border-radius: 15px;
     
-    }
+  }
 
+  .flip-card {
+    position: relative;
+    width: 23rem;
+    height: 45rem;
+    border-radius: 10px;
+    perspective: 1000px; 
+    
+}
 
+.flip-card-inner {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); 
+    transition: transform 1s ease;
+    border-radius: 30px;
+}
 
-    @keyframes revertslide_ {
-      0% {
-          transform: translateY(0);
-          opacity: 1;
-      }
-      100% {
-          transform: translateY(2rem); 
-          opacity: 0;
-      }
-    }
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; 
+    border-radius: 24px;
+}
 
-    #nome.hide, #send.hide {
-        animation: revertslide 1s ease forwards; 
-    }
+.flip-card-back {
+    background-color: white;
+    transform: rotateY(180deg); 
+}
 
-    #nome.hide {
-        animation-delay: 0s;
-    }
-    #send.hide {
-        animation-delay: 0.1s;
-    }
+.flip-card-inner.rotated {
+    transform: rotateY(180deg); 
+}
 
+.flip-card-front img, .flip-card-back img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+}
 
-    @keyframes slide_ {
-      0% {
-          transform: translateY(2rem);
-          opacity: 0;
-      }
-      100% {
-          transform: translateY(0); 
-          opacity: 1;
-      }
-    }
+.flip{
+  transform: rotateY(180deg); 
+}
 
-    #nome, #send {
-        animation: slide 1s ease forwards; 
-    }
-
-    #nome {
-        animation-delay: 0s;
-    }
-    #send {
-        animation-delay: 0.1s;
-    }
+.oops {
+    width: 100%;
+    height: 100%; 
+    outline: none;
+}
 
   </style>
 
-  <input type="text" id="nome" class="nome">
-  <button onclick="send()" class="send" id="send"> > </button>
+    <div class="flip-card"id="card">
+      <div class="flip-card-inner">
+          <div class="flip-card-front">
+              <img src="src/ENIGMA - TAROT/BACK CARD 2.png" class="oops">
+          </div>
+          <div class="flip-card-back">
+              <img src="src/ENIGMA - TAROT/THE TOWER.png" class="oops">
+          </div>
+      </div>
+    </div>
 
   <script>
-    function hideform() {
-      nome.classList.add("hide");
-      send.classList.add("hide");
-
-      setTimeout(() => {
-          nome.style.display = "none";
-          send.style.display = "none";
-      }, 1000); 
-    }
-
-    function showform() {
-      nome.style.display = "block";
-      send.style.display = "block";
-    }
+    document.getElementById("card").addEventListener("click", () => {
+      document.getElementById("card").classList.add("flip");
+    });
   </script>
 </body>
 </html>

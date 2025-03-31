@@ -7,17 +7,21 @@
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.cdnfonts.com/css/jmh-typewriter-dry" rel="stylesheet">
   <link href="https://fonts.cdnfonts.com/css/washington-text" rel="stylesheet">
+  <link href="https://fonts.cdnfonts.com/css/bachroque" rel="stylesheet">
+  <link href="https://fonts.cdnfonts.com/css/flink" rel="stylesheet">
+                
+                
+                
+  <link rel="shortcut icon" href="src/favicon_io/favicon.ico" type="image/x-icon">
 
 </head>
 <body>
-    <img src="src/ORÁCULO - FUNDO.png" id="fundod" class="fundo" alt="">
-    <audio src="src/ambiance.mp3" autoplay loop preload id="background-audio"></audio>
-
+    <img src="src/ORÁCULO - FUNDO.png" id="fundod" class="fundo" draggable="false" alt="">
     <div class="dialogue-box"id="dialogueBox">
-        <img src="src/ARABESCO 1.svg" class="arabesco top-left"></img>
-        <img src="src/ARABESCO 3.svg" class="arabesco top-right"></img>
-        <img src="src/ARABESCO 2.svg" class="arabesco bottom-left"></img>
-        <img src="src/ARABESCO 4.svg" class="arabesco bottom-right"></img>
+        <img src="src/ARABESCO 1.svg" class="arabesco top-left" draggable="false"></img>
+        <img src="src/ARABESCO 3.svg" class="arabesco top-right" draggable="false"></img>
+        <img src="src/ARABESCO 2.svg" class="arabesco bottom-left" draggable="false"></img>
+        <img src="src/ARABESCO 4.svg" class="arabesco bottom-right" draggable="false"></img>
         <div class="character-name" id="characterName"></div>
         <div id="dialogueText"></div>
     </div>
@@ -33,35 +37,36 @@
             <div class="flip-card slide" onclick="tower()" id="card">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
-                        <img src="src/ENIGMA - TAROT/BACK CARD 2.png" class="oops">
+                        <img src="src/ENIGMA - TAROT/BACK CARD 2.png" draggable="false" class="oops">
                     </div>
                     <div class="flip-card-back">
-                        <img src="src/ENIGMA - TAROT/THE TOWER.png" class="oops">
+                        <img src="src/ENIGMA - TAROT/THE TOWER.png" draggable="false" class="oops">
                     </div>
                 </div>
             </div>
             <div class="flip-card slide" onclick="judge() " id="card2">
                 <div class="flip-card-inner">
                   <div class="flip-card-front">
-                    <img src="src/ENIGMA - TAROT/BACK CARD 2.png" class="oops">
+                    <img src="src/ENIGMA - TAROT/BACK CARD 2.png" draggable="false" class="oops">
                   </div>
                   <div class="flip-card-back">
-                    <img src="src/ENIGMA - TAROT/JUDGEMENT.png" class="oops">
+                    <img src="src/ENIGMA - TAROT/JUDGEMENT.png" draggable="false" class="oops">
                   </div>
                 </div>
             </div>
             <div class="flip-card slide" onclick="moon()" id="card3">
                 <div class="flip-card-inner">
                   <div class="flip-card-front">
-                    <img src="src/ENIGMA - TAROT/BACK CARD 2.png" class="oops">
+                    <img src="src/ENIGMA - TAROT/BACK CARD 2.png" draggable="false" class="oops">
                   </div>
                   <div class="flip-card-back">
-                    <img src="src/ENIGMA - TAROT/THE MOON.png" class="oops">
+                    <img src="src/ENIGMA - TAROT/THE MOON.png" draggable="false" class="oops">
                   </div>
                 </div>
             </div>
         </div>
         <video class="fit" id="video" src="src/01101101 01100001 01101100 01100100 01101001 11100.mp4" autoplay></video>
+        <audio id="background-audio" loop  src="src/ambiance.mp3"></audio>
 
 
 
