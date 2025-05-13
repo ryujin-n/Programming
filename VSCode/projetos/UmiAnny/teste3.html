@@ -3,16 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <link
+        rel="stylesheet"
+        href="https://site-assets.fontawesome.com/releases/v6.7.2/css/all.css"
+      >
+
     <title>Document</title>
 </head>
 <body>
 
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
+
         div{
-            background: black;
+            display:flex;
+            flex-direction: row;
+            gap: 15px;
+            background:#201529;
+            height: 10rem;
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+        }
+        .ko-fi::after {
+            content: '\f004';
+            font-weight: 900;
+            font-size: 16pt;
+            color: #201529;
+            position: absolute;
+            margin: 9px 0 0 -38px;
+        }
+
+        i{
+            color: #FFD383;
+            font-size:30pt;
+            position: relative;
+            bottom: 1rem;
+        }
+        span{
+            position: absolute;
+            color: #FFD383;
+            margin-top: 3rem;
+            font-family: Fredoka;
+            font-size: 12pt;
+        }
+        .tw {
+            color: white;
+            font-size: 9pt;
+            left: 2rem;
+            margin-top: 7rem;
         }
     </style>
     <div>
+        <i class="fa-brands fa-youtube"></i>
+        <i class="fa-brands fa-x-twitter"></i>
+        <i class="fa-brands fa-instagram"></i>
+        <i class="fa-brands fa-artstation"></i>
+        <i class="fa-brands fa-trello"></i>
+        <i class="fa-brands fa-discord"></i>
+        <i class="fa-brands fa-tiktok"></i>
+        <i class="fa-solid fa-mug ko-fi"></i>
+        <span>
+            umi.annygabrielli@gmail.com
+        </span>
+        <span class="tw">
+            Made by Anny and Miles
+        </span>
 
     </div>
 </body>
