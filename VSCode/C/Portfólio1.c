@@ -11,7 +11,7 @@ int main() {
     double qnt_comida_mes;
     double custo_mes;
 
-    setlocale(LC_ALL, "pt-BR");  
+    setlocale(LC_ALL, "portuguese");  
 
     printf("Informe o nome do animal: ");
     scanf("%29s", nome_animal);  // Prevents buffer overflow

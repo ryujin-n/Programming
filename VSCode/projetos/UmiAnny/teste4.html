@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
+
+        @font-face {
+            font-family: Aqila;
+            src: url(src/aqila/Aqila-DemoVersion-Regular.ttf);
+        }
+
+
+        .bg{
+            position: relative;
+            height: 95vh;
+            width: 95vw;
+            background-color: #201529b7;
+            backdrop-filter: blur(3px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0px 0px 11px 4px #180a2366;
+            border-radius: 10px;
+            border: solid 1px #332840;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        .divider{
+            position: absolute;
+            margin-left: 17rem;
+            margin-top: 1.6rem;
+            background-color: #FFD383;
+            height: 33rem;
+            width: 0.1rem;
+        }
+
+        .nav{
+            position: relative; 
+            top: 10.8rem;
+            display:flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .bto{
+            background-color: #FFD383;
+            margin-left: 1.6rem;
+            width: 14rem;
+            height: 2.8rem;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            justify-content: center;
+            text-decoration: none;
+
+            font-family: Fredoka;
+            font-weight: 500;
+            color: #332840;
+        }
+
+        .lang{
+            position: absolute;
+            top: -6rem;
+            background-color: #FFD383;
+            margin-left: 1.6rem;
+            width: 14rem;
+            height: 2.8rem;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            justify-content: center;
+            text-decoration: none;
+        }
+        .h1, .h2{
+            position: absolute;
+            margin-left: 4.3rem;
+            color: #FFD383;
+            font-family: Fredoka;
+            font-size: 12pt;
+            font-weight: 400;
+        }
+        .h1{
+            top: -9rem;
+        }
+        .h2{
+            top:-3rem;
+        }
+
+        .swr{
+            position: relative;
+            width: 49.6rem;
+            height: 33rem;
+            left: 18rem;
+            bottom: 21.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .bg3{
+            position: absolute;
+            width: 48.6rem;
+            height: 24rem;
+            left: 0.5rem;
+            top: 9.5rem;
+            background-color: #3a2d48;
+            border-radius: 20px;
+        }
+        h1{
+            position: absolute;
+            left: 16.4rem;
+            top: -1.8rem;
+            font-family: Aqila;
+            font-size: 40pt;
+            color: #FFD383;
+        }
+        .swr p{
+            color: white;
+            font-family:  Fredoka;
+            font-weight: 300;
+            position: absolute;
+            top: 4.4rem;
+            text-align: center;
+            font-size: 10pt;
+            padding-left:  3rem;
+            padding-right:  3rem;
+        }
+    </style>
+
+    <div class="bg">
+        <div class="divider"></div>
+        
+        <div class="nav">
+            <h3 class="h1">Escolha um Idioma:</h3>
+            <a href="" class="lang">
+                
+            </a>
+            <h3 class="h2">Especialidades:</h3>
+            <a href="" id="1" class="bto">
+                <span>Illustration</span>
+            </a>
+            <a href="" id="2" class="bto">
+                <span>Character Concept</span>
+            </a>
+            <a href="" id="3" class="bto">
+                <span>PNGTuber</span>
+            </a>
+            <a href="" id="4" class="bto">
+                <span>Stream Set</span>
+            </a>
+            <a href="" id="5" class="bto">
+                <span>EMOTES - Badges</span>
+            </a>
+            <a href="" id="6" class="bto">
+                <span>VTuber - Model Art</span>
+            </a>
+        </div>
+        
+        <div class="swr">
+            <h1>Illustrations</h1>
+            <p>
+                Se você está interessado em uma ilustração de um personagem seu, uma cena marcante para o 
+                seu livro ou apenas uma fanart legal de uma personagem que você gosta, essa é a opção pra você! 
+                Dê uma olhada nas opções e escolha o que mais te agrada!
+            </p>     
+            <div class="bg3">
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
