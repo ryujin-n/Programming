@@ -97,33 +97,69 @@
         }
 
         .bg3{
+            display: flex;
+            align-items: center;
             position: absolute;
-            width: 48.6rem;
-            height: 24rem;
+            width: 48.5rem;
+            height: 24.6rem;
             left: 0.5rem;
-            top: 9.5rem;
+            top: 8.6rem;
             background-color: #3a2d48;
             border-radius: 20px;
         }
-        h1{
+        img{
+            height: auto;
+            width: 25rem;
             position: absolute;
-            left: 16.4rem;
-            top: -1.8rem;
-            font-family: Aqila;
-            font-size: 40pt;
-            color: #FFD383;
+            left: 13rem;
+            top: 0rem;
         }
         .swr p{
             color: white;
             font-family:  Fredoka;
             font-weight: 300;
             position: absolute;
-            top: 4.4rem;
+            top: 3.5rem;
             text-align: center;
             font-size: 10pt;
             padding-left:  3rem;
             padding-right:  3rem;
         }
+
+        .bg3 img{
+            position: absolute;
+            height: auto;
+            width: 43rem;
+            left: 2.5rem;
+            top: 1.4rem;
+        }
+
+        #tos{
+            position: absolute;
+            left: 4rem;
+            bottom: 1.8rem;
+            height: 2.4rem;
+            font-weight: 400;
+            font-size: 10pt;
+        }
+
+        .img1{
+            position: absolute;
+            background-color: aliceblue;
+            height: 30rem;
+            width: 23rem;
+            left: 1.9rem;
+            top: 2rem;
+            border-radius: 15px;
+            box-shadow: #FFD383 0.8rem -1rem , #c0a4e0 -0.8rem 1rem;
+        }
+
+        #fc{
+            left: 29rem;
+            width: 18rem;
+            top: 2rem;
+        }
+
     </style>
 
     <div class="bg">
@@ -156,13 +192,68 @@
         </div>
         
         <div class="swr">
-            <h1>Illustrations</h1>
-            <p>
-                Se você está interessado em uma ilustração de um personagem seu, uma cena marcante para o 
-                seu livro ou apenas uma fanart legal de uma personagem que você gosta, essa é a opção pra você! 
-                Dê uma olhada nas opções e escolha o que mais te agrada!
-            </p>     
-            <div class="bg3">
+            <div id="ill" style="display: block;">
+                <!-- <img src="https://i.postimg.cc/j54phTGn/tit1.png" alt="">
+                <p>
+                    Se você está interessado em uma ilustração de um personagem seu, uma cena marcante para o 
+                    seu livro ou apenas uma fanart legal de uma personagem que você gosta, essa é a opção pra você! 
+                    Dê uma olhada nas opções e escolha o que mais te agrada!
+                </p>     
+                <div class="bg3">
+                    <img src="https://i.postimg.cc/4yQLCqq9/nbtb2t.png" alt="">
+                    <a href="" class="bto" id="tos">
+                        CLIQUE AQUI PARA LER             
+                    </a>
+                </div> -->
+
+                <img id="fc" src="https://i.postimg.cc/ydmPdTZK/tit2.png" alt="">
+                
+                <div class="img1">
+                    <img src="" alt="">
+                </div>
+                
+                <div style="position: absolute;
+                            height: 5.5rem;
+                            width: 20rem;
+                            background-color: #3a2d48;
+                            right: 0.9rem;
+                            top: 5rem;
+                            border-radius: 10px;
+                            font-family: Fredoka;
+                            color: white;
+                            text-align: center;       
+                            align-items: center;      
+                            font-size:10pt;            
+                            padding:10px;
+                            "> 
+    
+                    A pintura <span style="color: #FFD383;">flat color</span> (cores base) é categorizada 
+                    como uma pintura de <span style="color: #FFD383;">sombreamento simples e cores mais chapadas</span> 
+                    , sem muita volumetria ou
+                    iluminação definida. É mais usada em ilustrações 
+                    simples e concept de personagens.
+                </div>
+            </div>
+
+            <div id="cc" style="display: none;">
+
+
+
+            </div>
+
+            <div id="pngt" style="display: none;">
+
+            </div>
+
+            <div id="ss" style="display: none;">
+
+            </div>
+
+            <div id="emt" style="display: none;">
+
+            </div>
+
+            <div id="vtb" style="display: none;">
 
             </div>
         </div>
