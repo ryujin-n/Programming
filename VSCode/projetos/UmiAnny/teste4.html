@@ -9,6 +9,20 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
 
+        body{
+            user-select: none;
+            -webkit-user-select: none; 
+            -moz-user-select: none; 
+            -ms-user-select: none; 
+        }
+
+        img{
+            -webkit-user-drag: none;
+            -khtml-user-drag: none; 
+            -moz-user-drag: none; 
+        }
+        
+
         .bg{
             position: relative;
             height: 95vh;
@@ -88,12 +102,13 @@
 
         .swr{
             position: relative;
-            width: 49.6rem;
+            width: 48.6rem;
             height: 33rem;
-            left: 18rem;
+            left: 17.3rem;
             bottom: 21.5rem;
             display: flex;
             align-items: center;
+
         }
 
         .bg3{
@@ -101,11 +116,12 @@
             align-items: center;
             position: absolute;
             width: 48.5rem;
-            height: 24.6rem;
+            height: 24.2rem;
             left: 0.5rem;
             top: 8.6rem;
             background-color: #3a2d48;
             border-radius: 20px;
+            
         }
         img{
             height: auto;
@@ -137,30 +153,127 @@
         #tos{
             position: absolute;
             left: 4rem;
-            bottom: 1.8rem;
+            bottom: 2.1rem;
             height: 2.4rem;
             font-weight: 400;
             font-size: 10pt;
         }
 
-        .img1{
-            position: absolute;
-            background-color: aliceblue;
+        .img1 {
+            position: relative;
+            background-image: url(https://i.postimg.cc/fW6cbWSt/MADDSON-2-0.png);
             height: 30rem;
             width: 23rem;
             left: 1.9rem;
-            top: 2rem;
             border-radius: 15px;
-            box-shadow: #FFD383 0.8rem -1rem , #c0a4e0 -0.8rem 1rem;
+            box-shadow: #FFD383 0.8rem -1rem , #c0a4e0 -0.8rem 0.6rem;
+        }
+        .img2 {
+            position: relative;
+            background-image: url(https://i.postimg.cc/TYvXJmWR/ILUSTRA-O-ARIADNE.png);
+            background-position: center;
+            background-size: 25rem;
+            height: 30rem;
+            width: 23rem;
+            left: 1.9rem;
+            border-radius: 15px;
+            box-shadow: #FFD383 0.8rem -1rem , #c0a4e0 -0.8rem 0.6rem;
         }
 
         #fc{
+            position: relative;
             left: 29rem;
             width: 18rem;
             top: 2rem;
         }
 
+        .preco{
+            height: 4rem;
+            width: 105%;
+            background-color:#0a001645;
+            border-radius: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .preco2{
+            position:absolute;
+            background-color:#332840;
+            height:2.8rem;
+            width:10rem;
+            right:-0.6rem;
+            border-radius:20px;
+        }
+        .preco span {
+            position: absolute;
+            width: 100%; 
+            font-size: 13pt;
+            font-weight: 500;
+            font-family: Fredoka; 
+            color: #FFD383; 
+            margin-left: 30px;
+        }
+        #sub {
+            position: absolute;
+            left: 1.2rem;
+            top: -0.5rem;
+            font-size: 10pt;
+            font-weight: 200;
+            font-family: Fredoka; 
+            color: #FFD383; 
+        }
+
+        .preco2 span {
+            position: absolute;
+            width: 100%; 
+            font-size: 20pt;
+            font-weight: 400;
+            font-family: Fredoka; 
+            color: white; 
+            top: 0.3rem;
+
+            b{
+                color: #c0a4e0;
+                font-weight: 100;
+                font-size: 12pt;
+            }
+        }
+        .funds{
+            position: relative;
+            width: 50.7rem;
+            height: 33rem;
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }
+        .cont, .cont2{
+            height:100% ;
+            width:100% ;
+            margin-bottom: 4.5rem;
+        }
+        .cont3{
+            height:100% ;
+            width:100% ;
+            margin-bottom: 0;
+        }
+        .funds::-webkit-scrollbar {
+            width: 5px; 
+        }
+
+        .funds::-webkit-scrollbar-track {
+            background: #0a001645; 
+        }
+
+        .funds::-webkit-scrollbar-thumb {
+            background: #FFD383; 
+            border-radius: 10px;
+        }
+
+        .funds::-webkit-scrollbar-thumb:hover {
+            background: #c0a4e0; 
+        }
+
     </style>
+
 
     <div class="bg">
         <div class="divider"></div>
@@ -193,45 +306,210 @@
         
         <div class="swr">
             <div id="ill" style="display: block;">
-                <!-- <img src="https://i.postimg.cc/j54phTGn/tit1.png" alt="">
-                <p>
-                    Se você está interessado em uma ilustração de um personagem seu, uma cena marcante para o 
-                    seu livro ou apenas uma fanart legal de uma personagem que você gosta, essa é a opção pra você! 
-                    Dê uma olhada nas opções e escolha o que mais te agrada!
-                </p>     
-                <div class="bg3">
-                    <img src="https://i.postimg.cc/4yQLCqq9/nbtb2t.png" alt="">
-                    <a href="" class="bto" id="tos">
-                        CLIQUE AQUI PARA LER             
-                    </a>
-                </div> -->
+                    <div class="funds">
+                        <div class="cont">
+                           <img src="https://i.postimg.cc/j54phTGn/tit1.png" alt="">
 
-                <img id="fc" src="https://i.postimg.cc/ydmPdTZK/tit2.png" alt="">
-                
-                <div class="img1">
-                    <img src="" alt="">
-                </div>
-                
-                <div style="position: absolute;
-                            height: 5.5rem;
-                            width: 20rem;
-                            background-color: #3a2d48;
-                            right: 0.9rem;
-                            top: 5rem;
-                            border-radius: 10px;
-                            font-family: Fredoka;
-                            color: white;
-                            text-align: center;       
-                            align-items: center;      
-                            font-size:10pt;            
-                            padding:10px;
-                            "> 
-    
-                    A pintura <span style="color: #FFD383;">flat color</span> (cores base) é categorizada 
-                    como uma pintura de <span style="color: #FFD383;">sombreamento simples e cores mais chapadas</span> 
-                    , sem muita volumetria ou
-                    iluminação definida. É mais usada em ilustrações 
-                    simples e concept de personagens.
+                             <p>
+                                Se você está interessado em uma ilustração de um personagem seu, uma cena marcante para o 
+                                seu livro ou apenas uma fanart legal de uma personagem que você gosta, essa é a opção pra você! 
+                                Dê uma olhada nas opções e escolha o que mais te agrada!
+                            </p>  
+                             <div class="bg3">
+                                        <img src="https://i.postimg.cc/4yQLCqq9/nbtb2t.png" alt="">
+                                        <a href="" class="bto" id="tos">
+                                            CLIQUE AQUI PARA LER             
+                                        </a>
+                                    </div>
+
+                        </div>
+                        <div class="cont2">
+                            <img id="fc" src="https://i.postimg.cc/ydmPdTZK/tit2.png" alt="">
+
+                            <div class="img1"></div>
+
+                                <div style="
+                                position:relative;
+                                left:27rem;
+                                bottom:27.6rem;
+                                height: 5.5rem;
+                                width: 20rem;
+                                background-color: #3a2d48;
+                                border-radius: 10px;
+                                font-family: Fredoka;
+                                color: white;
+                                text-align: center;       
+                                align-items: center;      
+                                font-size:10pt;            
+                                padding:10px;
+                                "> 
+        
+                                A pintura <span style="color: #FFD383;">flat color</span> (cores base) é categorizada 
+                                como uma pintura de <span style="color: #FFD383;">sombreamento simples e cores mais chapadas</span> 
+                                , sem muita volumetria ou
+                                iluminação definida. É mais usada em ilustrações 
+                                simples e concept de personagens.
+                            </div>
+
+                                <div style="position: relative; 
+                                width: 20.6rem;
+                                height: 19rem;
+                                bottom: 27rem;
+                                left: 26.8rem;
+                                display: flex;
+                                flex-direction: column;
+                                gap: 15px;  
+                                ">
+
+                            <div class="preco">
+                                <span>
+                                    ICON - PORTRAIT
+                                </span>
+                                <div class="preco2">
+                                    <span id="sub">
+                                        A partir de
+                                    </span>
+        
+                                    <span><b>R$</b> 50,00</span>
+                                </div>
+                            </div>
+                            
+                            <div class="preco">
+                                <span>
+                                    BUSTO
+                                </span>
+                                <div class="preco2">
+                                    <span id="sub">
+                                        A partir de
+                                    </span>
+        
+                                    <span><b>R$</b> 70,00</span>
+        
+                                </div>
+                            </div>
+                            <div class="preco">
+                                <span>
+                                    MEIO CORPO
+                                </span>
+                                <div class="preco2">
+                                    <span id="sub">
+                                        A partir de
+                                    </span>
+        
+                                    <span><b>R$</b> 100,00</span>
+        
+                                </div>
+                            </div>
+                            <div class="preco">
+                                <span>
+                                    CORPO INTEIRO
+                                </span>
+                                <div class="preco2">
+                                    <span id="sub">
+                                        A partir de
+                                    </span>
+        
+                                    <span><b>R$</b> 150,00</span>
+        
+                                </div>
+                            </div>
+        
+                            <span style="color: white;font-family:Fredoka; font-size:10pt;width:21.6rem;">você pode ver mais exemplos em <a style="color: #FFD383;" href="artstation.com/umianny">artstation.com/umianny</a></span>
+                        </div>
+                        </div>
+                        <div class="cont3">
+                                <img id="fc" src="https://i.postimg.cc/qB5XJhck/tit3.png" alt="">
+
+                            <div class="img2">
+                            </div>
+
+                                <div style="
+                                position:relative;
+                                left:27rem;
+                                bottom:27.6rem;
+                                height: 4.5rem;
+                                width: 20rem;
+                                background-color: #3a2d48;
+                                border-radius: 10px;
+                                font-family: Fredoka;
+                                color: white;
+                                text-align: center;       
+                                align-items: center;      
+                                font-size:10pt;            
+                                padding:10px;
+                                "> 
+        
+                                A pintura <span style="color: #FFD383;">Full Render</span> (Renderizado) é categorizada 
+                                como uma pintura de <span style="color: #FFD383;">sombreamento mais completo</span> 
+                                , com mais volumetria e
+                                iluminação definida. É mais usada em ilustrações 
+                                completas e posters.
+                            </div>
+
+                                <div style="position: relative; 
+                                width: 20.6rem;
+                                height: 19rem;
+                                bottom: 27rem;
+                                left: 26.8rem;
+                                display: flex;
+                                flex-direction: column;
+                                gap: 15px;  
+                                ">
+
+                        <div class="preco">
+                            <span>
+                                ICON - PORTRAIT
+                            </span>
+                            <div class="preco2">
+                                <span id="sub">
+                                    A partir de
+                                </span>
+
+                                <span><b>R$</b> 70,00</span>
+                            </div>
+                        </div>
+                        
+                        <div class="preco">
+                            <span>
+                                BUSTO
+                            </span>
+                            <div class="preco2">
+                                <span id="sub">
+                                    A partir de
+                                </span>
+
+                                <span><b>R$</b> 100,00</span>
+
+                            </div>
+                        </div>
+                        <div class="preco">
+                            <span>
+                                MEIO CORPO
+                            </span>
+                            <div class="preco2">
+                                <span id="sub">
+                                    A partir de
+                                </span>
+
+                                <span><b>R$</b> 150,00</span>
+
+                            </div>
+                        </div>
+                        <div class="preco">
+                            <span>
+                                CORPO INTEIRO
+                            </span>
+                            <div class="preco2">
+                                <span id="sub">
+                                    A partir de
+                                </span>
+
+                                <span><b>R$</b> 250,00</span>
+
+                            </div>
+                        </div>
+
+                        <span style="color: white;font-family:Fredoka; font-size:10pt;width:21.6rem;">você pode ver mais exemplos em <a style="color: #FFD383;" href="artstation.com/umianny">artstation.com/umianny</a></span>
                 </div>
             </div>
 
