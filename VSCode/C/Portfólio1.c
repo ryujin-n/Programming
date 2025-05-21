@@ -14,7 +14,7 @@ int main() {
     setlocale(LC_ALL, "portuguese");  
 
     printf("Informe o nome do animal: ");
-    scanf("%29s", nome_animal);  // Prevents buffer overflow
+    scanf("%29s", nome_animal);  
 
     printf("Informe a Quantidade de animais: ");
     scanf("%d", &qnt_animal);
