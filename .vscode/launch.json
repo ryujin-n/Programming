@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/miles/Documents/GitHub/Programming/VSCode/C",
-      "program": "c:/Users/miles/Documents/GitHub/Programming/VSCode/C/build/Debug/outDebug",
+      "cwd": "c:/Users/miles/Documents/GitHub/Programming/VSCode/C/if - composto/2",
+      "program": "c:/Users/miles/Documents/GitHub/Programming/VSCode/C/if - composto/2/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
