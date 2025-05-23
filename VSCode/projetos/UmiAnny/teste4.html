@@ -45,7 +45,7 @@
 
         .nav {
             position: relative; 
-            top: 8rem;
+            top: 5rem;
             display: flex;
             flex-direction: column;
             gap: 20px;
@@ -71,11 +71,14 @@
             font-weight: 500;
             color: #FFD383;
             cursor: pointer;
+            transition: transform 0.2s; 
         }
 
         .bto:hover {
             background-color: #FFD383;
             color: #332840;
+            transform: translateX(3px);
+            
         }
 
         .lang {
@@ -95,7 +98,7 @@
         
         .h1, .h2 {
             position: absolute;
-            margin-left: 4.3rem;
+            margin-left: 5rem;
             color: #FFD383;
             font-family: Fredoka;
             font-size: 12pt;
@@ -115,7 +118,7 @@
             width: 48.6rem;
             height: 33rem;
             left: 17.3rem;
-            bottom: 21.5rem;
+            bottom: 17.7rem;
         }
 
         .content-section {
@@ -343,7 +346,7 @@
         .funds {
             position: relative;
             width: 50.7rem;
-            height: 33rem;
+            height: 35rem;
             overflow-y: scroll;
             overflow-x: hidden;
         }
@@ -353,7 +356,11 @@
             width: 100%;
             margin-bottom: 3rem;
         }
-        
+        #ill .cont, .cont2 {
+            height: 100%;
+            width: 100%;
+            margin-bottom: 1.6rem;
+        }
         .cont3 {
             height: 100%;
             width: 100%;
@@ -386,6 +393,18 @@
             background-color: azure;
             background-image: none;
         }
+        #pngt .funds{
+            height: 35rem;
+        }
+
+        .hrh:hover{
+            color: #c0a4e0; 
+        }
+        .hrh{
+            color: #FFD383;
+        }
+
+
     </style>
 
     <div class="bg">
@@ -402,9 +421,7 @@
             <a href="#" id="btn-pngt" class="bto">
                 <span>PNGTuber</span>
             </a>
-            <a href="#" id="btn-ss" class="bto">
-                <span>Stream Set</span>
-            </a>
+            
             <a href="#" id="btn-emt" class="bto">
                 <span>EMOTES - Badges</span>
             </a>
@@ -468,7 +485,7 @@
                                     <span><b>R$</b> 150,00</span>
                                 </div>
                             </div>
-                            <span style="color: white;font-family:Fredoka; font-size:10pt;width:21.6rem;">você pode ver mais exemplos em <a style="color: #FFD383;" href="artstation.com/umianny">artstation.com/umianny</a></span>
+                            <span style="color: white;font-family:Fredoka; font-size:10pt;width:21.6rem;">você pode ver mais exemplos em <a  class="hrh" href="artstation.com/umianny">artstation.com/umianny</a></span>
                         </div>
                     </div>
                     <div class="cont3">
@@ -509,7 +526,7 @@
                                     <span><b>R$</b> 250,00</span>
                                 </div>
                             </div>
-                            <span style="color: white;font-family:Fredoka; font-size:10pt;width:21.6rem;">você pode ver mais exemplos em <a style="color: #FFD383;" href="artstation.com/umianny">artstation.com/umianny</a></span>
+                            <span style="color: white;font-family:Fredoka; font-size:10pt;width:21.6rem;">você pode ver mais exemplos em <a class="hrh" href="artstation.com/umianny">artstation.com/umianny</a></span>
                         </div>
                     </div>
                 </div>
@@ -611,46 +628,110 @@
             </div>
 
             <div id="pngt" class="content-section">
-                <div class="cont2">
+                <div class="funds">
+                    <div class="cont">
                         <img id="fc" src="https://i.postimg.cc/28JByc9n/PNGTUBER.png" alt="">
                         <div class="img1"></div>
-                        <div style="position:relative; left:27rem; bottom:27.6rem; height: 5.5rem; width: 20rem; background-color: #3a2d48; border-radius: 10px; font-family: Fredoka; color: white; text-align: center; align-items: center; font-size:10pt; padding:10px;">
-                            A pintura <span style="color: #FFD383;">flat color</span> (cores base) é categorizada 
-                            como uma pintura de <span style="color: #FFD383;">sombreamento simples e cores mais chapadas</span>, 
-                            sem muita volumetria ou iluminação definida. É mais usada em ilustrações 
-                            simples e concept de personagens.
+                        <div style="position: relative;
+                                     bottom:26rem;
+                                     left:27.7rem;
+                                     font-family:Fredoka;
+                                     color:white;
+                                     font-size:20pt;
+                                     background-color:#332840;
+                                     width:14rem;
+                                     height:4rem;
+                                     align-content:center;
+                                     padding-left:1rem;
+                                     border-radius:1rem;
+                                     ">Chibi 1</div>
+                         <div style="position: relative; width: 20.6rem; height: 19rem; bottom: 25rem; left: 26.8rem; display: flex; flex-direction: column; gap: 15px;">
+                            <div class="preco">
+                                <span>BASE</span>
+                                <div class="preco2">
+                                    <span id="sub">A partir de</span>
+                                    <span><b>R$</b> 40,00</span>
+                                </div>
+                            </div>
+                            <div class="preco">
+                                <span>EXTRAS</span>
+                                <div class="preco2">
+                                    <span id="sub">A partir de</span>
+                                    <span><b>R$</b> 5,00</span>
+                                </div>
+                            </div>
+                            <span style="color: white;font-family:Fredoka; font-size:10pt;width:21.6rem;">você pode ver mais exemplos em <a class="hrh" href="artstation.com/umianny">artstation.com/umianny</a></span>
                         </div>
-                        <div style="position: relative; width: 20.6rem; height: 19rem; bottom: 27rem; left: 26.8rem; display: flex; flex-direction: column; gap: 15px;">
+                       
+                    </div>
+                    <div class="cont2">
+                        <img id="fc" src="https://i.postimg.cc/28JByc9n/PNGTUBER.png" alt="">
+                        <div class="img1"></div>
+                        <div style="position: relative;
+                                     bottom:26rem;
+                                     left:27.7rem;
+                                     font-family:Fredoka;
+                                     color:white;
+                                     font-size:20pt;
+                                     background-color:#332840;
+                                     width:14rem;
+                                     height:4rem;
+                                     align-content:center;
+                                     padding-left:1rem;
+                                     border-radius:1rem;
+                                     ">Chibi 2</div>
+                         <div style="position: relative; width: 20.6rem; height: 19rem; bottom: 25rem; left: 26.8rem; display: flex; flex-direction: column; gap: 15px;">
                             <div class="preco">
-                                <span>ICON - PORTRAIT</span>
+                                <span>BASE</span>
                                 <div class="preco2">
                                     <span id="sub">A partir de</span>
-                                    <span><b>R$</b> 50,00</span>
+                                    <span><b>R$</b> 60,00</span>
                                 </div>
                             </div>
                             <div class="preco">
-                                <span>BUSTO</span>
+                                <span>EXTRAS</span>
                                 <div class="preco2">
                                     <span id="sub">A partir de</span>
-                                    <span><b>R$</b> 70,00</span>
+                                    <span><b>R$</b> 10,00</span>
+                                </div>
+                            </div>
+                            <span style="color: white;font-family:Fredoka; font-size:10pt;width:21.6rem;">você pode ver mais exemplos em <a class="hrh" href="artstation.com/umianny">artstation.com/umianny</a></span>
+                         </div>
+                    </div>
+                    <div class="cont3">
+                        <img id="fc" src="https://i.postimg.cc/28JByc9n/PNGTUBER.png" alt="">
+                        <div class="img1"></div>
+                        <div style="position: relative;
+                                     bottom:26rem;
+                                     left:27.7rem;
+                                     font-family:Fredoka;
+                                     color:white;
+                                     font-size:20pt;
+                                     background-color:#332840;
+                                     width:14rem;
+                                     height:4rem;
+                                     align-content:center;
+                                     padding-left:1rem;
+                                     border-radius:1rem;
+                                     ">Chibi 3</div>
+                         <div style="position: relative; width: 20.6rem; height: 19rem; bottom: 25rem; left: 26.8rem; display: flex; flex-direction: column; gap: 15px;">
+                            <div class="preco">
+                                <span>BASE</span>
+                                <div class="preco2">
+                                    <span id="sub">A partir de</span>
+                                    <span><b>R$</b> 80,00</span>
                                 </div>
                             </div>
                             <div class="preco">
-                                <span>MEIO CORPO</span>
+                                <span>EXTRAS</span>
                                 <div class="preco2">
                                     <span id="sub">A partir de</span>
-                                    <span><b>R$</b> 100,00</span>
+                                    <span><b>R$</b> 15,00</span>
                                 </div>
                             </div>
-                            <div class="preco">
-                                <span>CORPO INTEIRO</span>
-                                <div class="preco2">
-                                    <span id="sub">A partir de</span>
-                                    <span><b>R$</b> 150,00</span>
-                                </div>
-                            </div>
-                            <span style="color: white;font-family:Fredoka; font-size:10pt;width:21.6rem;">você pode ver mais exemplos em <a style="color: #FFD383;" href="artstation.com/umianny">artstation.com/umianny</a></span>
+                            <span style="color: white;font-family:Fredoka; font-size:10pt;width:21.6rem;">você pode ver mais exemplos em <a class="hrh" href="artstation.com/umianny">artstation.com/umianny</a></span>
                         </div>
+                    </div>
                 </div>
             </div>
 
@@ -659,83 +740,72 @@
                        <div class="cont2">
                         <img id="fc" src="https://i.postimg.cc/2Sr3VsFb/EMOTES.png" alt="">
                         <div style="top: -2.4rem;background-image:none;" class="img1"></div>
-                        <div style="position:relative; left:27rem; bottom:27.6rem; height: 5.5rem; width: 20rem; background-color: #3a2d48; border-radius: 10px; font-family: Fredoka; color: white; text-align: center; align-items: center; font-size:10pt; padding:10px;">
-                            A pintura <span style="color: #FFD383;">flat color</span> (cores base) é categorizada 
-                            como uma pintura de <span style="color: #FFD383;">sombreamento simples e cores mais chapadas</span>, 
-                            sem muita volumetria ou iluminação definida. É mais usada em ilustrações 
-                            simples e concept de personagens.
+                        <div style="position:relative; left:27rem; bottom:27.6rem; height: 0.2rem; width: 21.4rem; background-color:#FFD383; border-radius: 10px; ">
+            
                         </div>
-                        <div style="position: relative; width: 20.6rem; height: 19rem; bottom: 27rem; left: 26.8rem; display: flex; flex-direction: column; gap: 15px;">
+                        <div style="position: relative; width: 20.6rem; height: 19rem; bottom: 26rem; left: 26.8rem; display: flex; flex-direction: column; gap: 15px;">
                             <div class="preco">
-                                <span>ICON - PORTRAIT</span>
+                                <span>1 EMOTE</span>
                                 <div class="preco2">
                                     <span id="sub">A partir de</span>
                                     <span><b>R$</b> 50,00</span>
                                 </div>
                             </div>
                             <div class="preco">
-                                <span>BUSTO</span>
+                                <span>2 EMOTES</span>
                                 <div class="preco2">
                                     <span id="sub">A partir de</span>
                                     <span><b>R$</b> 70,00</span>
                                 </div>
                             </div>
                             <div class="preco">
-                                <span>MEIO CORPO</span>
+                                <span>4 EMOTES</span>
                                 <div class="preco2">
                                     <span id="sub">A partir de</span>
                                     <span><b>R$</b> 100,00</span>
                                 </div>
                             </div>
                             <div class="preco">
-                                <span>CORPO INTEIRO</span>
+                                <span>8 EMOTES</span>
                                 <div class="preco2">
                                     <span id="sub">A partir de</span>
                                     <span><b>R$</b> 150,00</span>
                                 </div>
                             </div>
-                            <span style="color: white;font-family:Fredoka; font-size:10pt;width:21.6rem;">você pode ver mais exemplos em <a style="color: #FFD383;" href="artstation.com/umianny">artstation.com/umianny</a></span>
+                            <span style="color: white;font-family:Fredoka; font-size:10pt;width:21.6rem;">você pode ver mais exemplos em <a class="hrh" href="artstation.com/umianny">artstation.com/umianny</a></span>
                         </div>
                     </div>
                     <div class="cont3">
                         <img id="fc" src="https://i.postimg.cc/cLrM5t2B/BADGES.png" alt="">
                         <div style="top: -2.4rem;background-image:none;" class="img2"></div>
-                        <div style="position:relative; left:27rem; bottom:27.6rem; height: 4.5rem; width: 20rem; background-color: #3a2d48; border-radius: 10px; font-family: Fredoka; color: white; text-align: center; align-items: center; font-size:10pt; padding:10px;">
-                            A pintura <span style="color: #FFD383;">Full Render</span> (Renderizado) é categorizada 
-                            como uma pintura de <span style="color: #FFD383;">sombreamento mais completo</span>, 
-                            com mais volumetria e iluminação definida. É mais usada em ilustrações 
-                            completas e posters.
+                        <div style="position:relative; left:27rem; bottom:27.6rem; height: 0.2rem; width: 21.4rem; background-color:#FFD383; border-radius: 10px; ">
+            
                         </div>
-                        <div style="position: relative; width: 20.6rem; height: 19rem; bottom: 27rem; left: 26.8rem; display: flex; flex-direction: column; gap: 15px;">
+                        <div style="position: relative; width: 20.6rem; height: 19rem; bottom: 26rem; left: 26.8rem; display: flex; flex-direction: column; gap: 15px;">
                             <div class="preco">
-                                <span>ICON - PORTRAIT</span>
+                                <span>1 BADGE</span>
                                 <div class="preco2">
                                     <span id="sub">A partir de</span>
                                     <span><b>R$</b> 70,00</span>
                                 </div>
                             </div>
                             <div class="preco">
-                                <span>BUSTO</span>
+                                <span>3 BADGES</span>
                                 <div class="preco2">
                                     <span id="sub">A partir de</span>
                                     <span><b>R$</b> 100,00</span>
                                 </div>
                             </div>
                             <div class="preco">
-                                <span>MEIO CORPO</span>
+                                <span>6 BADGES</span>
                                 <div class="preco2">
                                     <span id="sub">A partir de</span>
                                     <span><b>R$</b> 150,00</span>
                                 </div>
                             </div>
-                            <div class="preco">
-                                <span>CORPO INTEIRO</span>
-                                <div class="preco2">
-                                    <span id="sub">A partir de</span>
-                                    <span><b>R$</b> 250,00</span>
-                                </div>
-                            </div>
-                            <span style="color: white;font-family:Fredoka; font-size:10pt;width:21.6rem;">você pode ver mais exemplos em <a style="color: #FFD383;" href="artstation.com/umianny">artstation.com/umianny</a></span>
+                            
+                            <span style="color: #FFD383;font-family:Fredoka; font-size:10pt;width:21.6rem;">Acima de 6 unidades,será cobrado o adicional de 1 badge </span>
+                            <span style="color: white;font-family:Fredoka; font-size:10pt;width:21.6rem;">você pode ver mais exemplos em <a class="hrh" href="artstation.com/umianny">artstation.com/umianny</a></span>
                         </div>
                     </div>
                     
@@ -746,27 +816,11 @@
                 <div class="cont2">
                     <img id="fc" src="https://i.postimg.cc/L8D5fxNy/VTUBER.png" alt="">
                     <div style="top: -2.4rem;background-image:none;" class="img1"></div>
-                    <div style="position:relative; left:27rem; bottom:27.6rem; height: 5.5rem; width: 20rem; background-color: #3a2d48; border-radius: 10px; font-family: Fredoka; color: white; text-align: center; align-items: center; font-size:10pt; padding:10px;">
-                        A pintura <span style="color: #FFD383;">flat color</span> (cores base) é categorizada 
-                        como uma pintura de <span style="color: #FFD383;">sombreamento simples e cores mais chapadas</span>, 
-                        sem muita volumetria ou iluminação definida. É mais usada em ilustrações 
-                        simples e concept de personagens.
+                     <div style="position:relative; left:27rem; bottom:27.6rem; height: 0.2rem; width: 21.4rem; background-color:#FFD383; border-radius: 10px; ">
+            
                     </div>
-                    <div style="position: relative; width: 20.6rem; height: 19rem; bottom: 27rem; left: 26.8rem; display: flex; flex-direction: column; gap: 15px;">
-                        <div class="preco">
-                            <span>ICON - PORTRAIT</span>
-                            <div class="preco2">
-                                <span id="sub">A partir de</span>
-                                <span><b>R$</b> 50,00</span>
-                            </div>
-                        </div>
-                        <div class="preco">
-                            <span>BUSTO</span>
-                            <div class="preco2">
-                                <span id="sub">A partir de</span>
-                                <span><b>R$</b> 70,00</span>
-                            </div>
-                        </div>
+                    <div style="position: relative; width: 20.6rem; height: 19rem; bottom: 26rem; left: 26.8rem; display: flex; flex-direction: column; gap: 15px;">
+                        
                         <div class="preco">
                             <span>MEIO CORPO</span>
                             <div class="preco2">
@@ -781,7 +835,7 @@
                                 <span><b>R$</b> 150,00</span>
                             </div>
                         </div>
-                        <span style="color: white;font-family:Fredoka; font-size:10pt;width:21.6rem;">você pode ver mais exemplos em <a style="color: #FFD383;" href="artstation.com/umianny">artstation.com/umianny</a></span>
+                        <span style="color: white;font-family:Fredoka; font-size:10pt;width:21.6rem;">você pode ver mais exemplos em <a class="hrh" href="artstation.com/umianny">artstation.com/umianny</a></span>
                 </div>
             </div>
         </div>

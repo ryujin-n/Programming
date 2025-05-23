@@ -16,117 +16,217 @@
             min-height: 100vh;
             font-family: 'Fredoka', sans-serif;
         }
+        
+        a {
+            background-color: #0c000f52;
+            color: #FFD383;
+            border-radius: 20px;
+            text-decoration: none;
+        }
+        
         a:hover {
             background-color: #FFD383;
             color: #332840;
         }
 
-        a{
-            background-color: #0c000f52;
-            color: #FFD383;
-            border-radius: 20px;
+        .bg {
+            position: relative;
+            height: 87vh;
+            width: 95vw;
+            background-color: #201529b7;
+            backdrop-filter: blur(3px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0px 0px 11px 4px #180a2366;
+            border-radius: 10px;
+            border: solid 1px #332840;
+            margin: auto;
+            overflow: hidden;
         }
+
+        .txts {
+            margin-left: 30px;
+            position: relative;
+            height: 100%;
+            top: 0.7rem;
+        }
+
+        .name {
+            position: absolute;
+            margin: 25px;
+            color: #FFD383;
+            font-size: 40pt;
+            font-family: Fredoka;
+        }
+
+        .name2 {
+            position: absolute;
+            top: 4rem;
+            margin: 25px;
+            color: white;
+            font-size: 15pt;
+            font-family: Fredoka;
+        }
+
+        .title {
+            position: absolute;
+            top: 5.5rem;
+            margin: 25px;
+            color: #FFD383;
+            font-size: 12pt;
+            font-family: Fredoka;
+        }
+
+        .status {
+            position: absolute;
+            top: 7.3rem;
+            margin: 25px;
+            color: #FFD383;
+            font-size: 20pt;
+            font-family: Fredoka;
+        }
+
+        .button-container {
+            position: absolute;
+            padding: 25px;
+            display: flex; 
+            flex-direction: column; 
+            gap: 20px; 
+            top: 13rem;
+        }
+
+        .button {
+            height: 60px; 
+            width: 300px;
+            border-radius: 10px; 
+            display: flex; 
+            align-items: center;
+            justify-content: space-between; 
+            padding: 0 15px;
+            transition: transform 0.2s; 
+            cursor: pointer;
+        }
+
+        .button:hover {
+            transform: translateX(3px);
+        }
+
+        .button-text {
+            font-size: 20pt; 
+            font-family: Fredoka;
+        }
+
+        .button-icon {
+            font-size: 20pt;
+        }
+
+        .artwork {
+            position: absolute;
+            bottom: 2rem;
+            right: 1rem;
+            height: auto;
+            width: 29.3rem;
+        }
+          .menu-toggle {
+            display: none;
+            cursor: pointer;
+            padding: 10px;
+            position: absolute;
+            bottom: 37rem;
+            right: 20px;
+            z-index: 100;
+        }
+
+        .hamburger {
+            width: 30px;
+            height: 3px;
+            background-color: #FFD383;
+            margin: 6px 0;
+            transition: 0.4s;
+        }
+
+        @media (max-width: 767px) {
+            .button-container {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background-color: #201529;
+                padding: 80px 20px 20px;
+                transition: 0.5s;
+                z-index: 99;
+                margin-bottom: 0;
+            }
+
+            .button-container.active {
+                right: 0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .menu-toggle.active .hamburger:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+
+            .menu-toggle.active .hamburger:nth-child(2) {
+                opacity: 0;
+            }
+
+            .menu-toggle.active .hamburger:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+        }
+        
     </style>
 </head>
 <body>
-    <div style="position: relative;
-                height: 95vh;
-                width: 95vw;
-                background-color: #201529b7;
-                backdrop-filter: blur(3px);
-                -webkit-backdrop-filter: blur(10px);
-                box-shadow: 0px 0px 11px 4px #180a2366;
-                border-radius: 10px;
-                border: solid 1px #332840;
-                margin: auto;
-                overflow: hidden;">
-        
-        <div style="margin-left: 30px; position:relative; height:100%; top:2rem;">
-            <!-- Text Content -->
-            <span style="position:absolute;
-                        margin:25px;
-                        color:#FFD383;
-                        font-size:40pt;
-                        font-family:Fredoka;">
+    <div class="bg">
+        <div class="txts">
+            <div class="menu-toggle" id="menuToggle">
+                <div class="hamburger"></div>
+                <div class="hamburger"></div>
+                <div class="hamburger"></div>
+            </div>
+			
+            <span class="name">
                 UmiAnny
             </span>
     
-            <span style="position:absolute;
-                        top:4rem;
-                        margin:25px;
-                        color:white;
-                        font-size:15pt;
-                        font-family:Fredoka;">
+            <span class="name2">
                 Anny Gabrielli | She/Her
             </span>
     
-            <span style="position:absolute;
-                        top:5.5rem;
-                        margin:25px;
-                        color:#FFD383;
-                        font-size:12pt;
-                        font-family:Fredoka;">
+            <span class="title">
                 Freelancer Illustrator - Concept Artist - Graphic Designer - Streamer
             </span>
     
-            <span style="position:absolute;
-                        top:7.3rem;
-                        margin:25px;
-                        color:#FFD383;
-                        font-size:20pt;
-                        font-family:Fredoka;">
+            <span class="status">
                 Commissions Status: OPEN (0/5)
             </span>
     
-            <!-- Buttons -->
-            <div style="position:absolute;padding:25px;
-            display: flex; flex-direction: column; gap: 20px; top:13rem;">
-    
-            <a href="#" style="text-decoration:none;">
-                <div style="height: 60px; width: 300px;
-                            border-radius: 10px; display: flex; align-items: center;
-                            justify-content: space-between; padding: 0 15px;
-                            transition: transform 0.2s; cursor: pointer;">
-                    <span style=" font-size:20pt; font-family:Fredoka;">
-                        Portfólio
-                    </span>
-                    <i class="fa-brands fa-artstation" style=" font-size:20pt"></i>
-                </div>
-            </a>
-            
-            <a href="#" style="text-decoration:none;">
-                <div style="height: 60px; width: 300px;
-                            border-radius: 10px; display: flex; align-items: center;
-                            justify-content: space-between; padding: 0 15px;
-                            transition: transform 0.2s; cursor: pointer;">
-                    <span style=" font-size:20pt; font-family:Fredoka;">
-                        Commissions
-                    </span>
-                    <i class="fa-solid fa-paintbrush" style=" font-size:20pt"></i>
-                </div>
-            </a>
-            
-            <a href="#" style="text-decoration:none;">
-                <div style="height: 60px; width: 300px;
-                            border-radius: 10px; display: flex; align-items: center;
-                            justify-content: space-between; padding: 0 15px;
-                            transition: transform 0.2s; cursor: pointer;">
-                    <span style=" font-size:20pt; font-family:Fredoka;">
-                        Queue
-                    </span>
-                    <i class="fa-brands fa-trello" style=" font-size:20pt"></i>
-                </div>
-            </a>
-        </div>
+            <div class="button-container" id="buttonContainer">
+                <a href="https://umianny.artstation.com/" target="_blank" >
+                    <div class="button">
+                        <span class="button-text">Portfólio</span>
+                        <i class="fa-brands fa-artstation button-icon"></i>
+                    </div>
+                </a>
+                
+                
+                <a href="https://trello.com/b/gKZ27Jvd/umianny-commissions" target="_blank">
+                    <div class="button">
+                        <span class="button-text">Queue</span>
+                        <i class="fa-brands fa-trello button-icon"></i>
+                    </div>
+                </a>
+            </div>
 
-        <img src="https://i.postimg.cc/59zVrphg/blee.png"
-        style="position: absolute;
-                bottom:2rem;
-                right: 1rem;
-                height: auto;
-                width: 29rem;" 
-        alt="UmiAnny artwork">
+        </div>
     </div>
+    <img src="https://i.postimg.cc/59zVrphg/blee.png" class="artwork" alt="UmiAnny artwork">
+
 
     <script src="https://kit.fontawesome.com/9d5d0bd5f5.js" crossorigin="anonymous"></script>
 </body>
