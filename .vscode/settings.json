@@ -63,5 +63,9 @@
     "stdio.h": "c",
     "stdlib.h": "c"
   },
-  "C_Cpp.errorSquiggles": "disabled"
+  "C_Cpp.errorSquiggles": "disabled",
+  "animations.Command-Palette": "Slide",
+  "animations.Tabs": "Slide",
+  "animations.Scrolling": "Slide",
+  "animations.Focus-Dimming-Mode": "Full Window"
 }
