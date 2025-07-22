@@ -67,5 +67,5 @@
   "animations.Command-Palette": "Slide",
   "animations.Tabs": "Slide",
   "animations.Scrolling": "Slide",
-  "animations.Focus-Dimming-Mode": "Full Window"
+  "animations.Focus-Dimming-Mode": "None"
 }
