@@ -1,1 +1,0 @@
-print ("quer dinheiro?")
