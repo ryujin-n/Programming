@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1>DOM (Document Object Model)</h1>
+
+    <p>O DOM é uma interface de programação para documentos HTML e XML. Ele representa a estrutura do documento como uma árvore de objetos, permitindo que linguagens de programação, como JavaScript, manipulem o conteúdo, a estrutura e o estilo dos elementos da página web de forma dinâmica.</p>
+    <p>Com o DOM, é possível acessar e modificar elementos HTML, atributos, texto e estilos, além de responder a eventos, como cliques de botão ou movimentos do mouse. Isso torna possível criar páginas web interativas e dinâmicas.</p>
+    <p>O DOM é uma parte fundamental do desenvolvimento web moderno, permitindo que os desenvolvedores criem experiências ricas e responsivas para os usuários.</p>
+    <ol>
+        <li>
+           Acessar Elementos: Você pode usar métodos como getElementById, getElementsByClassName, getElementsByTagName e querySelector para selecionar elementos específicos na página. 
+           <ul>
+                <li>
+                    getElementById: Seleciona um elemento pelo seu ID único.
+                </li>
+                <li>
+                    getElementsByClassName: Seleciona todos os elementos que possuem uma determinada classe.
+                </li>
+                <li>
+                    getElementsByTagName: Seleciona todos os elementos de um determinado tipo (tag).
+                </li>
+                <li>
+                    querySelector: Seleciona o primeiro elemento que corresponde a um seletor CSS.
+                </li>
+                <li>
+                    querySelectorAll: Seleciona todos os elementos que correspondem a um seletor CSS.
+                </li>
+           </ul>
+        </li>
+        <li>
+            Modificar Conteúdo: Você pode alterar o conteúdo de elementos HTML usando propriedades como innerHTML, textContent e value.
+            <ul>
+                <li>
+                    innerHTML: Permite alterar o conteúdo HTML de um elemento.
+                </li>
+                <li>
+                    textContent: Permite alterar o conteúdo de texto de um elemento, ignorando qualquer HTML.
+                </li>
+                <li>
+                    value: Usado principalmente em elementos de formulário (como input e textarea) para obter ou definir seu valor.
+                </li>
+            </ul>
+        </li>
+        <li>
+            Alterar Atributos: Você pode modificar atributos de elementos, como src, href, class e style, usando métodos como setAttribute e getAttribute.
+            <ul>
+                <li>
+                    setAttribute: Permite definir o valor de um atributo específico em um elemento.
+                </li>
+                <li>
+                    getAttribute: Permite obter o valor de um atributo específico de um elemento.
+                </li>
+            </ul>
+        </li>
+        <li>
+            Manipular Estilos: Você pode alterar o estilo dos elementos usando a propriedade style ou manipulando classes com classList.
+            <ul>
+                <li>
+                    style: Permite definir estilos CSS diretamente em um elemento.
+                </li>
+                <li>
+                    classList: Permite adicionar, remover ou alternar classes CSS em um elemento.
+                </li>
+            </ul>
+        </li>
+        <li>
+            Adicionar e Remover Elementos: Você pode criar novos elementos usando createElement e adicioná-los ao DOM com appendChild ou insertBefore. Para remover elementos, você pode usar removeChild.
+            <ul>
+                <li>
+                    createElement: Cria um novo elemento HTML.
+                </li>
+                <li>
+                    appendChild: Adiciona um elemento como filho de outro elemento.
+                </li>
+                <li>
+                    insertBefore: Insere um elemento antes de outro elemento específico.
+                </li>
+                <li>
+                    removeChild: Remove um elemento filho de um elemento pai.
+                </li>
+            </ul>
+        </li>
+        <li>
+            Manipular Eventos: Você pode adicionar ouvintes de eventos a elementos para responder a interações do usuário, como cliques, movimentos do mouse e pressionamentos de tecla, usando addEventListener.
+            <ul>
+                <li>
+                    addEventListener: Permite associar uma função a um evento específico em um elemento.
+                </li>
+                <li>
+                    removeEventListener: Permite remover uma função associada a um evento específico em um elemento.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <p>
+        Esses são apenas alguns dos muitos recursos do DOM. A manipulação do DOM é uma habilidade essencial para desenvolvedores web, permitindo a criação de páginas interativas e dinâmicas.
+    </p>
+    
+    <hr>
+    <input type="text" name="txt01" id="txt01">
+    <input type="button" value="Clique aqui" onclick="clique()">
+    <br>
+    <br>
+    <input type="text" name="txt02" id="txt02" readonly>
+    <hr>
+    <br>
+    <script>
+        let txt01 = document.getElementById("txt01");
+        let txt02 = document.getElementById("txt02");
+        function clique(){
+            txt02.value = txt01.value
+            txt02.style.color = "red";
+            txt01.value = ""; 
+            txt01.focus();
+        }
+    </script>
+</body>
+</html>
