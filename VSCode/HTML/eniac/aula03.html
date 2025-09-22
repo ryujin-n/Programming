@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms</title>
+</head>
+<body>
+    <style>
+        * {
+            font-family: Arial, sans-serif;
+        }
+    
+        form {
+            margin-top: 50px;
+        }
+        fieldset {
+            width: 300px;
+            margin: auto;
+            padding: 20px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+        }
+        legend {
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        #nome, #email, #idade {
+            width: 94%;
+            padding: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        #error {
+            border: none;
+            color: red;
+            font-weight: bold;
+            text-align: center;
+            width: 90%;
+            margin-top: 10px;
+        }
+        .test{
+            margin: 10px;
+            padding: 10px;
+            width: 84%;
+        }
+      
+    </style>
+    <form action="">
+        <fieldset>
+            <legend>Formulário de Cadastro</legend>
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" placeholder="Digite seu nome" >
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" placeholder="Digite seu email">
+            <label for="senha">Idade:</label>
+            <input type="number" id="idade" name="idade" placeholder="Digite sua idade">
+            <input type="submit" value="Cadastrar">
+            <input id="error" type="text" disabled>
+        </fieldset>
+    </form>
+
+    <fieldset style="margin-top: 30px;">
+        <legend>Resultado</legend>
+        <input class="test" id="" type="text" placeholder="Nome" disabled>
+        <input class="test" type="text" placeholder="Email" disabled>
+        <input class="test" type="text" placeholder="Idade" disabled>
+    </fieldset>
+    <script>
+        const form = document.querySelector('form');
+        const nomeInput = document.getElementById('nome');
+        const emailInput = document.getElementById('email');
+        const idadeInput = document.getElementById('idade');
+        const errorInput = document.getElementById('error');
+        let e = document.getElementById('email').value;
+
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); 
+
+            errorInput.value = '';
+
+            if (nomeInput.value.trim() === '') {
+                errorInput.value = 'O campo Nome é obrigatório.';
+                nomeInput.focus();
+                return;
+            }
+            else if (emailInput.value.trim() === '') {
+                errorInput.value = 'O campo Email é obrigatório.';
+                emailInput.focus();
+                return;
+            }
+            else if (idadeInput.value.trim() === '') {
+                errorInput.value = 'O campo idade é obrigatório.';
+                idadeInput.focus();
+                return;
+            }
+            else if (e.indexOf('@') === -1 || e.indexOf('.') === -1) {
+                errorInput.value = 'Por favor, insira um email válido.';
+                emailInput.focus();
+                return;
+            }
+            alert('Formulário enviado com sucesso!');
+            
+            form.reset(); 
+        });
+    </script>
+</body>
+</html>
