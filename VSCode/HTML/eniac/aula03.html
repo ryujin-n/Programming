@@ -3,122 +3,184 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forms</title>
-</head>
-<body>
+    <title>Form Validation</title>
     <style>
         * {
             font-family: Arial, sans-serif;
+            box-sizing: border-box;
         }
     
         form {
             margin-top: 50px;
         }
+        
         fieldset {
-            width: 300px;
+            width: 350px;
             margin: auto;
             padding: 20px;
             border: 2px solid #ccc;
             border-radius: 10px;
         }
+        
         legend {
             font-weight: bold;
             font-size: 1.2em;
         }
+        
         label {
             display: block;
             margin-bottom: 8px;
+            font-weight: bold;
         }
-        #nome, #email, #idade {
-            width: 94%;
-            padding: 8px;
+        
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
             margin-bottom: 20px;
             border: 1px solid #ccc;
             border-radius: 4px;
+            font-size: 16px;
         }
+        
         input[type="submit"] {
             background-color: #4CAF50;
             color: white;
-            padding: 10px 15px;
+            padding: 12px 20px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
+            font-size: 16px;
+            width: 100%;
         }
+        
         input[type="submit"]:hover {
             background-color: #45a049;
         }
+        
         #error {
-            border: none;
             color: red;
             font-weight: bold;
             text-align: center;
-            width: 90%;
             margin-top: 10px;
-        }
-        .test{
-            margin: 10px;
             padding: 10px;
-            width: 84%;
+            background-color: #ffe6e6;
+            border-radius: 4px;
+            display: none;
         }
-      
+        
+        .test {
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+        }
+        
+        .success-message {
+            color: green;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #e6ffe6;
+            border-radius: 4px;
+            display: none;
+        }
     </style>
-    <form action="">
+</head>
+<body>
+    <form>
         <fieldset>
             <legend>Formulário de Cadastro</legend>
             <label for="nome">Nome:</label>
-            <input type="text" id="nome" name="nome" placeholder="Digite seu nome" >
+            <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
+            
             <label for="email">Email:</label>
-            <input type="text" id="email" name="email" placeholder="Digite seu email">
-            <label for="senha">Idade:</label>
-            <input type="number" id="idade" name="idade" placeholder="Digite sua idade">
+            <input type="text" id="email" name="email" placeholder="Digite seu email" required>
+            
+            <label for="idade">Idade:</label>
+            <input type="number" id="idade" name="idade" placeholder="Digite sua idade" min="1" max="120" required>
+            
             <input type="submit" value="Cadastrar">
-            <input id="error" type="text" disabled>
+            <div id="error"></div>
+            <div id="success" class="success-message"></div>
         </fieldset>
     </form>
 
     <fieldset style="margin-top: 30px;">
         <legend>Resultado</legend>
-        <input class="test" id="" type="text" placeholder="Nome" disabled>
-        <input class="test" type="text" placeholder="Email" disabled>
-        <input class="test" type="text" placeholder="Idade" disabled>
+        <input class="test" id="n1" type="text" placeholder="Nome" disabled>
+        <input class="test" id="n2" type="text" placeholder="Email" disabled>
+        <input class="test" id="n3" type="text" placeholder="Idade" disabled>
     </fieldset>
+
     <script>
         const form = document.querySelector('form');
         const nomeInput = document.getElementById('nome');
         const emailInput = document.getElementById('email');
         const idadeInput = document.getElementById('idade');
-        const errorInput = document.getElementById('error');
-        let e = document.getElementById('email').value;
+        const errorDiv = document.getElementById('error');
+        const successDiv = document.getElementById('success');
+        const n1 = document.getElementById('n1');
+        const n2 = document.getElementById('n2');
+        const n3 = document.getElementById('n3');
 
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
 
         form.addEventListener('submit', function(event) {
             event.preventDefault(); 
 
-            errorInput.value = '';
+            errorDiv.style.display = 'none';
+            successDiv.style.display = 'none';
+            errorDiv.textContent = '';
 
             if (nomeInput.value.trim() === '') {
-                errorInput.value = 'O campo Nome é obrigatório.';
+                errorDiv.textContent = 'O campo Nome é obrigatório.';
+                errorDiv.style.display = 'block';
                 nomeInput.focus();
                 return;
             }
-            else if (emailInput.value.trim() === '') {
-                errorInput.value = 'O campo Email é obrigatório.';
+
+            if (emailInput.value.trim() === '') {
+                errorDiv.textContent = 'O campo Email é obrigatório.';
+                errorDiv.style.display = 'block';
                 emailInput.focus();
                 return;
             }
-            else if (idadeInput.value.trim() === '') {
-                errorInput.value = 'O campo idade é obrigatório.';
+
+            if (!isValidEmail(emailInput.value.trim())) {
+                errorDiv.textContent = 'Por favor, insira um email válido.';
+                errorDiv.style.display = 'block';
+                emailInput.focus();
+                return;
+            }
+
+            if (idadeInput.value.trim() === '') {
+                errorDiv.textContent = 'O campo Idade é obrigatório.';
+                errorDiv.style.display = 'block';
                 idadeInput.focus();
                 return;
             }
-            else if (e.indexOf('@') === -1 || e.indexOf('.') === -1) {
-                errorInput.value = 'Por favor, insira um email válido.';
-                emailInput.focus();
+
+            const age = parseInt(idadeInput.value);
+            if (age < 1 || age > 120) {
+                errorDiv.textContent = 'Por favor, insira uma idade válida (entre 1 e 120).';
+                errorDiv.style.display = 'block';
+                idadeInput.focus();
                 return;
             }
-            alert('Formulário enviado com sucesso!');
+
+            n1.value = nomeInput.value;
+            n2.value = emailInput.value;
+            n3.value = idadeInput.value + ' anos';
             
-            form.reset(); 
+            successDiv.textContent = 'Formulário enviado com sucesso!';
+            successDiv.style.display = 'block';
+            form.reset();
         });
     </script>
 </body>
