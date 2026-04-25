@@ -142,8 +142,48 @@ Mouse
 
 ========================================================================
 
-Modificadores de visibilidade indicam o nível de acesso aos ocmponentes internos de uma classe (+,- e #)
+Modificadores de visibilidade indicam o nível de acesso aos componentes internos de uma classe (+,- e #)
 
 + = public (a classe atual e todas as outras classes, podem utilizar)
 - = private (somente a classe atual pode utilizar)
 # = protected (a classe atual e todas as suas sub-classes)
+
+========================================================================
+Metodos Acessores:
+
+Existem formas de se acessar um determinado atributo sem precisar dar acesso direto ao mesmo atributo através dos Getters(como se fosse o intermediário)
+Ex:.
+
+e = nova estante
+t = e.totDoc
+
+o codigo acima mostra uma instancia de uma estante (e) e uma variavel t que chama o total de documentos dentro dessa estante, parece simples
+
+uma pessoa vai ate a estante e ve quantos documentos ela tem, mas é bem inseguro, já que QUALQUER pessoa pode ir pra aquela estante e pode ver os seus documentos também
+por isso, podemos utilizar um "intermediário" ou uma pessoa autorizada a mexer naquela estante para pegar os documentos para nós
+
+e = nova estante
+t = e.getTotDoc()
+
+agora, o t chama o método TotDoc() e ele retorna o valor de documentos, seria como ao invés de a estante estar livre para todos acessarem, um balcão e um atendente fosse colocado na frente, você pede ao atendente para que ele vá até a estante e veja quantos documentos tem em seu nome e ele retorna com a resposta
+
+utilizando a mesma situação, e se uma pessoa quiser colocar mais um documento?
+
+e = nova estante
+e.totDoc = e.totDoc + 1
+
+mas como da outra vez, outras pessoas não autorizadas podem chegar e bagunçar a estante, colocar mais documentos do que o necessário...
+por isso, podemos utilizar os Setters, diferentemente dos Getters, os Setters modificam coisas dentro do objeto
+
+e = nova estante
+e.setTotDoc(doc)
+
+dessa forma é como seo atendente agora pudesse receber os documentos para poder colocar nos seus devidos lugares, um Setter normalmente precisa de um parametro para poder funcionar, assim como o atendente precisa receber o documento para poder organizar
+
+os Setters são mais abstratos que os Getters
+
+========================================================================
+
+
+
+
