@@ -10,4 +10,5 @@ public class visibilidade {
         c1.status();
         c1.rabiscar();
     }
+
 }
