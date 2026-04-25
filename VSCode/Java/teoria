@@ -109,4 +109,33 @@ um exemplo prático seria uma forma de biscoito
 
 Utilizamos a mesma forma para formar biscoitos iguais, mas com características diferentes (coberturas diferentes, massas diferentes), mas todas vieram da mesma forma (classe)
 
-Outro conceito primordial é a abstração, q
+Outro conceito primordial é a abstração, que foca apenas em detalhes importantes para implementação do objeto, ignorando detalhes complexos ou desnecessários para isso
+
+Teclado
+    Atributos
+    ├── modelo
+    ├── cor
+    ├── switch
+    ├── tamanho
+    ├── tipo
+    └── ligado
+
+    Metodos
+    ├── digitar()
+    ├── ligar()
+    ├── knob_de_volume()
+    └── trocar_led()
+
+Mouse
+    Atributos
+    ├── modelo
+    ├── cor
+    ├── tipo
+    ├── direcao
+    └── ligado
+
+    Metodos
+    ├── clicar()
+    ├── ligar()
+    ├── trocar_dpi()
+    └── mover()
