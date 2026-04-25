@@ -1,0 +1,112 @@
+Diferentemente da linguagem não orientada a objeto, a POO se baseia nas fucionalidades do objeto e como ele vai funcionar
+para seu proposito
+
+=============================================================================================
+Vantagens da POO
+
+CONFIAVEL = ao alterar uma parte do software, nenhuma outra parte é afetada
+OPORTUNO = Ao dividir tudo em partes, várias delas podem ser desenvolvidas em paralelo
+MANUTENIVEL = Atualizar um software é mais facil, uma pequena modificação vai beneficiar todas as partes que usarem o objeto
+EXTENSIVEL = O software não é estático, ele deve crescer para permanecer útil
+REUTILIZAVEL = Podemos usar objetos de um sistema em outro sistema futuro
+NATURAL = Se preocupar mais na funcionalidade do que nos detalhes de implementação
+
+=============================================================================================
+
+O que é um objeto dentro da POO?
+
+Algo material ou abstrata que pode ser percebida pelos sentidos e descrita por meio das suas características, comportamentos e estado atual. uma caneta por exemplo pode ser considerada um objeto, pois ela possui características que podem ser usadas para criar outras variaveis
+
+Uma caneta pode ser azul, preta, vermelha, etc
+
+Logo, conclui que apartir do objeto CANETA, podemos criar um "molde" para CLASSificar outros objetos "caneta". daí vem o conceito de Classes, as Classes podem ser dintinguidas com três simples perguntas:
+
+Que coisas esse objeto tem?
+Que coisas esse objeto faz?
+Como esse objeto está agora?
+
+Utilizando a caneta como exemplo:
+
+Que coisas esse objeto tem? (Atributos)
+    ├── Modelo
+    ├── Cor
+    ├── Ponta (ponta fina, ponta grossa)
+    ├── Carga (quantidade da carga)
+    └── Tampa (está tampada ou não?)
+Que coisas esse objeto faz? (Métodos)
+    ├── Escrever
+    ├── Rabiscar
+    ├── Pintar
+    └── Tampar/Destampar
+
+Como esse objeto está agora? (Estado)
+
+Analisando isso, já podemos traduzir isso na forma de pseudocodigo:
+
+Classe Caneta
+    modelo: Caractere
+    cor: Caractere
+    ponta: Real
+    carga: Inteiro
+    tampa: Lógico
+
+    Metodo rabiscar()
+        Se(tampada) então
+            escrever("erro")
+        senao
+            escreva("Rabisco")
+        fimSe
+    fimMetodo
+
+    Metodo tampar()
+        tampa = verdadeiro
+    fimMetodo
+
+fimClasse
+
+=============================================================================================
+
+Agora com o "modelo" preparado, podemos começar a criar nossos objetos, a criação de classes não indica criação do objeto ainda, apenas o planejamento de seus atributos e métodos
+
+Atributos
+    modelo: BIC Cristal
+    cor: Azul
+    ponta: 0.5
+    carga: 90
+    tampa: falso
+Métodos
+    escrever()
+    rabiscar()
+    pintar()
+    tampar()
+    destampar()
+Estado
+    Destampada
+    Azul
+    90% de carga
+    [...]
+
+O estado de um objeto é definido em momentos específicos, ele é volátil, ou seja, pode ser uma coisa agora, outra coisa depois, nesse exemplo o estado foi determinado depois de instanciar a classe Caneta
+
+Quando isso acontece, se chama  INSTANCIAMENTO, classes geram objetos, mas objetos também podem ser instanciados
+
+    c1 =  nova  Caneta
+   objeto       classe
+
+c1.cor = "Azul"
+c1.ponta = 0.5
+c1.tampa = falso
+c1.rabiscar()
+
+c2 = nova Caneta
+c2.cor = "Vermelha"
+c2.ponta = 1.0
+c2.tampa = falso
+c2.tampar()
+
+Basicamente, uma classe define os atributos e métodos comuns que serão compartilhados por um objeto e um objeto é uma instancia de uma classe
+um exemplo prático seria uma forma de biscoito
+
+Utilizamos a mesma forma para formar biscoitos iguais, mas com características diferentes (coberturas diferentes, massas diferentes), mas todas vieram da mesma forma (classe)
+
+Outro conceito primordial é a abstração, q
