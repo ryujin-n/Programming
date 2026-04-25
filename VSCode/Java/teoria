@@ -139,3 +139,11 @@ Mouse
     ├── ligar()
     ├── trocar_dpi()
     └── mover()
+
+========================================================================
+
+Modificadores de visibilidade indicam o nível de acesso aos ocmponentes internos de uma classe (+,- e #)
+
++ = public (a classe atual e todas as outras classes, podem utilizar)
+- = private (somente a classe atual pode utilizar)
+# = protected (a classe atual e todas as suas sub-classes)
