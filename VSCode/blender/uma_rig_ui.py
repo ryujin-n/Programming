@@ -14,7 +14,7 @@ INSTALLATION:
 bl_info = {
     "name":        "UmaMusume Eye Rig Panel",
     "author":      "Auto-generated",
-    "version":     (1, 4, 0),
+    "version":     (1, 4, 1),
     "blender":     (4, 0, 0),
     "location":    "View3D > N-Panel > Uma Eye Rig",
     "description": "GUI panel to configure and run the UmaMusume eye rig auto-setup",
@@ -28,9 +28,6 @@ from bpy.types import Panel, Operator, PropertyGroup, UIList
 from bpy.props import (StringProperty, FloatProperty, BoolProperty,
                         PointerProperty, CollectionProperty, IntProperty)
 
-
-# ─────────────────────────────────────────────────────────────────────────────
-#  POLL FUNCTIONS  (must be module-level for PointerProperty)
 # ─────────────────────────────────────────────────────────────────────────────
 
 def _poll_armature(self, obj):
@@ -39,9 +36,6 @@ def _poll_armature(self, obj):
 def _poll_mesh(self, obj):
     return obj.type == 'MESH'
 
-
-# ─────────────────────────────────────────────────────────────────────────────
-#  VALIDATION HELPERS
 # ─────────────────────────────────────────────────────────────────────────────
 
 ALLOWED_EXPR_CHARS = re.compile(r'^[0-9a-zA-Z_\+\-\*/\(\)\.\,\s<>=!&|%^~]+$')
@@ -149,7 +143,6 @@ def collect_all_errors(props, context):
 # ─────────────────────────────────────────────────────────────────────────────
 
 class UmaBoneCollEntry(PropertyGroup):
-    """One bone collection: a name and a comma-separated list of keywords."""
     coll_name: StringProperty(
         name="Name",
         description="Bone collection name",
@@ -157,12 +150,11 @@ class UmaBoneCollEntry(PropertyGroup):
     )
     terms: StringProperty(
         name="Keywords",
-        description="Comma-separated match keywords (case-insensitive)",
+        description="Comma-separated prefix keywords (case-insensitive, matched per name segment)",
         default="keyword",
     )
 
 
-# Default collections seeded on first init
 _DEFAULT_COLLECTIONS = [
     ("Hair",    "hair, ear, tail"),
     ("Cloth",   "shirt, jacket, skirt, ribbon, mantle, cloth, acc, sleeve"),
@@ -175,7 +167,6 @@ _DEFAULT_COLLECTIONS = [
 
 class UmaEyeRigProps(PropertyGroup):
 
-    # ── Object pickers (eyedropper) ───────────────────────────────────────────
     armature_obj: PointerProperty(
         name="Armature",
         description="Pick the rig armature object",
@@ -189,7 +180,6 @@ class UmaEyeRigProps(PropertyGroup):
         poll=_poll_mesh,
     )
 
-    # ── XRange L ──────────────────────────────────────────────────────────────
     xrange_l_min: FloatProperty(name="Min", default=-1.0,
         soft_min=-5.0, soft_max=0.0, step=10, precision=3,
         description="Shape key slider minimum for Eye_20 L (XRange)")
@@ -199,32 +189,27 @@ class UmaEyeRigProps(PropertyGroup):
     xrange_l_expr: StringProperty(name="Expression", default="var * -1.5", maxlen=256,
         description="Driver expression — use 'var' for the rotation value")
 
-    # ── XRange R ──────────────────────────────────────────────────────────────
     xrange_r_min: FloatProperty(name="Min", default=-0.4,
         soft_min=-5.0, soft_max=0.0, step=10, precision=3)
     xrange_r_max: FloatProperty(name="Max", default=1.4,
         soft_min=0.0, soft_max=5.0, step=10, precision=3)
     xrange_r_expr: StringProperty(name="Expression", default="var * -1.5", maxlen=256)
 
-    # ── YRange L ──────────────────────────────────────────────────────────────
     yrange_l_min: FloatProperty(name="Min", default=-2.0,
         soft_min=-5.0, soft_max=0.0, step=10, precision=3)
     yrange_l_max: FloatProperty(name="Max", default=2.0,
         soft_min=0.0, soft_max=5.0, step=10, precision=3)
     yrange_l_expr: StringProperty(name="Expression", default="var * -1.5", maxlen=256)
 
-    # ── YRange R ──────────────────────────────────────────────────────────────
     yrange_r_min: FloatProperty(name="Min", default=-2.0,
         soft_min=-5.0, soft_max=0.0, step=10, precision=3)
     yrange_r_max: FloatProperty(name="Max", default=2.0,
         soft_min=0.0, soft_max=5.0, step=10, precision=3)
     yrange_r_expr: StringProperty(name="Expression", default="var * 1.5", maxlen=256)
 
-    # ── Bone collections ──────────────────────────────────────────────────────
     bone_collections: CollectionProperty(type=UmaBoneCollEntry)
     bone_coll_active: IntProperty(default=0)
 
-    # ── UI state ──────────────────────────────────────────────────────────────
     show_xrange_l:  BoolProperty(default=True)
     show_xrange_r:  BoolProperty(default=True)
     show_yrange_l:  BoolProperty(default=True)
@@ -232,9 +217,6 @@ class UmaEyeRigProps(PropertyGroup):
     show_advanced:  BoolProperty(default=False)
     show_bone_coll: BoolProperty(default=True)
 
-
-# ─────────────────────────────────────────────────────────────────────────────
-#  CORE RIG FUNCTIONS
 # ─────────────────────────────────────────────────────────────────────────────
 
 EYE_CTRL_BONE         = "eye.ctrl"
@@ -407,12 +389,16 @@ def _setup_scale_driver(face_mesh_obj, armature_obj, sk_name, locator_bone, expr
     driver.expression = expression
 
 
+def _term_matches_prefix(bone_name_lower: str, term: str) -> bool:
+
+    parts = re.split(r'[_.\s]', bone_name_lower)
+    return any(part.startswith(term) for part in parts)
+
+
 def _setup_bone_collections(armature_obj, bone_coll_prop):
-    """Build collections from the panel's CollectionProperty."""
     arm = armature_obj.data
     collections = arm.collections
 
-    # Build dict from panel props
     coll_dict = {}
     for entry in bone_coll_prop:
         name = entry.coll_name.strip()
@@ -420,28 +406,24 @@ def _setup_bone_collections(armature_obj, bone_coll_prop):
         if name and terms:
             coll_dict[name] = terms
 
-    # Remove & recreate
     coll_map = {}
     for name in coll_dict:
         if name in collections:
             collections.remove(collections[name])
         coll_map[name] = collections.new(name)
 
-    # Assign bones — first matching collection wins; unmatched stay unassigned
     counts = {name: 0 for name in coll_dict}
     for bone in arm.bones:
         bone_name_lower = bone.name.lower()
         for coll_name, terms in coll_dict.items():
-            if any(term in bone_name_lower for term in terms):
+            if any(_term_matches_prefix(bone_name_lower, term) for term in terms):
                 coll_map[coll_name].assign(bone)
                 counts[coll_name] += 1
-                break  # stop at first match so bone isn't in multiple collections
+                break
 
     return counts
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-#  BONE COLLECTION OPERATORS
 # ─────────────────────────────────────────────────────────────────────────────
 
 class UMAEYERIG_OT_coll_add(Operator):
@@ -511,8 +493,6 @@ class UMAEYERIG_OT_coll_reset(Operator):
         return {'FINISHED'}
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-#  MAIN OPERATORS
 # ─────────────────────────────────────────────────────────────────────────────
 
 class UMAEYERIG_OT_validate(Operator):
@@ -606,8 +586,6 @@ class UMAEYERIG_OT_reset_drivers(Operator):
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-#  PANEL DRAW HELPERS
-# ─────────────────────────────────────────────────────────────────────────────
 
 def _draw_shape_key_block(layout, props, label, icon,
                            show_attr, min_attr, max_attr, expr_attr):
@@ -655,7 +633,6 @@ def _draw_bone_collections(layout, props):
               icon_only=True, emboss=False)
     hrow.label(text="Bone Collections", icon='GROUP_BONE')
 
-    # Add / Reset buttons always visible in header
     hrow.operator("uma_eye_rig.coll_add",   text="", icon='ADD')
     hrow.operator("uma_eye_rig.coll_reset",  text="", icon='LOOP_BACK')
 
@@ -685,10 +662,9 @@ def _draw_bone_collections(layout, props):
 
         # ── Keywords field (always visible) ───────────────────────────────
         kw_col = box.column(align=True)
-        kw_col.label(text="Keywords (comma-separated):", icon='FONTPREVIEW')
+        kw_col.label(text="Prefixes (comma-separated):", icon='FONTPREVIEW')
         kw_col.prop(entry, "terms", text="")
 
-        # Per-entry validation feedback
         name = entry.coll_name.strip()
         terms_raw = entry.terms.strip()
         row_ok = True
@@ -713,11 +689,8 @@ def _draw_bone_collections(layout, props):
         if row_ok:
             parsed = [t.strip() for t in terms_raw.split(",") if t.strip()]
             r = box.row(); r.enabled = False
-            r.label(text=f"✓  {len(parsed)} keyword(s)", icon='CHECKMARK')
+            r.label(text=f"✓  {len(parsed)} prefix(es)", icon='CHECKMARK')
 
-
-# ─────────────────────────────────────────────────────────────────────────────
-#  MAIN PANEL
 # ─────────────────────────────────────────────────────────────────────────────
 
 class UMAEYERIG_PT_main(Panel):
@@ -761,7 +734,6 @@ class UMAEYERIG_PT_main(Panel):
             "Eye_21_R  YRange  (Vertical Right)",   'EVENT_R',
             'show_yrange_r', 'yrange_r_min', 'yrange_r_max', 'yrange_r_expr')
 
-        # ── Fixed scale drivers (info) ────────────────────────────────────
         adv = layout.box()
         adv.prop(props, "show_advanced",
                  icon='TRIA_DOWN' if props.show_advanced else 'TRIA_RIGHT',
@@ -773,7 +745,6 @@ class UMAEYERIG_PT_main(Panel):
 
         layout.separator(factor=0.4)
 
-        # Driver reset button
         layout.operator("uma_eye_rig.reset_drivers", text="Reset Driver Defaults", icon='LOOP_BACK')
 
         layout.separator(factor=0.6)
@@ -808,9 +779,6 @@ class UMAEYERIG_PT_main(Panel):
             if len(errors) > 5:
                 err_box.label(text=f"  … and {len(errors)-5} more (Validate for full list)")
 
-
-# ─────────────────────────────────────────────────────────────────────────────
-#  REGISTRATION
 # ─────────────────────────────────────────────────────────────────────────────
 
 _classes = (
@@ -828,7 +796,6 @@ _classes = (
 
 
 def _seed_bone_collections(dummy=None):
-    """Called on depsgraph post-update to seed defaults once."""
     for scene in bpy.data.scenes:
         props = scene.uma_eye_rig
         if len(props.bone_collections) == 0:
@@ -836,7 +803,6 @@ def _seed_bone_collections(dummy=None):
                 e = props.bone_collections.add()
                 e.coll_name = name
                 e.terms = terms
-        # Remove handler after first run
     if _seed_bone_collections in bpy.app.handlers.depsgraph_update_post:
         bpy.app.handlers.depsgraph_update_post.remove(_seed_bone_collections)
 
