@@ -215,7 +215,6 @@ class UmaEyeRigProps(PropertyGroup):
     show_yrange_l:  BoolProperty(default=True)
     show_yrange_r:  BoolProperty(default=True)
     show_advanced:  BoolProperty(default=False)
-    show_eye_rig:   BoolProperty(default=True)
     show_bone_coll: BoolProperty(default=True)
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -396,7 +395,7 @@ def _term_matches_prefix(bone_name_lower: str, term: str) -> bool:
     return any(part.startswith(term) for part in parts)
 
 
-def _setup_bone_collections(armature_obj, bone_coll_prop, remove_from_main=True):
+def _setup_bone_collections(armature_obj, bone_coll_prop):
     arm = armature_obj.data
     collections = arm.collections
 
@@ -413,9 +412,6 @@ def _setup_bone_collections(armature_obj, bone_coll_prop, remove_from_main=True)
             collections.remove(collections[name])
         coll_map[name] = collections.new(name)
 
-    # Garante que a collection "Main" existe antes de tentar removê-la
-    main_coll = collections.get("Main") if remove_from_main else None
-
     counts = {name: 0 for name in coll_dict}
     for bone in arm.bones:
         bone_name_lower = bone.name.lower()
@@ -423,12 +419,6 @@ def _setup_bone_collections(armature_obj, bone_coll_prop, remove_from_main=True)
             if any(_term_matches_prefix(bone_name_lower, term) for term in terms):
                 coll_map[coll_name].assign(bone)
                 counts[coll_name] += 1
-                # Remove da collection "Main" se ela existir
-                if main_coll is not None:
-                    try:
-                        main_coll.unassign(bone)
-                    except Exception:
-                        pass
                 break
 
     return counts
@@ -563,6 +553,7 @@ class UMAEYERIG_OT_run(Operator):
             for sk, bone in [(SK_ODOROKI_L, EYE_LOCATOR_L), (SK_ODOROKI_R, EYE_LOCATOR_R)]:
                 _setup_scale_driver(face_mesh, armature_obj, sk, bone, odoroki_expr)
 
+            counts = _setup_bone_collections(armature_obj, props.bone_collections)
             bpy.context.view_layer.update()
 
         except Exception as ex:
@@ -573,7 +564,8 @@ class UMAEYERIG_OT_run(Operator):
             self.report({'ERROR'}, f"Setup failed: {ex}")
             return {'CANCELLED'}
 
-        self.report({'INFO'}, "Eye Rig built successfully! ✓")
+        coll_summary = "  |  ".join(f"{k}: {v}" for k, v in counts.items())
+        self.report({'INFO'}, f"Done!  {coll_summary}")
         return {'FINISHED'}
 
 
@@ -590,40 +582,6 @@ class UMAEYERIG_OT_reset_drivers(Operator):
         p.yrange_l_min = -2.0;  p.yrange_l_max = 2.0;  p.yrange_l_expr = "var * -1.5"
         p.yrange_r_min = -2.0;  p.yrange_r_max = 2.0;  p.yrange_r_expr = "var * 1.5"
         self.report({'INFO'}, "Driver defaults restored.")
-        return {'FINISHED'}
-
-
-class UMAEYERIG_OT_build_collections(Operator):
-    """Assign bones to collections and remove them from Main"""
-    bl_idname  = "uma_eye_rig.build_collections"
-    bl_label   = "Build Bone Collections"
-    bl_options = {'REGISTER', 'UNDO'}
-
-    def execute(self, context):
-        props = context.scene.uma_eye_rig
-
-        if props.armature_obj is None:
-            self.report({'ERROR'}, "No armature selected.")
-            return {'CANCELLED'}
-
-        coll_errors = validate_bone_collections(props.bone_collections)
-        if coll_errors:
-            for e in coll_errors:
-                self.report({'ERROR'}, e)
-            return {'CANCELLED'}
-
-        try:
-            counts = _setup_bone_collections(
-                props.armature_obj,
-                props.bone_collections,
-                remove_from_main=True,
-            )
-        except Exception as ex:
-            self.report({'ERROR'}, f"Collections failed: {ex}")
-            return {'CANCELLED'}
-
-        summary = "  |  ".join(f"{k}: {v}" for k, v in counts.items())
-        self.report({'INFO'}, f"Collections built — {summary}")
         return {'FINISHED'}
 
 
@@ -666,6 +624,73 @@ def _draw_shape_key_block(layout, props, label, icon,
         r.label(text="✓ Expression OK", icon='CHECKMARK')
 
 
+def _draw_bone_collections(layout, props):
+    """Editable bone collections section."""
+    outer = layout.box()
+    hrow  = outer.row()
+    hrow.prop(props, "show_bone_coll",
+              icon='TRIA_DOWN' if props.show_bone_coll else 'TRIA_RIGHT',
+              icon_only=True, emboss=False)
+    hrow.label(text="Bone Collections", icon='GROUP_BONE')
+
+    hrow.operator("uma_eye_rig.coll_add",   text="", icon='ADD')
+    hrow.operator("uma_eye_rig.coll_reset",  text="", icon='LOOP_BACK')
+
+    if not props.show_bone_coll:
+        return
+
+    if len(props.bone_collections) == 0:
+        r = outer.row(); r.alert = True
+        r.label(text="No collections defined. Click + to add.", icon='INFO')
+        return
+
+    for i, entry in enumerate(props.bone_collections):
+        box = outer.box()
+
+        # ── Header row: name + move/remove buttons ────────────────────────
+        hdr = box.row(align=True)
+        hdr.prop(entry, "coll_name", text="", icon='GROUP_BONE')
+
+        sub = hdr.row(align=True)
+        sub.scale_x = 0.75
+        op_up = sub.operator("uma_eye_rig.coll_move", text="", icon='TRIA_UP')
+        op_up.index, op_up.direction = i, -1
+        op_dn = sub.operator("uma_eye_rig.coll_move", text="", icon='TRIA_DOWN')
+        op_dn.index, op_dn.direction = i, 1
+        op_rm = sub.operator("uma_eye_rig.coll_remove", text="", icon='X')
+        op_rm.index = i
+
+        # ── Keywords field (always visible) ───────────────────────────────
+        kw_col = box.column(align=True)
+        kw_col.label(text="Prefixes (comma-separated):", icon='FONTPREVIEW')
+        kw_col.prop(entry, "terms", text="")
+
+        name = entry.coll_name.strip()
+        terms_raw = entry.terms.strip()
+        row_ok = True
+
+        if not name:
+            r = box.row(); r.alert = True
+            r.label(text="⚠  Name cannot be empty", icon='ERROR')
+            row_ok = False
+
+        if not terms_raw:
+            r = box.row(); r.alert = True
+            r.label(text="⚠  Keywords cannot be empty", icon='ERROR')
+            row_ok = False
+        else:
+            terms = [t.strip() for t in terms_raw.split(",")]
+            empty = [t for t in terms if not t]
+            if empty:
+                r = box.row(); r.alert = True
+                r.label(text="⚠  Empty keyword (double comma?)", icon='ERROR')
+                row_ok = False
+
+        if row_ok:
+            parsed = [t.strip() for t in terms_raw.split(",") if t.strip()]
+            r = box.row(); r.enabled = False
+            r.label(text=f"✓  {len(parsed)} prefix(es)", icon='CHECKMARK')
+
 # ─────────────────────────────────────────────────────────────────────────────
 
 class UMAEYERIG_PT_main(Panel):
@@ -679,7 +704,7 @@ class UMAEYERIG_PT_main(Panel):
         layout = self.layout
         props  = context.scene.uma_eye_rig
 
-        # ── Scene Objects (always visible) ───────────────────────────────
+        # ── Object pickers ────────────────────────────────────────────────
         obj_box = layout.box()
         obj_box.label(text="Scene Objects", icon='SCENE_DATA')
 
@@ -693,172 +718,66 @@ class UMAEYERIG_PT_main(Panel):
 
         layout.separator(factor=0.6)
 
-        # ══════════════════════════════════════════════════════════════════
-        # ▶ SEÇÃO 1 — Eye Rig
-        # ══════════════════════════════════════════════════════════════════
-        eye_box = layout.box()
-        eye_hdr = eye_box.row(align=True)
-        eye_hdr.prop(props, "show_eye_rig",
-                     icon='TRIA_DOWN' if props.show_eye_rig else 'TRIA_RIGHT',
-                     icon_only=True, emboss=False)
-        eye_hdr.label(text="Eye Rig Setup", icon='HIDE_OFF')
+        # ── Shape key drivers ─────────────────────────────────────────────
+        layout.label(text="Shape Key Drivers", icon='SHAPEKEY_DATA')
 
-        if props.show_eye_rig:
-            eye_box.separator(factor=0.3)
+        _draw_shape_key_block(layout, props,
+            "Eye_20_L  XRange  (Horizontal Left)",  'EVENT_L',
+            'show_xrange_l', 'xrange_l_min', 'xrange_l_max', 'xrange_l_expr')
+        _draw_shape_key_block(layout, props,
+            "Eye_20_R  XRange  (Horizontal Right)", 'EVENT_R',
+            'show_xrange_r', 'xrange_r_min', 'xrange_r_max', 'xrange_r_expr')
+        _draw_shape_key_block(layout, props,
+            "Eye_21_L  YRange  (Vertical Left)",    'EVENT_L',
+            'show_yrange_l', 'yrange_l_min', 'yrange_l_max', 'yrange_l_expr')
+        _draw_shape_key_block(layout, props,
+            "Eye_21_R  YRange  (Vertical Right)",   'EVENT_R',
+            'show_yrange_r', 'yrange_r_min', 'yrange_r_max', 'yrange_r_expr')
 
-            # Shape key drivers
-            eye_box.label(text="Shape Key Drivers", icon='SHAPEKEY_DATA')
-            _draw_shape_key_block(eye_box, props,
-                "Eye_20_L  XRange  (Horizontal Left)",  'EVENT_L',
-                'show_xrange_l', 'xrange_l_min', 'xrange_l_max', 'xrange_l_expr')
-            _draw_shape_key_block(eye_box, props,
-                "Eye_20_R  XRange  (Horizontal Right)", 'EVENT_R',
-                'show_xrange_r', 'xrange_r_min', 'xrange_r_max', 'xrange_r_expr')
-            _draw_shape_key_block(eye_box, props,
-                "Eye_21_L  YRange  (Vertical Left)",    'EVENT_L',
-                'show_yrange_l', 'yrange_l_min', 'yrange_l_max', 'yrange_l_expr')
-            _draw_shape_key_block(eye_box, props,
-                "Eye_21_R  YRange  (Vertical Right)",   'EVENT_R',
-                'show_yrange_r', 'yrange_r_min', 'yrange_r_max', 'yrange_r_expr')
+        adv = layout.box()
+        adv.prop(props, "show_advanced",
+                 icon='TRIA_DOWN' if props.show_advanced else 'TRIA_RIGHT',
+                 text="Scale Drivers (fixed expressions)", emboss=False)
+        if props.show_advanced:
+            col = adv.column(align=True); col.enabled = False; col.scale_y = 0.8
+            col.label(text="CloseA   ← min(max((1-var)/(1-0.8), 0), 1)",   icon='RESTRICT_INSTANCED_OFF')
+            col.label(text="OdorokiA ← min(max((var-1)/(1.2-1), 0), 1)",   icon='RESTRICT_INSTANCED_OFF')
 
-            adv = eye_box.box()
-            adv.prop(props, "show_advanced",
-                     icon='TRIA_DOWN' if props.show_advanced else 'TRIA_RIGHT',
-                     text="Scale Drivers (fixed expressions)", emboss=False)
-            if props.show_advanced:
-                col = adv.column(align=True); col.enabled = False; col.scale_y = 0.8
-                col.label(text="CloseA   ← min(max((1-var)/(1-0.8), 0), 1)",   icon='RESTRICT_INSTANCED_OFF')
-                col.label(text="OdorokiA ← min(max((var-1)/(1.2-1), 0), 1)",   icon='RESTRICT_INSTANCED_OFF')
+        layout.separator(factor=0.4)
 
-            eye_box.separator(factor=0.4)
-            eye_box.operator("uma_eye_rig.reset_drivers",
-                             text="Reset Driver Defaults", icon='LOOP_BACK')
-
-            eye_box.separator(factor=0.6)
-
-            # Validate + Build buttons
-            errors = collect_all_errors(props, context)
-
-            btn_row = eye_box.row(align=True)
-            btn_row.scale_y = 1.2
-            btn_row.operator("uma_eye_rig.validate", icon='CHECKMARK', text="Validate All")
-
-            eye_box.separator(factor=0.3)
-
-            run_row = eye_box.row()
-            run_row.scale_y = 1.8
-            run_row.enabled = not bool(errors)
-            run_row.operator("uma_eye_rig.run", icon='PLAY', text="Build Eye Rig")
-
-            if errors:
-                eye_box.separator(factor=0.3)
-                err_box = eye_box.box()
-                err_box.alert = True
-                err_box.label(text=f"Fix {len(errors)} error(s) to enable build:", icon='ERROR')
-                for e in errors[:5]:
-                    r = err_box.row(); r.scale_y = 0.75
-                    r.label(text=f"• {e}")
-                if len(errors) > 5:
-                    err_box.label(text=f"  … and {len(errors)-5} more (Validate for full list)")
+        layout.operator("uma_eye_rig.reset_drivers", text="Reset Driver Defaults", icon='LOOP_BACK')
 
         layout.separator(factor=0.6)
 
-        # ══════════════════════════════════════════════════════════════════
-        # ▶ SEÇÃO 2 — Bone Collections
-        # ══════════════════════════════════════════════════════════════════
-        coll_outer = layout.box()
-        coll_hdr   = coll_outer.row(align=True)
-        coll_hdr.prop(props, "show_bone_coll",
-                      icon='TRIA_DOWN' if props.show_bone_coll else 'TRIA_RIGHT',
-                      icon_only=True, emboss=False)
-        coll_hdr.label(text="Bone Collections", icon='GROUP_BONE')
+        # ── Bone collections ──────────────────────────────────────────────
+        _draw_bone_collections(layout, props)
 
-        # Botões de lista sempre visíveis no header
-        coll_hdr.operator("uma_eye_rig.coll_add",   text="", icon='ADD')
-        coll_hdr.operator("uma_eye_rig.coll_reset",  text="", icon='LOOP_BACK')
+        layout.separator(factor=0.8)
 
-        if props.show_bone_coll:
-            coll_outer.separator(factor=0.3)
+        # ── Action buttons ────────────────────────────────────────────────
+        errors = collect_all_errors(props, context)
 
-            # Info: remove from Main
-            info_row = coll_outer.row()
-            info_row.enabled = False
-            info_row.label(text="Bones atribuídos serão removidos de 'Main'",
-                           icon='INFO')
+        row_btns = layout.row(align=True)
+        row_btns.scale_y = 1.2
+        row_btns.operator("uma_eye_rig.validate", icon='CHECKMARK', text="Validate All")
 
-            if len(props.bone_collections) == 0:
-                r = coll_outer.row(); r.alert = True
-                r.label(text="Nenhuma collection. Clique + para adicionar.", icon='INFO')
-            else:
-                for i, entry in enumerate(props.bone_collections):
-                    box = coll_outer.box()
+        layout.separator(factor=0.3)
 
-                    # Header: name + move/remove
-                    hdr = box.row(align=True)
-                    hdr.prop(entry, "coll_name", text="", icon='GROUP_BONE')
+        run_row = layout.row()
+        run_row.scale_y = 1.8
+        run_row.enabled = not bool(errors)
+        run_row.operator("uma_eye_rig.run", icon='PLAY', text="Build Eye Rig")
 
-                    sub = hdr.row(align=True)
-                    sub.scale_x = 0.75
-                    op_up = sub.operator("uma_eye_rig.coll_move", text="", icon='TRIA_UP')
-                    op_up.index, op_up.direction = i, -1
-                    op_dn = sub.operator("uma_eye_rig.coll_move", text="", icon='TRIA_DOWN')
-                    op_dn.index, op_dn.direction = i, 1
-                    op_rm = sub.operator("uma_eye_rig.coll_remove", text="", icon='X')
-                    op_rm.index = i
-
-                    # Keywords
-                    kw_col = box.column(align=True)
-                    kw_col.label(text="Prefixes (comma-separated):", icon='FONTPREVIEW')
-                    kw_col.prop(entry, "terms", text="")
-
-                    name     = entry.coll_name.strip()
-                    terms_raw = entry.terms.strip()
-                    row_ok   = True
-
-                    if not name:
-                        r = box.row(); r.alert = True
-                        r.label(text="⚠  Name cannot be empty", icon='ERROR')
-                        row_ok = False
-
-                    if not terms_raw:
-                        r = box.row(); r.alert = True
-                        r.label(text="⚠  Keywords cannot be empty", icon='ERROR')
-                        row_ok = False
-                    else:
-                        terms = [t.strip() for t in terms_raw.split(",")]
-                        empty = [t for t in terms if not t]
-                        if empty:
-                            r = box.row(); r.alert = True
-                            r.label(text="⚠  Empty keyword (double comma?)", icon='ERROR')
-                            row_ok = False
-
-                    if row_ok:
-                        parsed = [t.strip() for t in terms_raw.split(",") if t.strip()]
-                        r = box.row(); r.enabled = False
-                        r.label(text=f"✓  {len(parsed)} prefix(es)", icon='CHECKMARK')
-
-            coll_outer.separator(factor=0.6)
-
-            # Precondição: armature selecionada
-            no_arm = props.armature_obj is None
-            coll_errs = validate_bone_collections(props.bone_collections) if not no_arm else []
-
-            build_row = coll_outer.row()
-            build_row.scale_y = 1.6
-            build_row.enabled = not no_arm and not bool(coll_errs)
-            build_row.operator("uma_eye_rig.build_collections",
-                               icon='OUTLINER_OB_ARMATURE',
-                               text="Build Collections")
-
-            if no_arm:
-                r = coll_outer.row(); r.alert = True
-                r.label(text="Selecione a Armature acima para habilitar.", icon='ERROR')
-            elif coll_errs:
-                err_box = coll_outer.box(); err_box.alert = True
-                err_box.label(text=f"Fix {len(coll_errs)} error(s):", icon='ERROR')
-                for e in coll_errs[:3]:
-                    r = err_box.row(); r.scale_y = 0.75
-                    r.label(text=f"• {e}")
+        if errors:
+            layout.separator(factor=0.3)
+            err_box = layout.box()
+            err_box.alert = True
+            err_box.label(text=f"Fix {len(errors)} error(s) to enable build:", icon='ERROR')
+            for e in errors[:5]:
+                r = err_box.row(); r.scale_y = 0.75
+                r.label(text=f"• {e}")
+            if len(errors) > 5:
+                err_box.label(text=f"  … and {len(errors)-5} more (Validate for full list)")
 
 # ─────────────────────────────────────────────────────────────────────────────
 
@@ -872,7 +791,6 @@ _classes = (
     UMAEYERIG_OT_validate,
     UMAEYERIG_OT_run,
     UMAEYERIG_OT_reset_drivers,
-    UMAEYERIG_OT_build_collections,
     UMAEYERIG_PT_main,
 )
 
