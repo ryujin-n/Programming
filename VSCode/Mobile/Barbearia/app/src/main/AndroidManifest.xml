@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
+            android:name=".cadastro"
+            android:exported="false" />
+        <activity
             android:name=".view.Home"
             android:exported="false" />
         <activity
