@@ -9,26 +9,14 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.myapplication.R;
-import android.widget.TextView;
 
-public class Home extends AppCompatActivity {
-
-    TextView lblUser;
+public class agendamento extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_home);
-
-        lblUser = findViewById(R.id.lblUser);
-
-        String userName = getIntent().getStringExtra("USER_NAME");
-        if (userName != null && !userName.isEmpty()) {
-            String capitalized = userName.substring(0, 1).toUpperCase() + userName.substring(1).toLowerCase();
-            lblUser.setText(capitalized);
-        }
-
+        setContentView(R.layout.activity_agendamento);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);

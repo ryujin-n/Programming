@@ -11,13 +11,11 @@ public class dbhelper extends SQLiteOpenHelper {
     private static final String NOME_BANCO   = "barbershop.db";
     private static final int    VERSAO_BANCO = 1;
 
-    // ── usuários ──────────────────────────────
     public static final String TABELA_USUARIOS  = "usuarios";
     public static final String COL_USER_ID      = "id";
     public static final String COL_USER_NOME    = "nome";
     public static final String COL_USER_SENHA   = "senha";
 
-    // ── agendamentos ──────────────────────────
     public static final String TABELA_AGEND     = "agendamentos";
     public static final String COL_AG_ID        = "id";
     public static final String COL_AG_FK_USER   = "usuario_id";

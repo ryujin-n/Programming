@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
             if (db.verLogin(txtnome, txtsenha)) {
                 showSnackbar("Login realizado!", "sucesso");
-                
+
                 vLogin.postDelayed(() -> {
                     Intent intent = new Intent(MainActivity.this, com.example.myapplication.view.Home.class);
                     intent.putExtra("USER_NAME", txtnome);
