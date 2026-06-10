@@ -142,48 +142,406 @@ Mouse
 
 ========================================================================
 
-Modificadores de visibilidade indicam o nível de acesso aos componentes internos de uma classe (+,- e #)
+    Modificadores de visibilidade
+        indicam o nível de acesso aos componentes internos de uma classe (+,- e #)
 
-+ = public (a classe atual e todas as outras classes, podem utilizar)
-- = private (somente a classe atual pode utilizar)
-# = protected (a classe atual e todas as suas sub-classes)
-
-========================================================================
-Metodos Acessores:
-
-Existem formas de se acessar um determinado atributo sem precisar dar acesso direto ao mesmo atributo através dos Getters(como se fosse o intermediário)
-Ex:.
-
-e = nova estante
-t = e.totDoc
-
-o codigo acima mostra uma instancia de uma estante (e) e uma variavel t que chama o total de documentos dentro dessa estante, parece simples
-
-uma pessoa vai ate a estante e ve quantos documentos ela tem, mas é bem inseguro, já que QUALQUER pessoa pode ir pra aquela estante e pode ver os seus documentos também
-por isso, podemos utilizar um "intermediário" ou uma pessoa autorizada a mexer naquela estante para pegar os documentos para nós
-
-e = nova estante
-t = e.getTotDoc()
-
-agora, o t chama o método TotDoc() e ele retorna o valor de documentos, seria como ao invés de a estante estar livre para todos acessarem, um balcão e um atendente fosse colocado na frente, você pede ao atendente para que ele vá até a estante e veja quantos documentos tem em seu nome e ele retorna com a resposta
-
-utilizando a mesma situação, e se uma pessoa quiser colocar mais um documento?
-
-e = nova estante
-e.totDoc = e.totDoc + 1
-
-mas como da outra vez, outras pessoas não autorizadas podem chegar e bagunçar a estante, colocar mais documentos do que o necessário...
-por isso, podemos utilizar os Setters, diferentemente dos Getters, os Setters modificam coisas dentro do objeto
-
-e = nova estante
-e.setTotDoc(doc)
-
-dessa forma é como seo atendente agora pudesse receber os documentos para poder colocar nos seus devidos lugares, um Setter normalmente precisa de um parametro para poder funcionar, assim como o atendente precisa receber o documento para poder organizar
-
-os Setters são mais abstratos que os Getters
+        + = public (a classe atual e todas as outras classes, podem utilizar)
+        - = private (somente a classe atual pode utilizar)
+        # = protected (a classe atual e todas as suas sub-classes)
 
 ========================================================================
+    Metodos Acessores:
 
+        Existem formas de se acessar um determinado atributo sem precisar dar acesso direto ao mesmo atributo através dos Getters(como se fosse o intermediário)
+        Ex:.
+
+        e = nova estante
+        t = e.totDoc
+
+        o codigo acima mostra uma instancia de uma estante (e) e uma variavel t que chama o total de documentos dentro dessa estante, parece simples
+
+        uma pessoa vai ate a estante e ve quantos documentos ela tem, mas é bem inseguro, já que QUALQUER pessoa pode ir pra aquela estante e pode ver os seus documentos também
+        por isso, podemos utilizar um "intermediário" ou uma pessoa autorizada a mexer naquela estante para pegar os documentos para nós
+
+        e = nova estante
+        t = e.getTotDoc()
+
+        agora, o t chama o método TotDoc() e ele retorna o valor de documentos, seria como ao invés de a estante estar livre para todos acessarem, um balcão e um atendente fosse colocado na frente, você pede ao atendente para que ele vá até a estante e veja quantos documentos tem em seu nome e ele retorna com a resposta
+
+        utilizando a mesma situação, e se uma pessoa quiser colocar mais um documento?
+
+        e = nova estante
+        e.totDoc = e.totDoc + 1
+
+        mas como da outra vez, outras pessoas não autorizadas podem chegar e bagunçar a estante, colocar mais documentos do que o necessário...
+        por isso, podemos utilizar os Setters, diferentemente dos Getters, os Setters modificam coisas dentro do objeto
+
+        e = nova estante
+        e.setTotDoc(doc)
+
+        dessa forma é como seo atendente agora pudesse receber os documentos para poder colocar nos seus devidos lugares, um Setter normalmente precisa de um parametro para poder funcionar, assim como o atendente precisa receber o documento para poder organizar
+
+        os Setters são mais abstratos que os Getters
+
+    Métodos Construtores
+        são blocos especiais de código dentro de uma classe que é executado automaticamente no momento em que um novo objeto é criado (instanciado), sua principal função é preparar o objeto para uso, inicializando seus atributos e garantindo que ele comece com dados válidos
+
+        Ex:.
+
+        Classe Caneta
+            Metodo construtor(m: Caractere, c: Caractere, p: Real)
+                setModelo(m)
+                setCor(c)
+                setPonta(p)
+            FimMetodo
+        FimClasse
+
+        c1 = nova Caneta("BIC", "Azul", "0.5")
+
+Assim que eu criar um novo objeto ele vai seguir as especificações dadas aos parametros
+
+///////////////////////
+    Exemplo pratico com objetos
+
+        Tipo da conta:
+
+        Conta Corrente = cc
+        Conta Poupanca = pp
+
+        Se CC = Saldo + 50
+        se PP = Saldo + 150
+
+        Pra fechar Saldo deve ser = 0
+        Pra Depositar, a conta deve estar aberta
+        Pra Sacar, a conta deve estar aberta e o saque nao pode ser maior que o saldo
+
+        Mensalidade pra CC = 12
+        Mensalidade pra PP = 20
+
+        Metodo construtor:
+
+        Nova conta( Status = Falso,
+                    Saldo = 0)
+//////////////////////////////////////////
+Pilares da POO - Encapsulamento | Herança | Polimorfismo
+
+    ENCAPSULAMENTO (nn é obrigatorio, mas é uma boa pratica pra criar classes mais eficientes)
+
+        Podemos pensar em uma pilha, o invólucro da pilha serve pra PROTEGER e criar um PADRÃO para a pilha
+
+        Na programação, o encapsulamento é o pilar que protege e oculta os dados internos de um objeto, definindo regras claras de como eles podem ser acessados e modificados, ou seja, protege o codigo do programador e o programador do codigo
+
+        um bom objeto encapsulado, possui uma boa interface, uma interface é uma lista de serviços fornecidos por umcmoponente, é o contato com o mundo exterior, que define o que pode ser feito com um objeto dessa classe
+
+        Pra que usar o encapsulamento:
+
+            1- Tornar mudanças invisiveis
+            2- Facilitar reutilização de codigo
+            3- Reduzir efeitos colaterais (falhas de segurança)
+
+        Como encapsular:
+            interface Controlador
+                // Metodos abstratos
+                publico abstrato metodo ligar()
+                publico abstrato metodo desligar()
+                publico abstrato metodo abrirMenu()
+                publico abstrato metodo fecharMenu()
+                publico abstrato metodo maisVolune()
+                publico abstrato metodo menosVolune()
+                publico abstrato metodo ligarMudo()
+                publico abstrato metodo desligarMudo()
+                publico abstrato metodo play()
+                publico abstrato metodo pause()
+            fimInterface
+
+            classe ControleRemoto implementa Controlador
+                // Atributos
+                privado inteiro volume
+                privado logico ligado
+                privado logico tocando
+
+                // Metodos especiais
+                publico Metodo Construtor()
+                    volume = 50
+                    ligado = falso
+                    tocando = falso
+
+                //Getters
+                privado metodo getVolume()
+                    retorne volume
+                fimMetodo
+                privado metodo getLigado()
+                    retorne volume
+                fimMetodo
+                privado metodo getTocando()
+                    retorne volume
+                fimMetodo
+
+                //Setters
+                privado metodo setVolume(v: inteiro)
+                    volume = v
+                fimMetodo
+                privado metodo setLigado(l: logico)
+                    ligado = l
+                fimMetodo
+                privado metodo setTocando(t: logico)
+                    tocando = t
+                fimMetodo
+
+                publico metodo ligar()
+                    setLigado(verdadeiro)
+                fimMetodo
+
+                publico metodo desligar()
+                    setLigado(falso)
+                fimMetodo
+
+                publico metodo abrirMenu()
+                    escreva(getLigado())
+                    escreva(getVolume())
+                    para i = 0 ate getVolume() passo 10 faça
+                        escreva("|")
+                    fimPara
+                    escreva(getTocando())
+                fimMetodo
+                publico metodo fecharMenu()
+                    escreva("Fechando Menu")
+                fimMetodo
+
+                publico metodo maisVolume()
+                    se(getLigado()) entao
+                        setVolume(getVolume() + 1)
+                    fimSe
+                fimMetodo
+                publico metodo menosVolume()
+                    se(getLigado()) entao
+                            setVolume(getVolume() - 1)
+                    fimSe
+                fimMetodo
+
+                publico metodo ligarMudo()
+                    se(getLigado) e getVolume() > 0) entao
+                        setVolume(0)
+                    fimSe
+                fimMetodo
+                publico metodo desligarMudo()
+                    se(getLigado) e getVolume() = 0) entao
+                        setVolume(50)
+                    fimSe
+                fimMedoto
+
+                publico metodo play()
+                    se(getLigado) e nao getTocando()) entao
+                        setTocando(verdadeito)
+                    fimSe
+                fimMetodo
+                publico metodo pause()
+                    se(getLigado) e  getTocando()) entao
+                        setTocando(falso)
+                    fimSe
+                fimMetodo
+            fimClasse
+    /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    Relacionamento entre Classes
+
+        classe Lutador
+            // Atributos
+            privado nome caractere
+            privado nacionalidade caractere
+            privado idade inteiro
+            privado altura real
+            privado peso real
+            privado categoria caractere
+            privado vitorias inteiro
+            privado derrotas inteiro
+            privado empates inteiro
+
+            // Metodos
+            publico metodo apresentar()
+
+            fimMetodo
+            publico metodo status()
+
+            fimMetodo
+            publico metodo ganharLuta()
+
+            fimMetodo
+            publico metodo perderLuta()
+
+            fimMetodo
+            publico metodo empatarLuta()
+
+            fimMetodo
+
+            // Metodos Especiais
+            publico metodo construtor(no: caractere,
+                nome = no             na: caractere,
+                idade = id            id: inteiro,
+                altura = ad           al: real,
+                setPeso(pe)           pe: real,
+                vitorias = vi         vi: inteiro,
+                derrotas = de         de: inteiro,
+                empates = em          em: inteiro)
+            fimMetodo
+
+            publico metodo getNome()
+                retorne nome
+            fimMetodo
+
+            publico metodo setNome(no: Caractere)
+                nome = no
+            fimMetodo
+
+            publico metodo setCategoria()
+                se(peso < 52.2) entao
+                    categoria = "Invalido"
+                senao se (peso <= 70.3) entao
+                    categproa = "Leve"
+                senao se (peso <= 83.9) entao
+                    categoria = "Médio"
+                senao se (peso <= 120.2) entao
+                    categoria = "Pesado"
+                senao
+                    categoria = "Invalido"
+                fimSe
+            fimMetodo
+
+            publico metodo getPeso()
+                retorne peso
+            fimMetodo
+
+            publico metodo setPeso(pe: Caractere)
+                peso = pe
+                setCategoria()
+            fimMetodo
+
+            publico metodo ganharLuta()
+                setVitorias(getVitorias() + 1)
+            fimMetodo
+
+            publico Metodo perderLuta()
+                setDerrota(getDerrota() + 1)
+            fimMetodo
+
+            publico metodo empatarLuta()
+                setEmpate(getEmpate() + 1)
+            fimMetodo
+
+            publico metodo apresentar()
+                escreva("Lutador: ", getNome())
+                escreva("Origem: ", getNacionalidade())
+                escreva(getIdade(), " anos"())
+                escreva(getAltura(), " m de altura"())
+                escreva("Pesando: ", getPeso() ,"kg"())
+                escreva("Ganhou: ", getVitorias() ,"vezes"())
+                escreva("Perdeu: ", getDerrotas() ,"vezes"())
+                escreva("Empatou: ", getEmpate() ,"vezes"())
+            fimMetodo
+
+            publico metodo status()
+                 escreva(getNome())
+                 escreva("É um peso ", getCategoria())
+                 escreva(getVitorias(), "vitorias")
+                 escreva(getDerrotas(), "derrotas")
+                 escreva(getEmpates(), "empates")
+            fimMetodo
+        fimClasse
+
+            // Programa Principal
+            L: vetor[0,5]
+            L[0] = novo Lutador("Pretty Boy",
+                                "França",
+                                31, 1.75, 68.0,
+                                11, 3, 1)
+            L[1] = novo Lutador("Putscript",
+                                "Brasil",
+                                29, 1.68, 57.8,
+                                14, 2, 3)
+            L[2] = novo Lutador("Snapshadow",
+                                "EUA",
+                                35, 1.65, 80.9,
+                                12, 2, 1)
+            L[3] = novo Lutador("Dead Code",
+                                "Austrália",
+                                28, 1.93, 81.6,
+                                13, 0, 2)
+            L[4] = novo Lutador(...)
+            L[5] = novo Lutador(...)
+
+            L[0].apresentar()
+            L[2].status()
+            L[3].getCategoria()
+            L[1].ganharLuta()
+            L[0].empatarLuta()
+
+            ===================================
+
+            classe Luta
+                //Atributos
+                privado desafiando : Lutador
+                privado desafiante : Lutador
+                privado rounds : inteiro
+                privado aprovada : logico
+
+                //Metodos
+
+                publico metodo marcarLuta(l1, l2: lutador)
+                    se(l1.getCategoria() = l2.getCategoria()) e (l1 <> l2) entao
+                        aprovada = verdadeiro
+                        desafiando = l1
+                        desafiante = l2
+                    senao
+                        aprovada = falso
+                        desafiando = null
+                        desafiante = null
+                    fimSe
+
+                fimMetodo
+
+                publico metodo lutar()
+                    se (aprovada) entao
+                        desafiado.apresentar()
+                        desafiante.apresentar()
+                        vencedor = aleatorio(0,2)
+                        escolha (vencedor)
+                            caso 0: //empate
+                                escreva("empatou")
+                                desafiado.empatarLuta()
+                                desafiante.empatarLuta()
+                            caso 1: //ganhou desafiante
+                                escreva(desafiado.getNome(), " ganhou")
+                                desafiado.ganharLuta()
+                                desafiante.perderLuta()
+                            caso 2: //ganhou desafiante
+                                escreva(desafiante.getNome(), " ganhou")
+                                desafiado.perderLuta()
+                                desafiante.ganharLuta()
+                        fimEscolha
+                    senao
+                        escreva("Luta nao pode acontecer"
+                    fimSe
+                fimMetodo
+
+                //Metodos Especiais
+
+                publico metodo setDesafiado(dd: lutador)
+                    desafiado = dd
+                fimMetodo
+
+                publico metodo getDesafiado(dd: lutador)
+                    retorne desafiado
+                fimMetodo
+
+            fimClasse
+
+
+// Regras das lutas
+
+    1- so pode ser marcada entre lutadores da mesma categoria
+    2- desafiado e desafiantes devem ser lutadores diferentes
+    3- so pode acontecer se estiver aprovada
+    4- so pode ter como resultado a vitoria de um dos lutadores ou um empate
 
 
 
