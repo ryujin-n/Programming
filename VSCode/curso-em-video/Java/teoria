@@ -651,6 +651,9 @@ Exercicios Teoricos:
             1- Herança de Implementação (pobi)
             2- Herança para Diferença
 
+            Especialização: Super Classe pra baixo (cada vez mais especifico)
+            Generalização: Classe filha ou classe Descendente para a Super Classe (abrange mais atributos em comum)
+
         Abstrato e Final:
 
             Classe
@@ -699,5 +702,241 @@ Exercicios Teoricos:
 
                 fimMetodo
             fimClasse
+///////////////////////////////////////////////////////////////////////////////////////////
+    Polimorfismo
+        Poli - muitas
+        Morfo - formas
 
+        Permite que um mesmo nome represente vários comportamentos diferentes
 
+        Assinatura do Metodo:
+            Quantidade e tipos dos parâmetros
+            ex:.
+
+                1- publico metodo calcMedia(n1: real, n2: real) retorna Real
+
+                2- publico metodo calcMedia(v1: real, v2: real) retorna Inteiro
+
+            Ambos tem a mesma assinatura, pois ambos tem dois parametros e ambos recebem parametros reais
+
+                3- publico metodo calcMedia(bim: inteiro, n1: real, n2: real) retorna Real
+
+                4- publico metodo calcMedia(n1: real, n2: real, n3:real , n4:real) retorna Real
+
+                5- publico metodo calcMedia(medMin: real, medMax: real, sit:caractere , bim:real) retorna Caractere
+
+            Esses já são diferente, pois esse tem quantidades de parametros diferentes e tipos diferentes, ou seja, a assinatura muda
+
+        Tipos de polimorfismo:
+            1- Sobreposição
+            2- Sobrecarga
+
+        ex:.
+            classe abstrata Animal
+                protegido peso: real
+                protegido idade: inteiro
+                protegido membros: inteiro
+
+                publico metodo abstrato locomover()
+                publico metodo abstrato alimentar()
+                publico metodo abstrato emitirSom()
+            fimClasse
+
+            classe Mamifero estende Animal
+                privado corPelo: caractere
+
+                @Sobrepor
+                publico metodo locomover()
+                    escreva("Correndo")
+                fimMetodo
+
+                @Sobrepor
+                publico metodo alimentar()
+                    escreva("Mamar")
+                fimMetodo
+
+                @Sobrepor
+                publico metodo emitirSom()
+                    escreva("Som de mamifero")
+                fimMetodo
+            fimClasse
+
+            classe Reptil estende Animal
+                privado corEscama: caractere
+
+                 @Sobrepor
+                publico metodo locomover()
+                    escreva("Rastejando")
+                fimMetodo
+
+                @Sobrepor
+                publico metodo alimentar()
+                    escreva("Comendo Vegetais")
+                fimMetodo
+
+                @Sobrepor
+                publico metodo emitirSom()
+                    escreva("Som de reptil")
+                fimMetodo
+            fimClasse
+
+            classe Peixe estende Animal
+                privado corEscama: caractere
+
+                @Sobrepor
+                publico metodo locomover()
+                    escreva("Nadando")
+                fimMetodo
+
+                @Sobrepor
+                publico metodo alimentar()
+                    escreva("Comendo substancias")
+                fimMetodo
+
+                @Sobrepor
+                publico metodo emitirSom()
+                    escreva("peixe não faz som")
+                fimMetodo
+
+                publico metodo soltarBolha()
+                    escreva("Soltou uma bolha")
+                fimMetodo
+            fimClasse
+
+            classe Ave estende Animal
+                privado corPena: caractere
+              @Sobrepor
+              publico metodo locomover()
+                  escreva("Voando")
+              fimMetodo
+
+              @Sobrepor
+              publico metodo alimentar()
+                  escreva("Comendo sementes")
+              fimMetodo
+
+              @Sobrepor
+              publico metodo emitirSom()
+                  escreva("Som de ave")
+              fimMetodo
+
+              publico metodo fazerNinho()
+                  escreva("fazendo ninho")
+              fimMetodo
+            fimClasse
+
+            classe Canguru estende Mamifero
+                publico metodo usarBolsa()
+                    escreva("Usando Bolsa")
+                fimMetodo
+
+                @Sobrepor
+                publico metodo locomover()
+                    escreva("Saltano")
+                fimMetodo
+            fimClasse
+
+            classe Cachorro estende Mamifero
+                publico metodo enterrarOsso()
+                    escreva("enterrando Osso")
+                fimMetodo
+                publico metodo abananarRabo()
+                    escreva("abanando o rabo")
+                fimMetodo
+            fimClasse
+
+            classe Cobra estende Reptil
+
+            fimClasse
+
+            classe Tartaruga estende Reptil
+                @Sobrepor
+                publico metodo locomover()
+                    escreva("Andando beeeem devagar")
+                fimMetodo
+            fimClasse
+
+            classe GolfFish estende Peixe
+
+            fimClasse
+
+            classe Arara estende Ave
+
+            fimClasse
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        Polimorfismo de Sobreposição
+            └── A subclasse fornece uma implementação específica para um método que já foi definido em sua superclasse, se tiverem a MESMA assinatura em classes DIFERENTES
+
+        Polimorfismo de Sobrecarga
+            └── A subclasse fornece uma implementação específica para um método que já foi definido em sua superclasse, se tiverem DIFERENTES assinaturas dentro da MESMA classe
+            ex:.
+
+            classe Cachorro estende Lobo
+                publico metodo reagir(frase: caractere)
+                    se(frase = "toma comida" ou frase = "ola")
+                        escreva("abanar e latir")
+                    senao
+                        escreva("rosnar")
+                    fimSe
+                fimMetodo
+
+                publico metodo reagir(hora, min: inteiro)
+                    se(hora < 12)
+                        escreva("abanar")
+                    senaoSe (hora >= 18)
+                        escreva("ignorar")
+                    senao
+                         escreva("abanar e latir")
+                    fimSe
+                fimMetodo
+
+                publico metodo reagir(dono: logico)
+                    se (dono)
+                        escreva("abanar")
+                    senao
+                        escreva("rosnar")
+                    fimSe
+                fimMetodo
+
+                publico metodo reagir(idade: inteiro, peso: real)
+                    se(idade <5)
+                        se(peso<10)
+                            escreva("abanar")
+                        senao
+                            escreva("latir")
+                        fimSe
+                    senao
+                        se(peso<10)
+                            escreva("rosnar")
+                        senao
+                            escreva("ignorar")
+                        fimSe
+                    fimSe
+                fimMetodo
+            fimClasse
+   ////////////////////////////////////////////////////////////////////////////////////
+   Exercícios Teoricos:
+       01- B)   O
+       02- B)   O
+       03- B)   O
+       04- C)   O
+       05- A)   O
+       06- B)   O
+       07- C)   O
+       08- D)   O
+       09- D)   - (tava perguntando de php)
+       10- B)   O
+
+       ///////////////////////////////
+
+       01- C)   O
+       02- A)   O
+       03- C)   O
+       04- D)   X (Coloquei A)
+       05- B)   O
+       06- D)   O
+       07- C)   O
+       08- A)   O
+       09- B)   O
+       10- D)   O
