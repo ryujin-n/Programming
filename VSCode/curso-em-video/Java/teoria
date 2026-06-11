@@ -543,5 +543,161 @@ Pilares da POO - Encapsulamento | Herança | Polimorfismo
     3- so pode acontecer se estiver aprovada
     4- so pode ter como resultado a vitoria de um dos lutadores ou um empate
 
+////////////////////////////////////////////////////////////////////////////////////
+Exercicios Teoricos:
+
+    1- C)   O
+    2- A)   X (marquei B)
+    3- A)   O
+    4- B)   O
+    5- C)   O
+    6- C)   O
+    7- C)   O
+    8- D)   O
+    9- B)   O
+   10- B)   O
+   11- B)   O
+   12- D)   X (marquei B)
+   13- D)   O
+   14- D)   O
+   15- D)   O
+
+////////////////////////////////////////////////////////////////////////////////////
+    Herança:
+        Ela permite basear uma nova classe na definição de uma outra classe previamente existente
+
+        ex:.
+
+        classe Pessoa
+            //atributos
+            privado nome: caractere
+            privado idade: caractere
+            privado sexo: caractere
+
+            //metodos
+            publico metodo fazerAniv()
+
+            fimMetodo
+
+            //metodos especiais
+            publico metodo getNome
+
+            fimMetodo
+            publico metodo setNome()
+
+            fimMetodo
+
+            publico metodo getIdade()
+
+            fimMetodo
+            publico metodo setIdade()
+
+            fimMetodo
+
+            publico metodo getSexo()
+
+            fimMetodo
+            publico metodo setSexo()
+
+            fimMetodo
+
+        fimClasse
+
+        classe Aluno estende Pessoa
+            //atributos
+            privado matr: inteiro
+            privado curso: caractere
+
+            //metodos
+            publico metodo cancelarMatr()
+
+            fimMetodo
+
+            //metodos especiais
+            publico metodo getMatr()
+
+            fimMetodo
+            publico metodo getMatr()
+
+            fimMetodo
+
+            publico metodo getCurso()
+
+            fimMetodo
+            publico metodo setCurso()
+
+            fimMetodo
+        fimClasse
+
+        classe Professor estende Pessoa
+            //atributos
+            (...)
+            //metodos
+            (...)
+            //metodos especiais
+            (...)
+        fimClasse
+
+        classe Funcionario estende Pessoa
+            //atributos
+            (...)
+            //metodos
+            (...)
+            //metodos especiais
+            (...)
+        fimClasse
+
+        Tipos de heranças:
+            1- Herança de Implementação (pobi)
+            2- Herança para Diferença
+
+        Abstrato e Final:
+
+            Classe
+            ├── Abstrata - Não pode ser instanciada, só pode servir como super classe
+            └── Final - Não pode ser herdada por outra classe, Obrigatoriamente folha
+
+            Metodo
+            ├── Abstrata - Método declarado, mas não implementado na progenitora
+            └── Final - Não pode ser sobrescrito pelas suas sub-classes, Obrigatoriamente herdado
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+            classe abstrata Pessoa
+                privado nome: caractere
+                privado idade: inteiro
+                privado sexo: caractere
+
+                publico metodo final fazreAniv()
+
+                fimMetodo
+
+            fimClasse
+
+            classe Visitante estende Pessoa
+
+            fimClasse
+
+            classe Aluno estende Pessoa
+                privado matricula: inteiro
+                privado curso: caractere
+
+                publico metodo pagarMensalidade()
+
+                fimMetodo
+            fimClasse
+
+            classe Bolsista estende Aluno
+                privado bolsa: inteiro
+
+                publico metodo renovarBolsa()
+
+                fimMetodo
+
+                @Sobrepor
+                publico metodo pagarMensalidade()
+
+                fimMetodo
+            fimClasse
 
 

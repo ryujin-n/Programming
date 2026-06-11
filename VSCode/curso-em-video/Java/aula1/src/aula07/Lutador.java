@@ -8,7 +8,6 @@ public class Lutador {
 
     //* Metodos Publicos
     public void apresentar(){
-        System.out.println("----------------------------------------------------------");
         System.out.println("Chegou a hora, apresentamos o lutador " + this.getNome());
         System.out.println("Diretamente de " + this.getNacionalidade());
         System.out.println("com " + this.getIdade() + " anos de idade");
@@ -20,7 +19,6 @@ public class Lutador {
 
     }
     public void status(){
-        System.out.println("----------------------------------------------------------");
         System.out.println("Lutador " + this.getNome() + " é um peso " + this.getCategoria());
         System.out.println("Ganhou: "+ this.getVitorias() + " lutas");
         System.out.println("Perdeu: "+ this.getDerrotas() + " lutas");

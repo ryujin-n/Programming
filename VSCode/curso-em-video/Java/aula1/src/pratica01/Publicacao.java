@@ -1,0 +1,9 @@
+package pratica01;
+
+public interface Publicacao {
+    public abstract void abrir();
+    public abstract void fechar();
+    public abstract void folhear(int p);
+    public abstract void avancarPag(int p);
+    public abstract void voltarPag(int p);
+}
