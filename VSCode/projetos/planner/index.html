@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Planner de Upgrade</title>
+  </head>
+  <body>
+    <div class="wrap">
+      <h1>Planner de Upgrade</h1>
+      <br />
+      <div class="kpis">
+        <div class="card kpi">
+          <small>Total pendente (à vista)</small><b id="kPend">R$ 0,00</b>
+        </div>
+        <div class="card kpi">
+          <small>Já comprado</small><b id="kBuy">R$ 0,00</b>
+        </div>
+        <div class="card kpi">
+          <small>Itens pendentes</small><b id="kQtd">0</b>
+        </div>
+        <div class="card kpi">
+          <small>Economia pagando no PIX</small><b id="kEco">R$ 0,00</b>
+        </div>
+        <div class="card kpi">
+          <small>Guardo por mês (R$)</small
+          ><input id="meta" inputmode="decimal" placeholder="ex.: 800" /><span
+            class="sm"
+            id="meses"
+          ></span>
+        </div>
+      </div>
+
+      <div class="grid">
+        <form class="card" id="form" autocomplete="off">
+          <h2 id="ftit">Novo item</h2>
+          <label for="f_nome">Produto *</label><input id="f_nome" required />
+          <label for="f_link">Link do produto</label
+          ><input
+            id="f_link"
+            type="url"
+            placeholder="Cole o link: nome, loja e categoria são sugeridos"
+          />
+          <div class="msg" id="lmsg"></div>
+          <div class="r2">
+            <div>
+              <label for="f_loja">Loja</label
+              ><input
+                id="f_loja"
+                list="dl_loja"
+                placeholder="escolha ou digite"
+              /><datalist id="dl_loja"></datalist>
+            </div>
+            <div>
+              <label for="f_cat">Categoria</label
+              ><input id="f_cat" list="dl_cat" /><datalist
+                id="dl_cat"
+              ></datalist>
+            </div>
+            <div>
+              <label for="f_prio">Prioridade</label
+              ><select id="f_prio">
+                <option>Média</option>
+                <option>Alta</option>
+                <option>Baixa</option>
+              </select>
+            </div>
+            <div>
+              <label for="f_qtd">Qtd</label
+              ><input id="f_qtd" type="number" min="1" step="1" value="1" />
+            </div>
+            <div>
+              <label for="f_preco">Preço à vista / PIX</label
+              ><input id="f_preco" inputmode="decimal" placeholder="4299,99" />
+            </div>
+            <div>
+              <label for="f_pagto">Pagamento</label
+              ><select id="f_pagto">
+                <option value=""></option>
+                <option>Pix</option>
+                <option>Cartão à vista</option>
+                <option>Cartão parcelado</option>
+                <option>Boleto</option>
+                <option>Outro</option>
+              </select>
+            </div>
+            <div>
+              <label for="f_parc">Parcelas</label
+              ><input id="f_parc" type="number" min="1" step="1" />
+            </div>
+            <div>
+              <label for="f_vparc">Valor da parcela</label
+              ><input id="f_vparc" inputmode="decimal" placeholder="647,06" />
+            </div>
+          </div>
+          <label for="f_data">Data planejada</label
+          ><input id="f_data" type="date" />
+          <label for="f_obs">Observações</label><textarea id="f_obs"></textarea>
+          <div class="msg" id="fmsg"></div>
+          <div class="bar" style="margin: 8px 0 0">
+            <button class="p" id="fsave" type="submit">Adicionar à lista</button
+            ><button type="button" id="fcancel" hidden>Cancelar edição</button>
+          </div>
+        </form>
+
+        <div class="card">
+          <h2>Lista</h2>
+          <div class="stores" id="stores"></div>
+          <div class="bar">
+            <select id="fs"></select
+            ><select id="fl"></select>
+            <select id="fo">
+              <option value="prio">Ordenar: prioridade</option>
+              <option value="new">Mais recentes</option>
+              <option value="price">Maior preço</option>
+            </select>
+            <input id="fq" type="search" placeholder="Buscar" />
+          </div>
+          <div class="tw">
+            <table>
+              <thead>
+                <tr>
+                  <th>Item</th>
+                  <th>Loja</th>
+                  <th>Prior.</th>
+                  <th class="num">Qtd</th>
+                  <th class="num">Preço</th>
+                  <th class="num">Total</th>
+                  <th>Status</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="rows"></tbody>
+            </table>
+          </div>
+          <div class="empty" id="empty" hidden>Nenhum item neste filtro.</div>
+          <div class="foot">
+            <button id="xcsv">Exportar CSV</button
+            ><button id="xjson">Backup (JSON)</button
+            ><button id="ijson">Importar backup</button
+            ><input
+              id="ifile"
+              type="file"
+              accept=".json,application/json"
+              hidden
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
